@@ -12,7 +12,7 @@
     <p class="wrapItem">
       {{indexTitle(3)}}
     </p>
-    <p class="wrapItem" style="margin-right: 10px;">
+    <p v-if="titleLength" class="wrapItem" style="margin-right: 10px;">
       {{indexTitle(4)}}
     </p>
   </div>
@@ -25,14 +25,15 @@
     mounted() {
 
     },
-    methods:{
+    methods: {
       indexTitle(i) {
         return this.message[i];
+      },
+      titleLength() {
+        return this.message.length() / 5;
       }
     },
-    computed: {
-
-    }
+    computed: {}
   }
 </script>
 <style scoped>

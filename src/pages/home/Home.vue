@@ -1,5 +1,5 @@
 <template>
-  <view-box class="viewBox">
+  <view-box class="viewBox" style="margin-bottom: 0;">
     <div v-for="item,index in list">
       <symbol-bar v-if="!index" :message="titles"></symbol-bar>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
@@ -13,7 +13,7 @@
     ViewBox
   } from 'vux';
   import axios from 'axios';
-  import Cell from '../../components/TableViewCell'
+  import Cell from '../../components/HomeListCell'
   import SymbolBar from '../../components/SymbolBar'
 
   export default {
@@ -34,10 +34,9 @@
         let self = this;
         axios.get('/table/rankList')
           .then(function (response) {
-            console.log(response);
             self.list = response.data.data;
-            console.log(self.list);
           }).catch(function (err) {
+          console.log(err);
         })
       }
     },
@@ -54,7 +53,6 @@
   .viewBox {
     width: 100%;
     height: 100%;
-    padding-bottom: 0;
   }
 
 
