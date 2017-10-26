@@ -1,12 +1,13 @@
 import axios from 'axios'
 import {LoadingPlugin} from 'vux'
-
-Vue.use(LoadingPlugin)
+import Vue from 'vue';
+Vue.use(LoadingPlugin);
 
 
 import {stringify} from 'qs'
 // axios 配置
 axios.defaults.timeout = 8000;
+axios.defaults.baseURL='/api';
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
@@ -65,7 +66,7 @@ export function fetch(url, options) {
           store.commit('SET_LOADING', false)
         }
         // 隐藏
-        this.$vux.loading.hide()
+        // this.$vux.loading.hide()
 
       })
       .catch(error => {
@@ -73,7 +74,7 @@ export function fetch(url, options) {
         reject(error)
 
         // 隐藏
-        this.$vux.loading.hide()
+        // this.$vux.loading.hide()
       })
   })
 }

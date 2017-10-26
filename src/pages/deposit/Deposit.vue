@@ -11,7 +11,7 @@
   import {ViewBox} from 'vux';
   import Cell from '../../components/DepositListCell2.vue'
   import SymbolBar from '../../components/SymbolBar'
-  import axios from 'axios'
+  import fetch from '../../api/http'
 
   export default {
     name: 'deposit',
@@ -28,10 +28,8 @@
 
 
     mounted() {
-
-      axios.get('/table/bankListApi')
+      fetch('/table/bankListApi',)
         .then( ({data}) => {
-          console.log(data);
           this.list=data.data.rows;
           console.log(this.list);
         }).catch(function (err) {
