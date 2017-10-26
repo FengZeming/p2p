@@ -1,7 +1,9 @@
 <template>
   <div id="app" style="height: 100%;display: flex;flex-direction: column;">
     <view-box class="box-container">
-      <router-view class="router-view"></router-view>
+      <keep-alive>
+        <router-view class="router-view"></router-view>
+      </keep-alive>
     </view-box>
     <navigator-bar></navigator-bar>
   </div>
@@ -40,7 +42,6 @@
 <style lang="less">
   @import "~vux/src/styles/reset.less";
   @import "./style/font.less";
-
   * {
     margin: 0;
     padding: 0;
