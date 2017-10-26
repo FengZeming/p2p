@@ -7,7 +7,9 @@ import router from './router'
 import axios from 'axios';
 // router.push({path: '/home'});
 // axios.defaults.baseURL = 'http://localhost:7890/';
+
 axios.defaults.baseURL = '/api';
+
 
 /* ----------- Config ---------- */
 Vue.config.productionTip = true;
