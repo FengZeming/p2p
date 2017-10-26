@@ -1,22 +1,21 @@
 <template>
-  <div class="itemContainer">
+  <div class="itemContainer" :style="{background:itemIndex?'#edf5fa':'#f8fcee'}">
     <!--{{message}}-->
-    <p class="wrapItem" style="flex: 1; background-color: red;">
-      {{ message.platform}}
+    <p class="wrapItem" style="'flex: 2;" :style="{color: titleColor ?titleColor:'#080363'}">
+      {{ item.platform}}
     </p>
-    <p class="wrapItem" style="width: 80px;">
-      {{ message.ranking}}
+    <p class="wrapItem" style="width: 80px; ">
+      {{ item.ranking}}
     </p>
     <p class="wrapItem" style="width: 70px;">
-      {{ message.wdzj_grade}}
+      {{ item.wdzj_grade ? item.wdzj_grade : '-'}}
     </p>
-    <p class="wrapItem" style="width: 90px;">
-      {{ message.wdty_grade}}
+    <p class="wrapItem" style="width: 80px;">
+      {{ item.wdty_grade ? item.wdty_grade : '-' }}
     </p>
     <p class="wrapItem">
-      {{ message.rong_grade}}
+      {{ item.rong_grade ? item.rong_grade : '-'}}
     </p>
-
 
   </div>
 </template>
@@ -24,6 +23,21 @@
   export default {
     name: 'cell',
     props: ['message']
+    ,
+    mounted() {
+
+    },
+    computed: {
+      item() {
+        return this.message.item;
+      },
+      itemIndex() {
+        return this.message.index % 2;
+      },
+      titleColor() {
+        return this.message.titleColor;
+      }
+    }
   }
 </script>
 
@@ -31,7 +45,8 @@
   .itemContainer {
     display: flex;
     flex-direction: row;
-    height: 60px;
+    justify-content: flex-end;
+    height: 40px;
     align-items: center;
   }
 
@@ -44,4 +59,6 @@
     justify-content: center;
 
   }
+
+
 </style>

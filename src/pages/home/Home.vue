@@ -21,7 +21,7 @@
       </div>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
 
-      <cell class="tableViewCell" :message='item'></cell>
+      <cell class="tableViewCell" :message='{item:item ,index:index }'></cell>
     </div>
   </view-box>
 </template>
@@ -46,7 +46,7 @@
     },
     methods: {
       getRankList() {
-        var self = this;
+        let self = this;
         axios.get('/table/rankList')
           .then(function (response) {
             console.log(response);
@@ -73,8 +73,8 @@
   }
 
   .wrapItem {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
     font-size: 15px;
     color: #333;
   }
