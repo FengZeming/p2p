@@ -1,26 +1,8 @@
 <template>
   <view-box class="viewBox">
     <div v-for="item,index in list">
-      <div v-if="!index" style="display: flex;flex-direction: row; height: 44px;width: 100%; align-items: center;">
-        <!--{{message}}-->
-        <p style="display:flex;flex: 1; align-items: center;justify-content: center; font-size: 15px;">
-          名称
-        </p>
-        <p class="wrapItem" style="margin-left: 0;">
-          综合排名
-        </p>
-        <p class="wrapItem">
-          网贷之家
-        </p>
-        <p class="wrapItem">
-          网贷天眼
-        </p>
-        <p class="wrapItem" style="margin-right: 10px;">
-          融360
-        </p>
-      </div>
+      <symbol-bar v-if="!index" :message="titles"></symbol-bar>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
-
       <cell class="tableViewCell" :message='{item:item ,index:index }'></cell>
     </div>
   </view-box>
@@ -32,16 +14,19 @@
   } from 'vux';
   import axios from 'axios';
   import Cell from '../../components/TableViewCell'
+  import SymbolBar from '../../components/SymbolBar'
 
   export default {
     name: 'home',
     components: {
       ViewBox,
+      SymbolBar,
       Cell
     },
     data() {
       return {
-        list: []
+        list: [],
+        titles: ['名称', '综合排名', '网贷之家', '网贷天眼', '融360']
       }
     },
     methods: {
@@ -70,13 +55,6 @@
     width: 100%;
     height: 100%;
     padding-bottom: 0;
-  }
-
-  .wrapItem {
-    margin-left: 4px;
-    margin-right: 4px;
-    font-size: 15px;
-    color: #333;
   }
 
 
