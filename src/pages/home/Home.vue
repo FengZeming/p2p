@@ -40,6 +40,10 @@
         })
       }
     },
+    computed: {
+
+
+    },
     mounted() {
       this.getRankList();
     }

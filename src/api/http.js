@@ -1,13 +1,16 @@
 import axios from 'axios'
-import {LoadingPlugin} from 'vux'
+import {LoadingPlugin, ToastPlugin, AlertPlugin} from 'vux'
 import Vue from 'vue';
+
 Vue.use(LoadingPlugin);
+Vue.use(ToastPlugin);
+Vue.use(AlertPlugin);
 
 
 import {stringify} from 'qs'
 // axios 配置
 axios.defaults.timeout = 8000;
-axios.defaults.baseURL='/api';
+axios.defaults.baseURL = '/api';
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
@@ -37,10 +40,11 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
+
 // 封装请求
-export function fetch(url, options) {
+function fetch(url, options) {
   // 显示
-  this.$vux.loading.show({
+  Vue.$vux.loading.show({
     text: 'Loading'
   });
   var opt = options || {};
@@ -56,17 +60,16 @@ export function fetch(url, options) {
       headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     })
       .then(response => {
-        if (response.data.code === 0) {
-          resolve(response.data)
-        } else if (response.data.code === '000') {
-          resolve(response.data)
-        } else {
-          reject(response.data)
+        resolve(response.data)
 
-          store.commit('SET_LOADING', false)
-        }
+        // if (response.data.code === 0) {
+        // } else if (response.data.code === '000') {
+        //   resolve(response.data)
+        // } else {
+        //   reject(response.data)
+        // }
         // 隐藏
-        // this.$vux.loading.hide()
+        Vue.$vux.loading.hide()
 
       })
       .catch(error => {
@@ -74,9 +77,9 @@ export function fetch(url, options) {
         reject(error)
 
         // 隐藏
-        // this.$vux.loading.hide()
+        Vue.$vux.loading.hide()
       })
   })
 }
 
-export default axios
+export default fetch;

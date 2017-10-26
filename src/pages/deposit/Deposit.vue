@@ -21,19 +21,17 @@
     },
     data() {
       return {
-        list: [1, 2],
+        list: [],
         titles: ['排序', '平台', '存管', '备注'],
       }
     },
 
-
     mounted() {
       fetch('/table/bankListApi',)
-        .then( ({data}) => {
-          this.list=data.data.rows;
-          console.log(this.list);
+        .then(({data}) => {
+          this.list = data.rows;
         }).catch(function (err) {
-          console.log(err);
+        console.log(err);
       })
 
     }
