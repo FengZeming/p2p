@@ -41,7 +41,8 @@ export default new Router({
       name: '平台详情',
       component: PlatDetail,
       meta: {
-        keepAlive: false
+        keepAlive: false,
+        navHidden:true
       }
     }
   ],

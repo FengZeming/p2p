@@ -34,7 +34,7 @@ module.exports = {
 
     proxyTable: {
       '/api': {
-        target: 'http://ti.prguanjia.com/',
+        target: 'http://api.prguanjia.com/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/'
@@ -49,4 +49,4 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-}
+};

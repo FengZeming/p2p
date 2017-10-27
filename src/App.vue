@@ -5,7 +5,7 @@
         <router-view class="router-view" ></router-view>
       </keep-alive>
     </view-box>
-    <navigator-bar></navigator-bar>
+    <navigator-bar v-show="navHidden"></navigator-bar>
   </div>
 </template>
 
@@ -35,7 +35,11 @@
         showPlacementValue: 'left'
       }
     },
-    computed: {},
+    computed: {
+        navHidden(){
+           return !this.$route.meta.navHidden;
+        }
+    }
   }
 </script>
 

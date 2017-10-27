@@ -48,7 +48,6 @@ function fetch(url, options) {
     text: 'Loading'
   });
   var opt = options || {};
-  console.log(opt);
   return new Promise((resolve, reject) => {
     axios({
       method: opt.type || 'get',
