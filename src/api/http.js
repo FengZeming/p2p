@@ -48,16 +48,20 @@ function fetch(url, options) {
     text: 'Loading'
   });
   var opt = options || {};
+  console.log(opt);
   return new Promise((resolve, reject) => {
     axios({
       method: opt.type || 'get',
       url: url,
       params: opt.params || {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
-      data: (opt.headers ? opt.data : stringify(opt.data)) || {},
+      // data: (opt.headers ? opt.data : stringify(opt.data)) || {},
+      data: opt.params || {},
       responseType: opt.dataType || 'json',
+
       // 设置默认请求头
-      headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+      headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+
     })
       .then(response => {
         resolve(response.data)

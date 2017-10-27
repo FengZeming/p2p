@@ -5,6 +5,7 @@ import Home from '@/pages/home/Home'
 import Trade from '@/pages/trade/Trade'
 import Deposit from '@/pages/deposit/Deposit'
 import Me from '@/pages/me/Me'
+import PlatDetail from '../pages/detail/PlatDetail.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -12,7 +13,10 @@ export default new Router({
     {
       path: '/',
       name: '前100排名',
-      component: Home
+      component: Home,
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/home',
@@ -32,6 +36,13 @@ export default new Router({
       path: '/me',
       name: '我的',
       component: Me
+    }, {
+      path: '/detail',
+      name: '平台详情',
+      component: PlatDetail,
+      meta: {
+        keepAlive: false
+      }
     }
   ],
   mode: 'history',

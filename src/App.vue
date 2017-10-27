@@ -1,8 +1,8 @@
 <template>
   <div id="app" style="height: 100%;display: flex;flex-direction: column;">
     <view-box class="box-container">
-      <keep-alive>
-        <router-view class="router-view"></router-view>
+      <keep-alive exclude="detail">
+        <router-view class="router-view" ></router-view>
       </keep-alive>
     </view-box>
     <navigator-bar></navigator-bar>
