@@ -1,22 +1,27 @@
 <template>
-  <view-box class="viewBox" style="margin-bottom: 0;">
-    <div v-for="item,index in detail">
-      <cell class="cell" :message='{item:item ,index:index }'></cell>
+  <group>
+    <!--<div v-for="item,index in detail">-->
+    <detail-header-cell class="cell" :message='detail'></detail-header-cell>
+    <detail-info-cell :message='detail'></detail-info-cell>
+    <!--<div>-->
+      <!--<qrcode value="https://vux.li?x-page=demo_qrcode" type="img"></qrcode>-->
+    <!--</div>-->
 
-    </div>
-  </view-box>
+    <!--</div>-->
+  </group>
 </template>
 
 <script>
   import fetch from '../../api/http'
-  import Cell from './components/DetailHeaderCell'
+  import DetailHeaderCell from './components/DetailHeaderCell'
   import SymbolBar from '../../components/SymbolBar'
-  import {ViewBox} from 'vux'
+  import DetailInfoCell from './components/DetailInfoCell'
+  import {Group, Cell, Qrcode} from 'vux'
 
   export default {
 
     name: 'detail',
-    components: {Cell, ViewBox},
+    components: {DetailHeaderCell, Group, Cell, DetailInfoCell, Qrcode},
     data() {
       return {
         detail: {}
