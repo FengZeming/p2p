@@ -33,7 +33,6 @@
         .then(({data}) => {
           this.list = data.rows;
         }).catch(function (err) {
-        console.log(err);
       })
     },
     methods: {}
@@ -41,5 +40,8 @@
 </script>
 
 <style scoped>
-
+  .viewBox {
+    width: 100%;
+    height: 100%;
+  }
 </style>
