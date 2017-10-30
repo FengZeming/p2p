@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="width: 100%;">
     <p style="padding-left: 10px;padding-top: 6px;padding-bottom: 3px;font-size: 13px;color: #999;">平台数据</p>
-    <div style="width: 100%;height: 0.5px;background-color: #d8d8d8;padding-left: 10px;"></div>
+    <div style="width: 100%;height: 0.5px;background-color: #d8d8d8;"></div>
 
     <div style="display: flex;flex-direction: row; flex-wrap: wrap;width: 100%; margin-bottom:10px;">
       <div v-for="i, index in powerDatas"

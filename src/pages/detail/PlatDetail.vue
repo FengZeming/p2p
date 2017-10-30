@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%;height: 100%;">
     <!--<div v-for="item,index in detail">-->
     <detail-header-cell class="cell" :message='detail'></detail-header-cell>
     <detail-info-cell :message='detail'></detail-info-cell>
@@ -12,8 +12,8 @@
     <!--</div>-->
     <!--</div>-->
     <div v-for=" item,index in reviews">
-      <detail-review-cell :message='item'></detail-review-cell>
-    </div>
+    <detail-review-cell :message='item'></detail-review-cell>
+  </div>
   </div>
 </template>
 

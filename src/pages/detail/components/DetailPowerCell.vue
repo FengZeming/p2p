@@ -3,7 +3,7 @@
     <p v-if="powerDatas.length>0"
        style="padding-left: 10px;padding-top: 6px;padding-bottom: 3px;font-size: 13px;color: #999;">平台实力</p>
     <div v-if="powerDatas.length>0"
-         style="width: 100%;height: 0.5px;background-color: #d8d8d8;padding-left: 10px;"></div>
+         style="width: 100%;height: 0.5px;background-color: #d8d8d8;"></div>
     <div v-if="powerDatas.length>0"
          style="display:flex;flex-wrap: wrap;flex-direction: row;padding-bottom:10px; background:white; width:100%;">
 
