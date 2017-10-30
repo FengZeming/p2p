@@ -2,7 +2,7 @@
   <div id="app" style="height: 100%;display: flex;flex-direction: column;">
     <view-box class="box-container">
       <keep-alive exclude="detail">
-        <router-view class="router-view" ></router-view>
+        <router-view class="router-view"></router-view>
       </keep-alive>
     </view-box>
     <navigator-bar v-show="navHidden"></navigator-bar>

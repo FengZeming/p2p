@@ -1,6 +1,6 @@
 <template>
   <tabbar slot="bottom">
-    <tabbar-item link="/home">
+    <tabbar-item link="/home" selected>
       <span slot="icon" class="iconfont">&#xe756;</span>
       <span slot="label">存管</span>
     </tabbar-item>

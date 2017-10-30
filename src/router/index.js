@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Home from '@/pages/home/Home'
 import Trade from '@/pages/trade/Trade'
 import Deposit from '@/pages/deposit/Deposit'
@@ -9,6 +8,7 @@ import PlatDetail from '../pages/detail/PlatDetail.vue'
 
 Vue.use(Router);
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -46,8 +46,9 @@ export default new Router({
       }
     }
   ],
-  mode: 'history',
-  scrollBehavior(to, from, savePostion) {
-    return savePostion | {x: 0, y: 0}
-  }
+
+
+  // scrollBehavior(to, from, savePostion) {
+  //   return savePostion | {x: 0, y: 0}
+  // }
 })

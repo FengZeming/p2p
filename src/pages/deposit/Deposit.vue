@@ -4,7 +4,7 @@
       <symbol-bar v-if="!index" :message="titles"></symbol-bar>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
       <router-link :to="{path:'/detail',query: item}" >
-        <cell class="cell" :message='{item:item ,index:index }'></cell>
+        <cell class="cell" :message='{item:item ,index:index }' @click=""></cell>
       </router-link>
     </div>
   </view-box>
@@ -14,7 +14,6 @@
   import Cell from '../../components/DepositListCell2.vue'
   import SymbolBar from '../../components/SymbolBar'
   import fetch from '../../api/http'
-
   export default {
     name: 'deposit',
     components: {
@@ -35,6 +34,9 @@
         }).catch(function (err) {
         console.log(err);
       })
+    },
+    methods:{
+
 
     }
   }
