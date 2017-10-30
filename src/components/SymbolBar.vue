@@ -12,7 +12,7 @@
     <p class="wrapItem">
       {{indexTitle(3)}}
     </p>
-    <p v-if="titleLength" class="wrapItem" style="margin-right: 10px;">
+    <p v-if="titleLength" class="wrapItem" style="margin-right: 5px;">
       {{indexTitle(4)}}
     </p>
   </div>
