@@ -36,9 +36,6 @@
       }
     },
     methods:{
-      bgColor() {
-        return this.message.index % 2
-      },
     },
 
   }

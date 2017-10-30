@@ -1,5 +1,5 @@
 <template>
-  <div class="itemContainer" :style="{background:bgColor?'#fff':'#fcf3f0'}" @click="toDetail">
+  <div class="itemContainer" :style="{background:bgColor?'#fff':'#fcf3f0'}">
     <p class="wrapItem" style="'flex: 1;">
       {{ itemIndex}}
     </p>
@@ -21,11 +21,6 @@
     components: {},
     props: ['message'],
     methods: {
-      toDetail(e) {
-        this.$router.push({
-          path: '/detail'
-        })
-      }
 
     },
     computed: {
