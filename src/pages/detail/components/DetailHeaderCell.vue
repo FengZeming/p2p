@@ -3,24 +3,31 @@
     <div class="leftContianer childContiner"
          style="">
       <p style="color: white; font-size: 24px;">
-        陆金所 <span style="color:#ffea00; font-size: 14px; ">银行系</span>
+        {{message.platform}} <span style="color:#ffea00; font-size: 14px; ">{{message.background}}</span>
       </p>
       <p style="font-size: 14px; color: #b6ccd9;">
-        正常运营:<span style="font-size: 17px;"> 6 </span>年
+        正常运营:<span style="font-size: 15px;"> {{message.timeOperation}} </span>
       </p>
     </div>
     <div class="rightContainer childContiner"
          style="flex: 1; margin-top: 15px;align-content: flex-end;margin-right: 10px;margin-left: 0;align-items: flex-end;display: flex;">
-      <p style="padding: 0px 10px;border-radius:20px;border:1px;color: white;border-style: solid;display: inline-block; margin: 0; align-items: flex-end;
-      line-height: 20px;">第一名</p>
-      <p style="margin-top: 16px;color: white; display: inline-block;">北京银行
-        <span style="color: #b6ccd9; font-size: 13px;display: inline-block;">联合存管</span></p>
+      <p style="padding: 0px 10px;border-radius:20px;border:1px;color: white;border-style: solid;display: inline-block;
+       font-size: 14px; margin: 0; align-items: flex-end;
+      line-height: 20px;">第{{message.ranking}}名</p>
+      <p style="margin-top: 16px;color: white; display: inline-block;">{{message.bank}}
+        <span style="color: #b6ccd9; font-size: 13px;display: inline-block;">{{message.bank_status}}</span></p>
     </div>
   </div>
 
 </template>
 
-<script></script>
+<script>
+  export default {
+    props: ['message']
+
+  }
+
+</script>
 
 <style scoped>
   .container {

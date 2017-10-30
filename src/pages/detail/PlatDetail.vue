@@ -3,9 +3,14 @@
     <!--<div v-for="item,index in detail">-->
     <detail-header-cell class="cell" :message='detail'></detail-header-cell>
     <detail-info-cell :message='detail'></detail-info-cell>
+    <divider></divider>
     <detail-data-cell :message='detail'></detail-data-cell>
+    <divider></divider>
     <detail-power-cell :message='detail'></detail-power-cell>
+    <divider></divider>
     <detail-button-cell :message='detail'></detail-button-cell>
+    <divider></divider>
+
     <detail-review-cell :message='detail'></detail-review-cell>
     <!--<div>-->
     <!--<qrcode value="https://vux.li?x-page=demo_qrcode" type="img"></qrcode>-->
@@ -27,6 +32,7 @@
   import DetailPowerCell from './components/DetailPowerCell'
   import DetailDataCell from './components/DetailDataCell'
   import DetailReviewCell from './components/DetailReviewCell'
+  import Divider from '../../components/Divider.vue'
 
   export default {
 
@@ -40,7 +46,8 @@
       DetailButtonCell,
       DetailPowerCell,
       DetailDataCell,
-      DetailReviewCell
+      DetailReviewCell,
+      Divider
     },
     data() {
       return {
