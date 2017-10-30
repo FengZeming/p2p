@@ -41,7 +41,7 @@
   .wrapItem {
     margin-left: 4px;
     margin-right: 4px;
-    font-size: 15px;
+    font-size: 14px;
     color: #333;
   }
 

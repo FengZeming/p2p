@@ -6,6 +6,7 @@ import Deposit from '@/pages/deposit/Deposit'
 import Me from '@/pages/me/Me'
 import PlatDetail from '../pages/detail/PlatDetail.vue'
 import Search from '../pages/search/Search.vue';
+import Evaluate from '../pages/evaluate/Evaluate.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -42,7 +43,7 @@ export default new Router({
       component: PlatDetail,
       meta: {
         keepAlive: false,
-        navHidden:true
+        navHidden: true
       }
     },
     {
@@ -51,7 +52,15 @@ export default new Router({
       component: Search,
       meta: {
         keepAlive: true,
-        navHidden:true
+        navHidden: true
+      }
+    }, {
+      path: '/evaluate',
+      name: '评分',
+      component: Evaluate,
+      meta: {
+        keepAlive: false,
+        navHidden: true
       }
     }
   ],
