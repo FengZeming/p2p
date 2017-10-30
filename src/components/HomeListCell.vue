@@ -52,7 +52,7 @@
 
   .wrapItem {
     display: flex;
-    color: #999999;
+    color: #666;
     font-size: 14px;
     width: 60px;
     align-items: center;

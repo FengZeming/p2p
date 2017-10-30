@@ -1,15 +1,15 @@
 <template>
-  <div class="itemContainer" :style="{background:itemIndex?'#edf5fa':'#f8fcee'}">
+  <div class="itemContainer" :style="{background:bgColor?'#fff':'#f8fcee'}">
     <p class="wrapItem" style="width: 40px;">
       {{ itemIndex}}
     </p>
-    <p class="wrapItem" style="flex: 1;" :style="{color: titleColor ?titleColor:'#080363'}">
+    <p class="wrapItem" style="flex: 1.2;font-size: 13px;" :style="{color: titleColor ?titleColor:'#377902'}">
       {{ item.platName}}
     </p>
-    <p class="wrapItem" style="width: 70px;">
+    <p class="wrapItem" style="flex: 1;">
       {{ item.incomeRate ? item.incomeRate : '-'}}
     </p>
-    <p class="wrapItem" style="width: 100px;">
+    <p class="wrapItem" style="flex: 1;">
       {{ item.bidderNum ? item.bidderNum : '-' }}
     </p>
     <p class="wrapItem" style="flex: 1;">
@@ -35,7 +35,11 @@
         return this.message.titleColor;
       }
     },
-    methods: {}
+    methods:{
+      bgColor() {
+        return this.message.index % 2
+      },
+    },
 
   }
 </script>
@@ -50,7 +54,7 @@
 
   .wrapItem {
     display: flex;
-    color: #999999;
+    color: #666;
     font-size: 14px;
     width: 60px;
     align-items: center;

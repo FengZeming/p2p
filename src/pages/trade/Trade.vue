@@ -11,7 +11,7 @@
   import {ViewBox} from 'vux';
   import Cell from '../../components/TradeListCell'
   import fetch from '../../api/http'
-  import SymbolBar from '../../components/SymbolBar'
+  import SymbolBar from './components/TradeSymbolBar.vue'
 
   export default {
 
@@ -23,6 +23,7 @@
         titles: ['排名', '平台名称', '年化收益', '投资人数', '成交量(万)']
       }
     },
+
     mounted() {
       fetch('/table/dailyDataListApi', {type:'post', params: {page: 1, length: '30'}})
         .then((response)=> {
@@ -31,8 +32,6 @@
         }).catch(function (err) {
 
       })
-
-
     }
 
   }

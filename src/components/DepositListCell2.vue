@@ -1,15 +1,15 @@
 <template>
-  <div class="itemContainer" :style="{background:bgColor?'#edf5fa':'#f8fcee'}" @click="toDetail">
-    <p class="wrapItem" style="'flex: 2;" :style="{color: titleColor ||'#080363'}">
+  <div class="itemContainer" :style="{background:bgColor?'#fff':'#fcf3f0'}" @click="toDetail">
+    <p class="wrapItem" style="'flex: 1;">
       {{ itemIndex}}
     </p>
-    <p class="wrapItem" style="width: 80px; ">
+    <p class="wrapItem" style="flex: 2;" :style="{color: titleColor ||'#dc3d05'}">
       {{ item.platform}}
     </p>
-    <p class="wrapItem" style="width: 70px;">
+    <p class="wrapItem" style="flex: 2;">
       {{ item.bank_name || '-'}}
     </p>
-    <p class="wrapItem" style="width: 80px;">
+    <p class="wrapItem" style="flex:1.5;">
       {{ item.comment || '-' }}
     </p>
   </div>
@@ -22,9 +22,8 @@
     props: ['message'],
     methods: {
       toDetail(e) {
-        console.log('detail')
         this.$router.push({
-          path: '/'
+          path: '/detail'
         })
       }
 
@@ -32,7 +31,8 @@
     computed: {
       bgColor() {
         return this.message.index % 2
-      }, titleColor() {
+      },
+      titleColor() {
         return this.message.color;
       },
       itemIndex() {
@@ -56,7 +56,7 @@
 
   .wrapItem {
     display: flex;
-    color: #999999;
+    color: #666666;
     font-size: 14px;
     width: 60px;
     align-items: center;
