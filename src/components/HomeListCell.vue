@@ -1,10 +1,10 @@
 <template>
-  <div class="itemContainer" :style="{background:itemIndex?'#edf5fa':'#f8fcee'}">
+  <div class="itemContainer" :style="{background:itemIndex?'#ffffff':'#edf5fa'}">
     <!--{{message}}-->
     <p class="wrapItem" style="'flex: 2;" :style="{color: titleColor ?titleColor:'#080363'}">
       {{ item.platform}}
     </p>
-    <p class="wrapItem" style="width: 80px; ">
+    <p class="wrapItem" style="width: 80px;  color: #dc3d05;" >
       {{ item.ranking}}
     </p>
     <p class="wrapItem" style="width: 70px;">

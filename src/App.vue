@@ -27,12 +27,6 @@
     },
     data() {
       return {
-        showMenu: false,
-        drawerVisibility: false,
-        showMode: 'push',
-        showModeValue: 'push',
-        showPlacement: 'left',
-        showPlacementValue: 'left'
       }
     },
     computed: {
