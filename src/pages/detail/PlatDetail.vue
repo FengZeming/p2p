@@ -7,9 +7,9 @@
     <detail-data-cell :message='detail'></detail-data-cell>
     <divider></divider>
     <detail-power-cell :message='detail'></detail-power-cell>
-    <divider></divider>
+    <divider :message="{height:'5px'}"></divider>
     <detail-button-cell :message='detail'></detail-button-cell>
-    <divider></divider>
+    <divider :message="{height:'5px'}"></divider>
 
     <detail-review-cell :message='detail'></detail-review-cell>
     <!--<div>-->
