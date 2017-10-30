@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <p style="color:#333333; white-space:nowrap;padding-right:20px; align-self:center;font-size:30px;">
+        <p style=" white-space:nowrap;padding-right:20px; align-self:center;font-size:15px;color: #999999">
           {{item.indate}}
         </p>
       </div>
@@ -28,14 +28,12 @@
 
     <p style="padding:10px; ">{{item.comment}}</p>
     <div style="display:flex; flex-direction:row-reverse;margin-bottom:10px; margin-right:10px;">
-      <p style="color:#999999; margin-top:10px;align-self:center; font-size:17px; margin-left:5px;">{{item.like}}</p>
-
+      <p style="color:#666; margin-top:10px;align-self:center; font-size:17px; margin-left:5px;">{{item.like}}</p>
       <div style="width:20px; height:20px;margin-left:10px;margin-right:10px; ">
         <img style="width:20px; height:20px;"
              :src="zan()"/>
       </div>
     </div>
-    <div style="width:100%;height:10px;background:#f4f4f4; "></div>
   </div>
 </template>
 <script>

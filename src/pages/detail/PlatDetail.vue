@@ -11,14 +11,14 @@
     <detail-button-cell :message='detail'></detail-button-cell>
     <divider :message="{height:'5px'}"></divider>
 
-    <detail-review-cell :message='detail'></detail-review-cell>
     <!--<div>-->
     <!--<qrcode value="https://vux.li?x-page=demo_qrcode" type="img"></qrcode>-->
     <!--</div>-->
     <!--</div>-->
     <div v-for=" item,index in reviews">
-    <detail-review-cell :message='item'></detail-review-cell>
-  </div>
+      <detail-review-cell :message='item'></detail-review-cell>
+      <divider :message="{height:'5px'}"></divider>
+    </div>
   </div>
 </template>
 
