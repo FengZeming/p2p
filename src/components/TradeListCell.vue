@@ -1,7 +1,7 @@
 <template>
   <div class="itemContainer" :style="{background:bgColor?'#fff':'#f8fcee'}">
     <p class="wrapItem" style="width: 40px;">
-      {{ itemIndex}}
+      {{ itemIndex+1}}
     </p>
     <p class="wrapItem" style="flex: 1.2;font-size: 13px;" :style="{color: titleColor ?titleColor:'#377902'}">
       {{ item.platName}}

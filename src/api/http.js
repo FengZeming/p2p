@@ -42,11 +42,13 @@ axios.interceptors.request.use(function (config) {
 
 
 // 封装请求
-function fetch(url, options) {
+function fetch(url, options, hideProgress) {
   // 显示
-  Vue.$vux.loading.show({
-    text: 'Loading'
-  });
+  if (!hideProgress) {
+    Vue.$vux.loading.show({
+      text: 'Loading'
+    });
+  }
   var opt = options || {};
   return new Promise((resolve, reject) => {
     axios({
@@ -60,6 +62,10 @@ function fetch(url, options) {
 
       // 设置默认请求头
       headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+      proxy: {
+        host: 'api.prguanjia.com',
+        port: 80
+      },
 
     })
       .then(response => {

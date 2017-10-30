@@ -30,7 +30,7 @@
     },
 
     mounted() {
-      fetch('/table/bankListApi',)
+      fetch('/table/bankListApi',{type:'post',params:{page:1,length:30}})
         .then(({data}) => {
           this.list = data.rows;
         }).catch(function (err) {
