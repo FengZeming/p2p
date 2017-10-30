@@ -40,10 +40,7 @@
         })
       }
     },
-    computed: {
-
-
-    },
+    computed: {},
     mounted() {
       this.getRankList();
     }

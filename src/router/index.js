@@ -5,7 +5,7 @@ import Trade from '@/pages/trade/Trade'
 import Deposit from '@/pages/deposit/Deposit'
 import Me from '@/pages/me/Me'
 import PlatDetail from '../pages/detail/PlatDetail.vue'
-
+import Search from '../pages/search/Search.vue';
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -42,6 +42,15 @@ export default new Router({
       component: PlatDetail,
       meta: {
         keepAlive: false,
+        navHidden:true
+      }
+    },
+    {
+      path: '/search',
+      name: '搜索',
+      component: Search,
+      meta: {
+        keepAlive: true,
         navHidden:true
       }
     }
