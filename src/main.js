@@ -11,10 +11,13 @@ import axios from 'axios';
 // axios.defaults.baseURL = 'http://localhost:7890/';
 
 axios.defaults.baseURL = '/api';
-
-
+// vue-scroller
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller);
 /* ----------- Config ---------- */
 Vue.config.productionTip = true;
+
+
 
 // router.push({path: '/home'});
 

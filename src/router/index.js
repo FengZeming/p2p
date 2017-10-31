@@ -10,6 +10,7 @@ import Evaluate from '../pages/evaluate/Evaluate.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
+  saveScrollPosition: true,
   routes: [
     {
       path: '/',
@@ -65,8 +66,7 @@ export default new Router({
     }
   ],
 
-
-  // scrollBehavior(to, from, savePostion) {
-  //   return savePostion | {x: 0, y: 0}
-  // }
+  scrollBehavior(to, from, savePostion) {
+    return savePostion | {x: 0, y: 0}
+  }
 })

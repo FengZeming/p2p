@@ -21,10 +21,7 @@
   import Cell from '../../components/TradeListCell'
   import fetch from '../../api/http'
   import SymbolBar from './components/TradeSymbolBar.vue'
-  import VueScroller from 'vue-scroller'
-  import Vue from 'vue'
 
-  Vue.use(VueScroller);
 
   export default {
     components: {ViewBox, Cell, SymbolBar},
