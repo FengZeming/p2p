@@ -1,11 +1,10 @@
 <template>
   <view-box class="viewBox" style="margin-bottom: 0;">
     <div v-for="item,index in list">
+      <search-button v-if="!index"></search-button>
       <symbol-bar v-if="!index" :message="titles"></symbol-bar>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
-
       <cell class="tableViewCell" :message='{item:item ,index:index ,disable:true}' v-if="!item.platid"></cell>
-
       <router-link :to="{path:'/detail',query:item}" v-if="item.platid">
         <cell class="tableViewCell" :message='{item:item ,index:index }'></cell>
       </router-link>
@@ -21,13 +20,15 @@
   import axios from 'axios';
   import Cell from '../../components/HomeListCell'
   import SymbolBar from '../../components/SymbolBar'
+  import SearchButton from '../../components/SearchButton'
 
   export default {
     name: 'home',
     components: {
       ViewBox,
       SymbolBar,
-      Cell
+      Cell,
+      SearchButton
     },
     data() {
       return {
@@ -39,7 +40,7 @@
     methods: {
       getRankList() {
         axios.get('/table/rankList')
-          .then( (response)=> {
+          .then((response) => {
             this.list = response.data.data;
           }).catch(function (err) {
         })
