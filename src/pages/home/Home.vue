@@ -41,9 +41,7 @@
         axios.get('/table/rankList')
           .then( (response)=> {
             this.list = response.data.data;
-            console.log(this.list);
           }).catch(function (err) {
-          console.log(err);
         })
       }
     },

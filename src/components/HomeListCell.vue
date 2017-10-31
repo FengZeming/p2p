@@ -7,13 +7,13 @@
     <p class="wrapItem" style="flex: 1; " :style="{color: textColor || '#dc3d05'}" >
       {{ item.ranking}}
     </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
       {{ item.wdzj_grade ? item.wdzj_grade : '-'}}
     </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
       {{ item.wdty_grade ? item.wdty_grade : '-' }}
     </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
       {{ item.rong_grade ? item.rong_grade : '-'}}
     </p>
 

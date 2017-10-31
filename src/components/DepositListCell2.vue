@@ -1,15 +1,15 @@
 <template>
   <div class="itemContainer" :style="{background:bgColor?'#fff':'#fcf3f0'}">
-    <p class="wrapItem" style="'flex: 1;" :style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="'flex: 1;" :style="{color:textColor||'#333'}">
       {{ itemIndex}}
     </p>
     <p class="wrapItem" style="flex: 2;" :style="{color: textColor ||'#dc3d05'}">
       {{ item.platform}}
     </p>
-    <p class="wrapItem" style="flex: 2;" :style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="flex: 2;" :style="{color:textColor||'#333'}">
       {{ item.bank_name || '-'}}
     </p>
-    <p class="wrapItem" style="flex:1.5;" :style="{color:textColor||'#666666'}">
+    <p class="wrapItem" style="flex:1.5;" :style="{color:textColor||'#333'}">
       {{ item.comment || '-' }}
     </p>
   </div>

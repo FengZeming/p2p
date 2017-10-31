@@ -3,16 +3,16 @@
     <p class="wrapItem" style="width: 40px;">
       {{ itemIndex+1}}
     </p>
-    <p class="wrapItem" style="flex: 1.2;font-size: 13px;" :style="{color: titleColor ?titleColor:'#377902'}">
+    <p class="wrapItem" style="flex: 1.2;font-size: 13px;" :style="{color:  textColor||'#377902'}">
       {{ item.platName}}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;" :style="{color:  textColor||'#333'}">
       {{ item.incomeRate ? item.incomeRate : '-'}}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;" :style="{color:  textColor||'#333'}">
       {{ item.bidderNum ? item.bidderNum : '-' }}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;" :style="{color:  textColor||'#333'}">
       {{ item.amount ? item.amount : '-'}}
     </p>
 
@@ -31,8 +31,8 @@
       bgColor() {
         return this.message.index % 2;
       },
-      titleColor() {
-        return this.message.titleColor;
+      textColor() {
+        return this.message.disable?'#999999':null
       }
     },
     methods:{
@@ -51,7 +51,7 @@
 
   .wrapItem {
     display: flex;
-    color: #666;
+    color: #333;
     font-size: 14px;
     width: 60px;
     align-items: center;
