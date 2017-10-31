@@ -5,7 +5,7 @@
         style="display:flex;width:100%; flex-direction:row;align-items:center;flex-wrap:nowrap; justify-content:flex-start;">
         <img
           style="border-radius:40px; width:40px;height:40px;margin:10px; align-items:center;"
-          src="avatar"/>
+          :src="avatar"/>
         <div style="width:230px;">
           <p
             style="padding-left:0; padding-right:0; flex:1; display: block; font-size:16px;color:#333333;line-height: 40px;overflow: hidden;white-space: nowrap; text-overflow:ellipsis;">
