@@ -58,20 +58,15 @@
       }
     },
     mounted() {
-      console.log(this.$route.query);
       fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.platid}})
         .then((response) => {
           this.detail = response.data;
         }).catch(function (err) {
-        console.log(err)
       });
       fetch('/table/evaluationListGet', {type: 'post', params: {'platid': this.$route.query.platid}})
         .then((response) => {
           this.reviews = response.data;
-          console.log(this.reviews);
-
         }).catch(function (err) {
-        console.log(err);
       })
     }
 

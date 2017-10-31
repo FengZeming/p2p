@@ -68,5 +68,14 @@ export default new Router({
 
   scrollBehavior(to, from, savePostion) {
     return savePostion | {x: 0, y: 0}
+
+    // if (savedPosition) {
+    //   return savedPosition
+    // } else {
+    //   if (from.meta.keepAlive) {
+    //     from.meta.savedPosition = document.body.scrollTop;
+    //   }
+    //   return { x: 0, y: to.meta.savedPosition ||0}
+    // }
   }
 })

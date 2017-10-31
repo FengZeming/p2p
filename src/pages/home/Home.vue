@@ -4,7 +4,9 @@
       <symbol-bar v-if="!index" :message="titles"></symbol-bar>
       <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
 
-      <router-link :to="{path:'/detail',query:item}">
+      <cell class="tableViewCell" :message='{item:item ,index:index ,disable:true}' v-if="!item.platid"></cell>
+
+      <router-link :to="{path:'/detail',query:item}" v-if="item.platid">
         <cell class="tableViewCell" :message='{item:item ,index:index }'></cell>
       </router-link>
 
@@ -30,15 +32,16 @@
     data() {
       return {
         list: [],
+        scrollTop: 0,
         titles: ['名称', '综合排名', '网贷之家', '网贷天眼', '融360']
       }
     },
     methods: {
       getRankList() {
-        let self = this;
         axios.get('/table/rankList')
-          .then(function (response) {
-            self.list = response.data.data;
+          .then( (response)=> {
+            this.list = response.data.data;
+            console.log(this.list);
           }).catch(function (err) {
           console.log(err);
         })

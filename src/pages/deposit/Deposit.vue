@@ -7,8 +7,10 @@
         <symbol-bar v-if="!index" :message="titles"></symbol-bar>
         <div v-if="!index" style="width: 100%;height: 1px; background-color: #d8d8d8"></div>
 
-        <router-link :to="{path:'/detail',query:item}">
-          <cell class="cell" :message='{item:item ,index:index }'></cell>
+        <cell v-if="!item.platid" class="cell" :message='{item:item ,index:index ,disable:true }'></cell>
+
+        <router-link :to="{path:'/detail',query:item}" v-if="item.platid">
+          <cell class="cell" :message='{item:item ,index:index}' ></cell>
         </router-link>
       </div>
     </view-box>
@@ -52,7 +54,7 @@
             this.list = this.list.concat(response.data.rows);
             done()
           }).catch(function (err) {
-            done();
+          done();
         })
       }
     }

@@ -40,7 +40,6 @@
           .then((response) => {
             this.list = response.data;
             if (done) done()
-
           }).catch(function (err) {
           if (done) done()
 
@@ -48,7 +47,6 @@
       },
 
       loadMore(done) {
-        console.log(done)
         fetch('/table/dailyDataListApi', {type: 'post', params: {page: this.list.length/30+1, length: '30'}}, true)
           .then((response) => {
            this.list = this.list.concat(response.data);

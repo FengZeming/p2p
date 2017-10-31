@@ -1,19 +1,19 @@
 <template>
   <div class="itemContainer" :style="{background:itemIndex?'#ffffff':'#edf5fa'}">
     <!--{{message}}-->
-    <p class="wrapItem" style="'flex: 2;margin-left:5px;" :style="{color: titleColor ?titleColor:'#080363'}">
+    <p class="wrapItem" style="'flex: 2;margin-left:5px;" :style="{color: textColor ?textColor:'#080363'}">
       {{ item.platform}}
     </p>
-    <p class="wrapItem" style="flex: 1; color: #dc3d05;" >
+    <p class="wrapItem" style="flex: 1; " :style="{color: textColor || '#dc3d05'}" >
       {{ item.ranking}}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
       {{ item.wdzj_grade ? item.wdzj_grade : '-'}}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
       {{ item.wdty_grade ? item.wdty_grade : '-' }}
     </p>
-    <p class="wrapItem" style="flex: 1;">
+    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#666666'}">
       {{ item.rong_grade ? item.rong_grade : '-'}}
     </p>
 
@@ -36,6 +36,9 @@
       },
       titleColor() {
         return this.message.titleColor;
+      },
+      textColor() {
+        return this.message.disable ? '#999999' : null;
       }
     }
   }
