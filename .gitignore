@@ -76,3 +76,4 @@ typings/
 .env
 
 
+/ftpconfig.js
