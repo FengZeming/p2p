@@ -34,11 +34,7 @@ export default new Router({
       path: '/trade',
       name: '交易量',
       component: Trade
-    }, {
-      path: '/me',
-      name: '我的',
-      component: Me
-    }, {
+    },{
       path: '/detail',
       name: '平台详情',
       component: PlatDetail,
@@ -63,6 +59,10 @@ export default new Router({
         keepAlive: false,
         navHidden: true
       }
+    }, {
+      path: '/*',
+      name: '我的',
+      component: Me
     }
   ],
 
