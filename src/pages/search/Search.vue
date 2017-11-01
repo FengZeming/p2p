@@ -33,7 +33,6 @@
         fetch('table/searchListApi', {type: 'post', params: {param: JSON.stringify({keyword: [this.keyword]})}})
           .then(response => {
             this.searchList = response.data.data;
-            console.log(response);
           }).catch(err => {
         });
       },

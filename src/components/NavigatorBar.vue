@@ -14,10 +14,10 @@
       <span slot="icon" class="iconfont" >&#xe62d;</span>
       <span slot="label">成交量</span>
     </tabbar-item>
-    <tabbar-item :link="{path:'/me'}" :selected="routePath =='/me'">
-      <span slot="icon" class="iconfont" >&#xe61e;</span>
-      <span slot="label">我的</span>
-    </tabbar-item>
+    <!--<tabbar-item :link="{path:'/me'}" :selected="routePath =='/me'">-->
+      <!--<span slot="icon" class="iconfont" >&#xe61e;</span>-->
+      <!--<span slot="label">我的</span>-->
+    <!--</tabbar-item>-->
   </tabbar>
 </template>
 <script>
@@ -36,7 +36,6 @@
     },
     methods:{
      routerSelected(path){
-       console.log(this.$route.path === path);
        return this.$router.path ===path;
      }
     },

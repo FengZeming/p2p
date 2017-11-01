@@ -10,6 +10,7 @@ import Evaluate from '../pages/evaluate/Evaluate.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
+  base:'/',
   saveScrollPosition: true,
   routes: [
     {
@@ -22,7 +23,7 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Home',
+      name: '前100排名',
       component: Home
     }, {
 

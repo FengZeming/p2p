@@ -17,7 +17,6 @@
     props: ['message']
     ,
     mounted() {
-      console.log(this.message);
     },
     computed: {
       item() {

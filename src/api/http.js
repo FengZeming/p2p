@@ -45,7 +45,6 @@ axios.interceptors.request.use(function (config) {
 // 封装请求
 function fetch(url, options, hideProgress) {
 
-  console.log(options.params);
   // 显示
   if (!hideProgress) {
     Vue.$vux.loading.show({
