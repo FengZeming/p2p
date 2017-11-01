@@ -2,7 +2,14 @@
   <div style="display: flex;flex-direction: column;">
     <search @on-submit="onSubmit" :auto-fixed="autoFixed" @on-focus="onFocus" @on-cancel="onCancel"
             v-model="keyword"></search>
+    <div v-for="item,index in searchList">
 
+      <search-list-cell v-if="item.is_question" :message='{item:item ,index:index}'></search-list-cell>
+      <router-link v-if="!item.is_question" :to="{path:'/detail',query:item}">
+        <search-list-cell :message='{item:item ,index:index}'></search-list-cell>
+      </router-link>
+
+    </div>
 
   </div>
 
@@ -10,11 +17,13 @@
 <script>
   import {Search, Divider} from 'vux'
   import fetch from '../../api/http'
+  import SearchListCell from './components/SearchListCell'
 
   export default {
     components: {
       Search,
-      Divider
+      Divider,
+      SearchListCell
     },
     methods: {
       resultClick(item) {

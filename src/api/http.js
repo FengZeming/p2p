@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {LoadingPlugin, ToastPlugin, AlertPlugin} from 'vux'
 import Vue from 'vue';
+import Qs from 'qs'
 
 Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
@@ -10,7 +11,7 @@ Vue.use(AlertPlugin);
 import {stringify} from 'qs'
 // axios 配置
 axios.defaults.timeout = 8000;
-axios.defaults.baseURL = '/api';
+let baseURL = 'http://thujin.prguanjia.com';
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
@@ -43,30 +44,37 @@ axios.interceptors.request.use(function (config) {
 
 // 封装请求
 function fetch(url, options, hideProgress) {
+
+  console.log(options.params);
   // 显示
   if (!hideProgress) {
     Vue.$vux.loading.show({
       text: 'Loading'
     });
   }
+
+
+
   var opt = options || {};
   return new Promise((resolve, reject) => {
     axios({
       method: opt.type || 'get',
-      url: url,
-      params: opt.params || {},
+      url: 'http://ti.prguanjia.com/'+url,
+      params: opt.type !=='post'? opt.params : {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
-      // data: (opt.headers ? opt.data : stringify(opt.data)) || {},
+      data: (opt.headers ? opt.data : stringify(opt.data)) || {},
       data: opt.params || {},
       responseType: opt.dataType || 'json',
-
       // 设置默认请求头
-      headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-      proxy: {
-        host: 'api.prguanjia.com',
-        port: 80
-      },
-
+      headers: opt.headers || {'Content-Type': 'application/x-www-form-urlencoded'},
+      // proxy: {
+      //   host: 'api.prguanjia.com',
+      //   port: 80
+      // },
+      transformRequest: [function (data) {
+        data = Qs.stringify(data);
+        return data;
+      }]
     })
       .then(response => {
         resolve(response.data)

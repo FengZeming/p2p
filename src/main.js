@@ -18,8 +18,7 @@ Vue.use(VueScroller);
 Vue.config.productionTip = true;
 
 
-
-// router.push({path: '/home'});
+router.push({path: '/home'});
 
 /* eslint-disable no-new */
 new Vue({

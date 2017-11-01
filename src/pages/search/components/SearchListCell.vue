@@ -1,22 +1,14 @@
 <template>
-  <div class="itemContainer" :style="{background:itemIndex?'#ffffff':'#edf5fa'}">
-    <!--{{message}}-->
-    <p class="wrapItem" style="'flex: 2;margin-left:5px;" :style="{color: textColor ?textColor:'#080363'}">
+  <div class="itemContainer" :style="{background:itemIndex?'white':'#edf5fa'}">
+    <p class="wrapItem" style="'flex: 2;margin-left:5px;" :style="{color: isQuestion ?'#999':'#dc3d05'}">
+      {{indexId + 1}}
+    </p>
+    <p class="wrapItem" style="flex: 3; justify-content: flex-start; margin-left: 10px;"
+       :style="{color: isQuestion ?'#999999':'#080363'}">
       {{ item.platform}}
     </p>
-    <p class="wrapItem" style="flex: 1; " :style="{color: textColor || '#dc3d05'}" >
-      {{ item.ranking}}
-    </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
-      {{ item.wdzj_grade ? item.wdzj_grade : '-'}}
-    </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
-      {{ item.wdty_grade ? item.wdty_grade : '-' }}
-    </p>
-    <p class="wrapItem" style="flex: 1;":style="{color:textColor||'#333'}">
-      {{ item.rong_grade ? item.rong_grade : '-'}}
-    </p>
-
+    <img v-if="isQuestion" :src="require('../../../assets/images/flightning.png')"
+         style="width: 20px;height: 20px; justify-content: center;margin-right: 30px;"/>
   </div>
 </template>
 <script>
@@ -25,7 +17,7 @@
     props: ['message']
     ,
     mounted() {
-
+      console.log(this.message);
     },
     computed: {
       item() {
@@ -33,6 +25,12 @@
       },
       itemIndex() {
         return this.message.index % 2;
+      },
+      indexId() {
+        return this.message.index;
+      },
+      isQuestion() {
+        return this.message.item.is_question;
       },
       titleColor() {
         return this.message.titleColor;

@@ -39,7 +39,7 @@
     },
     methods: {
       getRankList() {
-        axios.get('/table/rankList')
+        axios.get('http://ti.prguanjia.com/table/rankList')
           .then((response) => {
             this.list = response.data.data;
           }).catch(function (err) {
