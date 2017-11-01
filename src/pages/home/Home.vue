@@ -1,5 +1,5 @@
 <template>
-  <view-box class="viewBox" style="margin-bottom: 0;">
+  <div class="viewBox">
     <div v-for="item,index in list">
       <search-button v-if="!index"></search-button>
       <symbol-bar v-if="!index" :message="titles"></symbol-bar>
@@ -10,7 +10,7 @@
       </router-link>
 
     </div>
-  </view-box>
+  </div>
 </template>
 <script>
 
@@ -49,7 +49,8 @@
     computed: {},
     mounted() {
       this.getRankList();
-    }
+    },
+
   }
 
 

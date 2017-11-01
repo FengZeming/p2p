@@ -1,11 +1,11 @@
 <template>
-  <div id="app" style="height: 100%;display: flex;flex-direction: column;">
+  <div id="app" style="height: 100%;margin-bottom: 50px;">
     <view-box class="box-container">
       <keep-alive exclude="detail">
         <router-view class="router-view"></router-view>
       </keep-alive>
     </view-box>
-    <navigator-bar v-show="navHidden"></navigator-bar>
+    <navigator-bar slot="bottom" style="position: fixed;" v-show="navHidden"></navigator-bar>
   </div>
 </template>
 

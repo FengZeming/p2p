@@ -1,5 +1,5 @@
 <template>
-  <tabbar slot="bottom">
+  <tabbar slot="bottom" style="position: fixed;">
     <tabbar-item :link="{path:'/home'}" :selected="routePath =='/home'||routePath=='/'">
       <span slot="icon" class="iconfont" >&#xe756;</span>
       <span slot="label">存管</span>
