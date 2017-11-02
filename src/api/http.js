@@ -11,7 +11,7 @@ Vue.use(AlertPlugin);
 import {stringify} from 'qs'
 // axios 配置
 axios.defaults.timeout = 8000;
-let baseURL = 'http://thujin.prguanjia.com';
+let baseURL = 'http://api.prguanjia.com';
 // http response 拦截器
 axios.interceptors.response.use(
   response => {
