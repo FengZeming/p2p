@@ -1,15 +1,15 @@
 <template>
   <div style="display: flex;flex-direction: row; height: 44px;width: 100%; align-items: center;">
-    <p style="display:flex;flex: 0.5; margin-left: 15px; align-items: center;justify-content: center; font-size: 15px;">
+    <p style="display:flex;flex: 0.5; margin-left: 10px; align-items: center;justify-content: center; font-size: 15px;">
       {{indexTitle(0)}}
     </p>
-    <p class="wrapItem" style="margin-left: 0; flex: 1;">
+    <p class="wrapItem" style="margin-left: 0;">
       {{indexTitle(1)}}
     </p>
-    <p class="wrapItem" style="margin-left: 0; flex: 1;">
+    <p class="wrapItem" style="margin-left: 0; ">
       {{indexTitle(2)}}
     </p>
-    <p class="wrapItem" style="margin-left: 0; flex: 1;margin-right: 10px;">
+    <p class="wrapItem" style="margin-left: 0;">
       {{indexTitle(3)}}
     </p>
   </div>
@@ -40,6 +40,8 @@
     margin-right: 4px;
     font-size: 15px;
     color: #333;
+    text-align: center;
+    flex:1;
   }
 
 

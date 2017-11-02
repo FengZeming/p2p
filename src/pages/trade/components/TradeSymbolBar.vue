@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex;flex-direction: row; height: 44px;width: 100%; align-items: center;">
-    <p style="display:flex;flex: 1; align-items: center;justify-content: center; font-size: 15px;">
+    <p style="display:flex;flex: 0.7; align-items: center;justify-content: center; font-size: 14px;">
       {{indexTitle(0)}}
     </p>
     <p class="wrapItem" style="margin-left: 0;font-size: 14px;">
@@ -40,9 +40,11 @@
 
   .wrapItem {
     margin-left: 4px;
+    text-align: center;
     margin-right: 4px;
-    font-size: 13px;
+    font-size: 14px;
     color: #333;
+    flex:1;
   }
 
 
