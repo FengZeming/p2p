@@ -7,10 +7,11 @@ import Me from '@/pages/me/Me'
 import PlatDetail from '../pages/detail/PlatDetail.vue'
 import Search from '../pages/search/Search.vue';
 import Evaluate from '../pages/evaluate/Evaluate.vue'
+import Coupons from '../pages/coupons/Coupons.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
-  base:'/',
+  base: '/',
   saveScrollPosition: true,
   routes: [
     {
@@ -35,7 +36,7 @@ export default new Router({
       path: '/trade',
       name: '交易量',
       component: Trade
-    },{
+    }, {
       path: '/detail',
       name: '平台详情',
       component: PlatDetail,
@@ -52,7 +53,8 @@ export default new Router({
         keepAlive: true,
         navHidden: true
       }
-    }, {
+    },
+    {
       path: '/evaluate',
       name: '评分',
       component: Evaluate,
@@ -61,6 +63,15 @@ export default new Router({
         navHidden: true
       }
     }, {
+      path: '/coupons',
+      name: '我的优惠券',
+      component: Coupons,
+      meta: {
+        keepAlive: true,
+        navHidden: true
+      }
+    },
+    {
       path: '/*',
       name: '我的',
       component: Me

@@ -1,11 +1,19 @@
 <template>
   <div>
-    <me-header-cell>
-    </me-header-cell>
-    <me-wealth-cell style="margin-top: 5px;">
+    <me-header-cell></me-header-cell>
+    <me-wealth-cell style="margin-top: 5px;"></me-wealth-cell>
+    <divider-onepx></divider-onepx>
+    <divider :message="{height:'10px'}"></divider>
+    <divider-onepx></divider-onepx>
+    <router-link :to="{path:'/coupons'}">
+      <me-cell></me-cell>
+    </router-link>
 
-    </me-wealth-cell>
-    <divider :message="{height:'15px'}"></divider>
+    <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
+    <me-cell></me-cell>
+    <divider-onepx></divider-onepx>
+    <divider :message="{height:'10px'}"></divider>
+    <me-grid-cell></me-grid-cell>
 
   </div>
 </template>
@@ -13,15 +21,20 @@
 <script>
   import MeHeaderCell from './components/MeHeaderCell'
   import MeWealthCell from './components/MeWealthCell'
+  import MeCell from './components/MeCell'
+  import MeGridCell from './components/MeGridCell'
   import Divider from '../../components/Divider'
+  import DividerOnepx from '../../components/Divider1px'
 
   export default {
     components: {
       MeHeaderCell,
       MeWealthCell,
-      Divider
+      MeCell,
+      Divider,
+      MeGridCell,
+      DividerOnepx
     }
-
   }
 
 
