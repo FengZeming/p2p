@@ -8,7 +8,7 @@
            style="width: 30%;height:auto; margin-left:2.5%;margin-top:2.5%; padding-bottom:10px;display:flex;
             flex-direction:column;align-items:center;justify-content:center;  background:#f8f8f8;border:1px;
             solid: #d8d8d8; border-radius:10px;">
-        <p style="margin-top:10px; font-size:18px;color:#0554c6; font-size: 15px;">
+        <p style="margin-top:10px;color:#0554c6; font-size: 15px;">
           {{ i}}
         </p>
         <p style="margin-top:5px; color:#999999;font-size:13px;">
