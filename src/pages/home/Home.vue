@@ -21,7 +21,7 @@
   import Cell from '../../components/HomeListCell'
   import SymbolBar from '../../components/SymbolBar'
   import SearchButton from '../../components/SearchButton'
-
+  import fetch from '../../api/http'
   export default {
     name: 'home',
     components: {
@@ -39,9 +39,9 @@
     },
     methods: {
       getRankList() {
-        axios.get('http://ti.prguanjia.com/table/rankList')
+        fetch('/table/rankList')
           .then((response) => {
-            this.list = response.data.data;
+            this.list = response.data;
           }).catch(function (err) {
         })
       }

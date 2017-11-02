@@ -1,6 +1,7 @@
 <template>
   <div style="display: flex;flex-direction: column;">
     <search @on-submit="onSubmit" :auto-fixed="autoFixed" @on-focus="onFocus" @on-cancel="onCancel"
+            ref="search"
             v-model="keyword"></search>
     <div v-for="item,index in searchList">
 
@@ -50,7 +51,9 @@
       }
     },
     mounted() {
-
+      setTimeout( ()=> {
+        this.$refs.search.setFocus()
+      },300);
     }
   }
 
