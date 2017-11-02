@@ -8,6 +8,7 @@ import PlatDetail from '../pages/detail/PlatDetail.vue'
 import Search from '../pages/search/Search.vue';
 import Evaluate from '../pages/evaluate/Evaluate.vue'
 import Coupons from '../pages/coupons/Coupons.vue'
+import Attention from '../pages/attention/Attention.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -62,7 +63,8 @@ export default new Router({
         keepAlive: false,
         navHidden: true
       }
-    }, {
+    },
+    {
       path: '/coupons',
       name: '我的优惠券',
       component: Coupons,
@@ -70,11 +72,28 @@ export default new Router({
         keepAlive: true,
         navHidden: true
       }
+    },   {
+      path: '/me',
+      name: '我的',
+      component: Me,
+      meta: {
+        keepAlive: true,
+        navHidden: false
+      }
+    },
+    {
+      path: '/attention',
+      name: '我的关注',
+      component: Attention,
+      meta: {
+        keepAlive: true,
+        navHidden: true
+      }
     },
     {
       path: '/*',
-      name: '我的',
-      component: Me
+      name: '首页',
+      component: Home
     }
   ],
 
