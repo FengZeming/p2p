@@ -1,10 +1,10 @@
 <template>
   <div style="display: flex;flex-direction: row; background-color: aliceblue;
     height: 44px;width: 100%; align-items: center;">
-    <p style="display:flex; align-items: center;justify-content: center; font-size: 15px;width: 100px;">
+    <p style="display:flex; align-items: center;justify-content: center; font-size: 15px;min-width: 20%;height: 100%;">
       {{indexTitle(0)}}
     </p>
-    <div style="display: flex;overflow: scroll;flex-direction: row; flex:1;" ref="gridHeaderContainer">
+    <div style="display: flex;overflow: scroll;flex-direction: row;height: 100%; min-width:80%;" ref="gridHeaderContainer">
       <p class="wrapItem">
         标题1
       </p>
@@ -55,8 +55,6 @@
 <style scoped>
   .wrapItem {
     min-width: 100px;
-    margin-left: 4px;
-    margin-right: 4px;
     font-size: 14px;
     text-align: center;
     color: #333;
