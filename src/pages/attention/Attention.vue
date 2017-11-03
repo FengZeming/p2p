@@ -46,9 +46,7 @@
       }
     },
     mounted() {
-
       this.$refs.gridContentContainer.addEventListener('scroll', this.scrollLeft)
-
     }
   }
 
