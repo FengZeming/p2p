@@ -9,6 +9,10 @@ import Search from '../pages/search/Search.vue';
 import Evaluate from '../pages/evaluate/Evaluate.vue'
 import Coupons from '../pages/coupons/Coupons.vue'
 import Attention from '../pages/attention/Attention.vue'
+import Sign from '../pages/signPages/main/Sign.vue'
+import SignRanking from '../pages/signPages/signRanking/SignRanking.vue'
+import SignScore from '../pages/signPages/signScore/SignScore.vue'
+
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -72,7 +76,7 @@ export default new Router({
         keepAlive: true,
         navHidden: true
       }
-    },   {
+    }, {
       path: '/me',
       name: '我的',
       component: Me,
@@ -88,6 +92,30 @@ export default new Router({
       meta: {
         keepAlive: true,
         navHidden: true
+      }
+    },
+    {
+      path: '/sign',
+      name: '签到',
+      component: Sign,
+      meta: {
+        keepAlive: true,
+      }
+    },
+    {
+      path: '/signRanking',
+      name: '排行榜',
+      component: SignRanking,
+      meta: {
+        keepAlive: true,
+      }
+    },
+    {
+      path: '/signScore',
+      name: '脑容量',
+      component: SignScore,
+      meta: {
+        keepAlive: true,
       }
     },
     {
