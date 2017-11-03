@@ -58,7 +58,7 @@ function fetch(url, options, hideProgress) {
   return new Promise((resolve, reject) => {
     axios({
       method: opt.type || 'get',
-      url: 'http://ti.prguanjia.com'+url,
+      url: 'http://api.prguanjia.com/'+url,
       params: opt.type !=='post'? opt.params : {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
       data: (opt.headers ? opt.data : stringify(opt.data)) || {},

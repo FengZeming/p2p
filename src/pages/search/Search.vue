@@ -4,9 +4,8 @@
             ref="search"
             v-model="keyword"></search>
     <div v-for="item,index in searchList">
-
-      <search-list-cell v-if="item.is_question" :message='{item:item ,index:index}'></search-list-cell>
-      <router-link v-if="!item.is_question" :to="{path:'/detail',query:item}">
+      <search-list-cell v-if="item.is_question=='1'" :message='{item:item ,index:index}'></search-list-cell>
+      <router-link v-if="item.is_question=='0'" :to="{path:'/detail',query:item}">
         <search-list-cell :message='{item:item ,index:index}'></search-list-cell>
       </router-link>
 

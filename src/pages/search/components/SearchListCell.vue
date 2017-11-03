@@ -29,7 +29,7 @@
         return this.message.index;
       },
       isQuestion() {
-        return this.message.item.is_question;
+        return this.message.item.is_question==='1';
       },
       titleColor() {
         return this.message.titleColor;
