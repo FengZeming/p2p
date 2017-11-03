@@ -78,6 +78,8 @@ function fetch(url, options, hideProgress) {
       .then(response => {
         resolve(response.data)
 
+        Vue.$vux.loading.showing=false;
+
         // if (response.data.code === 0) {
         // } else if (response.data.code === '000') {
         //   resolve(response.data)
@@ -89,9 +91,9 @@ function fetch(url, options, hideProgress) {
 
       })
       .catch(error => {
+        Vue.$vux.loading.showing=false;
         console.log(error)
         reject(error)
-
         // 隐藏
         Vue.$vux.loading.hide()
       })
