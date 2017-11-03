@@ -2,25 +2,24 @@
   <div style="width: 100%;height: 100%;display: flex;">
     <symbol-bar ref="sybolBar" style="position: fixed;"></symbol-bar>
 
-    <div style="display: flex;flex-direction: row; padding-top: 50px;height: 44px;width: 100%; align-items: center;">
-
-
-      <div style="min-width: 100px;display: flex;flex-direction: column;">
-
-        <div v-for="ix in 10">
-          <div style="display:flex; align-items: center;justify-content: center; font-size: 15px;width: 30%;">
-            侧边栏
-          </div>
+    <div
+      style="display: flex;flex-direction: row; padding-top: 50px;height: 1000px;min-width: 20%; align-items: center;">
+      <div style="min-width: 100px;display: flex;flex-direction: column; height: 1000px;">
+        <div v-for="ix in 20"
+             style="display:flex; align-items: center;background-color:palevioletred;justify-content: center;
+              font-size: 15px;width: 100px; height: 50px; text-align: center;">
+          侧边栏
         </div>
       </div>
     </div>
 
-    <div style="overflow: scroll; " :style="{height:10*100+'px'}" ref="gridContentContainer">
-      <div v-for="ixxx in 10">
+    <div style="overflow: scroll; background-color: #10aeff;min-width: 80%;" :style="{height:1050+'px'}"
+         ref="gridContentContainer">
+      <div v-for="ixxx in 21">
         <div
-          style="display: flex;flex-direction: row; padding-top: 50px;width: 100%;  align-items: center;flex: 1;">
+          style="display: flex;flex-direction: row;width: 100%;  align-items: center;flex: 1; height: 50px;">
           <div style="min-width: 100px;display: flex;flex-direction: row;">
-            <div v-for="ix in 10">
+            <div v-for="ix in 6">
               <div style="display:flex; align-items: center;justify-content: center; font-size: 15px;min-width: 100px;">
                 内容
               </div>
@@ -54,3 +53,6 @@
   }
 
 </script>
+<style scoped>
+
+</style>

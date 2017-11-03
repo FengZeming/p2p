@@ -57,5 +57,8 @@
     width: 100%;
     flex: 1;
   }
+  #app {
+    margin-bottom: 0 !important;
+  }
 
 </style>
