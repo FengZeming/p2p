@@ -13,6 +13,8 @@
       </div>
     </div>
 
+    <sign-score-stat-cell></sign-score-stat-cell>
+    <sign-score-qrcode-cell></sign-score-qrcode-cell>
 
 
   </div>
@@ -22,6 +24,8 @@
 <script>
   import {XCircle, Range, Icon} from 'vux'
   import SignScoreHeaderCell from './components/SignScoreHeaderCell'
+  import SignScoreStatCell from './components/SignScoreStatCell'
+  import SignScoreQrcodeCell from './components/SignScoreQrcodeCell'
 
   export default {
     ready() {
@@ -31,7 +35,9 @@
       XCircle,
       Range,
       Icon,
-      SignScoreHeaderCell
+      SignScoreHeaderCell,
+      SignScoreStatCell,
+      SignScoreQrcodeCell
     },
     data() {
       return {
@@ -64,7 +70,7 @@
   }
 
   p {
-    width: 398px;
+    width: 100%;
     height: 82px;
     margin-top: 30px;
     font-family: ﻿FZLTHK--GBK1-0;
