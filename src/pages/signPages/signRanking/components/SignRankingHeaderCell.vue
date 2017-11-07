@@ -5,7 +5,7 @@
     </div>
 
     <div style="margin-left: 0;margin-right: 0;">
-      <img alt="头像">
+      <img>
       <p>
         恭喜发财大吉大利
       </p>

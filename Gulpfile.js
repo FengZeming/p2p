@@ -30,7 +30,7 @@ gulp.task('upload', function () {
 
 //上传到远程服务器任务
 gulp.task('upload-aliyun', function () {
-  return gulp.src('/Users/guider/Documents/vue/p2p/dist/**')
+  return gulp.src('/Users/guider/Documents/vue/p2p-vue/dist/**')
     .pipe(sftp({
       host: config.aliyun_sftp.host,
       port: config.aliyun_sftp.port,
