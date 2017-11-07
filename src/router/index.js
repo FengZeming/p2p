@@ -12,6 +12,7 @@ import Attention from '../pages/attention/Attention.vue'
 import Sign from '../pages/signPages/main/Sign.vue'
 import SignRanking from '../pages/signPages/signRanking/SignRanking.vue'
 import SignScore from '../pages/signPages/signScore/SignScore.vue'
+import Qrcode from '../pages/qrcode/Qrcode.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -116,6 +117,14 @@ export default new Router({
       component: SignScore,
       meta: {
         keepAlive: true,
+      }
+    },
+    {
+      path: '/qrcode',
+      name: '二维码',
+      component: Qrcode,
+      meta: {
+        navHidden: true,
       }
     },
     {
