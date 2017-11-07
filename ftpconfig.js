@@ -12,5 +12,12 @@ module.exports = {
     user: 'root',
     key: 'Imess2016',
     remotePath: '/opt/prguanjia/prguanjia/web/mobile/qrcode/'
-  }
+  },
+  aliyun_sftp: {
+    host: '47.93.11.12',
+    port: 22,
+    user: 'root',
+    key: '279228',
+    remotePath: '/'
+  },
 };

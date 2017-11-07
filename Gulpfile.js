@@ -27,3 +27,15 @@ gulp.task('upload', function () {
       remotePath: config.release_sftp.remotePath
     }));
 });
+
+//上传到远程服务器任务
+gulp.task('upload-aliyun', function () {
+  return gulp.src('/Users/guider/Documents/vue/p2p/dist/**')
+    .pipe(sftp({
+      host: config.aliyun_sftp.host,
+      port: config.aliyun_sftp.port,
+      user: config.aliyun_sftp.user,
+      pass: config.aliyun_sftp.key,
+      remotePath: config.aliyun_sftp.remotePath
+    }));
+});
