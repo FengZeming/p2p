@@ -83,7 +83,7 @@
 </script>
 
 <style>
-  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+  .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label span {
     color: #080363 !important;
   }
 </style>

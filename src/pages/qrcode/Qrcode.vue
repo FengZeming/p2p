@@ -73,7 +73,7 @@
 
 </script>
 
-<style>
+<style scoped>
   p {
     color: #666;
     margin-top: 10px;
