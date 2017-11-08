@@ -1,13 +1,14 @@
 <template>
   <div class="container" ref="cont">
-    <p class="time" style="margin-top: 100px;color: white;"><span id="sec">10.00</span>秒</p>
+    <p class="time" style="margin-top: 100px;color: white;" ref="timetext"><span id="sec">10.00</span>秒</p>
     <p style="margin-top: 50px;">点击开始，狂摇手机吧</p>
 
     <button class="score" ref="btn" @click="start"
             :style="{webkitTransform:'translate3d('+buttonTranslate.x+'px , '+buttonTranslate.y+'px , '+buttonTranslate.z+'px)'}"
-    >开始</button>
+    >开始
+    </button>
 
-    <audio src="../../../assets/images/game/shake/shake.m4r" ref="audio"></audio>
+    <!--<audio src="../../../assets/images/game/shake/shake.m4r" ref="audio"></audio>-->
 
   </div>
 </template>
@@ -18,55 +19,93 @@
 
     data() {
       return {
+        last_x: 0,
+        last_y: 0,
+        last_z: 0,
+        score: 0,
         shaking: false,
+        last_update: 0,
         buttonTranslate: {
           x: 10, y: 0, z: 0
         },
-
       }
     },
 
     methods: {
+
       start() {
         console.log('start');
-        this.audio.play();
+//        this.audio.play();
+        this.shaking = true;
+
+        var time =1000;
+        var tid = setInterval(function () {
+          time--;
+//          document.body.style.backgroundColor = '#' + (time + 700).toString(16);
+          if (time < 0) {
+            audio.loop = false;
+            audio.pause();
+            document.body.style.backgroundColor = '#ccc';
+            clearInterval(tid);
+            begin = false;
+            end = true;
+            share.style.display = 'block';
+            return;
+          }
+          sec.textContent = (time / 100).toPrecision(time.toString().length);
+        }, 10);
       },
       deviceMotionHandler(event) {
         if (!this.shaking) {
-            this.buttonTranslate={x: 0, y: 0, z: 0}
+          this.buttonTranslate = {x: 0, y: 0, z: 0}
+          return;
         }
+        let SHAKE_THRESHOLD = 600;
         let acceleration = event.accelerationIncludingGravity;
+
+
         let curTime = new Date().getTime();
-        let diffTime = curTime - last_update;
+        let diffTime = curTime - this.last_update;
 
         if (diffTime > 100) {
+          console.log(this.last_update);
+          this.last_update = curTime;
 
-          last_update = curTime;
+          this.buttonTranslate.x = acceleration.x;
+          this.buttonTranslate.y = acceleration.y;
+          this.buttonTranslate.z = acceleration.z;
+          console.log(acceleration.x)
+          console.log(this);
+          console.log(this.last_x)
+          console.log(acceleration.y)
+          console.log(this.last_y)
+          console.log(acceleration.z)
+          console.log(this.last_z)
 
-          x = acceleration.x;
-          y = acceleration.y;
-          z = acceleration.z;
 
-          let xdiff = (x - last_x);
-          let ydiff = (y - last_y);
-          let zdiff = (z - last_z);
-          this.buttonTranslate={x: xdiff, y: ydiff, z: zdiff};
+          let xdiff = (this.buttonTranslate.x - this.last_x);
+          let ydiff = (this.buttonTranslate.y - this.last_y);
+          let zdiff = (this.buttonTranslate.z - this.last_z);
+          console.log(xdiff)
+          console.log(ydiff)
+          console.log(zdiff)
+          this.buttonTranslate.x = xdiff;
+          this.buttonTranslate.y = ydiff;
+          this.buttonTranslate.z = zdiff;
 
 //          ds.style.webkitTransform = 'translate3d(' + xdiff + 'px,' + ydiff + 'px,' + zdiff + 'px)';
 
-          let value = x + y + z;
-          let lastvalue = last_x + last_y + last_z;
+          let value = this.buttonTranslate.x + this.buttonTranslate.y + this.buttonTranslate.z;
+          let lastvalue = this.last_x + this.last_y + this.last_z;
           let speed = Math.abs(value - lastvalue) / diffTime * 10000;
 
           if (speed > SHAKE_THRESHOLD) {
-            ds.textContent = score++;
+            this.$refs.timetext.textContent = this.score++;
           }
-          last_x = x;
-          last_y = y;
-          last_z = z;
+          this.last_x = this.buttonTranslate.x;
+          this.last_y = this.buttonTranslate.y;
+          this.last_z = this.buttonTranslate.z;
         }
-
-
       }
 
 
@@ -75,11 +114,14 @@
     mounted() {
       //消除父节点的和下边距
       this.$refs.cont.parentNode.style.paddingBottom = 0;
-      this.audio = this.$refs.audio;
-      this.audio.src = '../../../assets/images/game/shake/shake.m4r';
-      this.audio.loop = true;
+//      this.audio = this.$refs.audio;
+//      this.audio.src = '../../../assets/images/game/shake/shake.m4r';
+//      this.audio.loop = true;
       window.addEventListener('devicemotion', this.deviceMotionHandler, false)
-
+      this.last_x = 0;
+      this.last_y = 0;
+      this.last_z = 0;
+      console.log(this)
     }
 
   }

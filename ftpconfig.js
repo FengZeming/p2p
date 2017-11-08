@@ -17,7 +17,7 @@ module.exports = {
     host: '47.93.11.12',
     port: 22,
     user: 'root',
-    key: '279228',
-    remotePath: '/'
+    key: 'Qq277892183',
+    remotePath: '/opt/www/'
   },
 };
