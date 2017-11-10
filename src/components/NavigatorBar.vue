@@ -68,7 +68,7 @@
         return ['/', '/home', '/deposit', '/trade', '/me'].includes(pageName);
       },
       isSign(pageName) {
-        return ['/sign', '/signRanking', '/signScore' ].includes(pageName);
+        return ['/sign', '/signRanking', '/signScore'].includes(pageName);
       }
     },
     computed: {

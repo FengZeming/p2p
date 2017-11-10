@@ -14,6 +14,7 @@ import SignRanking from '../pages/signPages/signRanking/SignRanking.vue'
 import SignScore from '../pages/signPages/signScore/SignScore.vue'
 import Qrcode from '../pages/qrcode/Qrcode.vue'
 import Shake from '../pages/game/shake/Shake.vue'
+import Test from '../pages/test/Test.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -124,6 +125,12 @@ export default new Router({
       path: '/qrcode',
       name: '二维码',
       component: Qrcode,
+      meta: {
+        navHidden: true,
+      }
+    },{      path: '/test',
+      name: '测试',
+      component: Test,
       meta: {
         navHidden: true,
       }

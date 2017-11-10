@@ -43,7 +43,7 @@
   }
 
 </script>
-<style>
+<style scoped>
   #arrow {
     display: block;
     height: 8px;
