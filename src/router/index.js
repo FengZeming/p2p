@@ -141,8 +141,8 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    },
-    {
+    }
+    , {
       path: '/*',
       name: '首页',
       component: Home
