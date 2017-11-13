@@ -4,22 +4,18 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import {cookie} from 'vux'
+import * as config from './api/http'
 
 
 /* ----------- Config ---------- */
 import axios from 'axios';
 // axios.defaults.baseURL = 'http://localhost:7890/';
-
 axios.defaults.baseURL = '/api';
-// vue-scroller
 import VueScroller from 'vue-scroller'
-
 Vue.use(VueScroller);
 /* ----------- Config ---------- */
 Vue.config.productionTip = true;
 
-
-// router.push({path: '/home'});
 
 // 省略...
 router.afterEach(route => {
@@ -40,12 +36,15 @@ router.afterEach(route => {
       }, 300)
     }
   }
+
 });
 
-router.beforeEach(route => {
-  if (!cookie.get('unionid') && !dev ) {
+router.beforeEach((to,from,next) => {
+  if (!cookie.get('unionid') && !config.dev ) {
     // location.href = 'http://thu.prguanjia.com/home?callback=' + location.href
-    location.href = 'http://www.baidu.com';
+    window.location.href = 'http://www.baidu.com';
+  }else {
+    next()
   }
 });
 
