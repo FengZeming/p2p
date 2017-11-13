@@ -1,27 +1,18 @@
 <template>
-  <div style="display: flex;flex-direction: row; background-color: aliceblue;
-    height: 44px;width: 100%; align-items: center;">
-    <p style="display:flex; align-items: center;justify-content: center; font-size: 15px;min-width: 20%;height: 100%;">
+  <div style="display: flex;flex-direction: row;
+    height: 40px;width: 100%; align-items: center;">
+    <p style="display:flex; align-items: center;justify-content: center; font-size: 14px;min-width: 25%;height: 100%;">
       {{indexTitle(0)}}
     </p>
-    <div style="display: flex;overflow: scroll;flex-direction: row;height: 100%; min-width:80%;" ref="gridHeaderContainer">
+    <div style="display: flex;overflow: scroll;flex-direction: row;height: 100%; min-width:75%;" ref="gridHeaderContainer">
       <p class="wrapItem">
-        标题1
+        年华收益
       </p>
       <p class="wrapItem">
-        标题11
+        投资人数
       </p>
       <p class="wrapItem">
-        标题111
-      </p>
-      <p class="wrapItem">
-        标题1111
-      </p>
-      <p class="wrapItem">
-        标题11111
-      </p>
-      <p class="wrapItem">
-        标题111111
+        成交量(万)
       </p>
     </div>
   </div>
@@ -29,11 +20,9 @@
 <script>
   export default {
     props: ['message'],
-
     methods: {
       indexTitle(i) {
-        return '标题';
-        return this.message[i];
+        return '平台名称';
       },
       titleLength() {
         return this.message.length() / 5;
@@ -52,8 +41,11 @@
 </script>
 <style scoped>
   .wrapItem {
-    min-width: 100px;
+    display: flex;
+    min-width: 33.333%;
     font-size: 14px;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: #333;
   }
