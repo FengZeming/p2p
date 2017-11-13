@@ -15,6 +15,8 @@ import SignScore from '../pages/signPages/signScore/SignScore.vue'
 import Qrcode from '../pages/qrcode/Qrcode.vue'
 import Shake from '../pages/game/shake/Shake.vue'
 import Test from '../pages/test/Test.vue'
+import Profile from '../pages/profile/Profile.vue'
+import FillProfile from '../pages/profile/pages/FillProfile.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -128,16 +130,33 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    },{      path: '/test',
+    }, {
+      path: '/test',
       name: '测试',
       component: Test,
       meta: {
         navHidden: true,
       }
-    },{
+    }
+    , {
       path: '/shake',
       name: '摇一摇',
       component: Shake,
+      meta: {
+        navHidden: true,
+      }
+    }   , {
+      path: '/profile',
+      name: '个人资料',
+      component: Profile,
+      meta: {
+        navHidden: true,
+      }
+    }
+    , {
+      path: '/fillProfile',
+      name: '收货地址',
+      component: FillProfile,
       meta: {
         navHidden: true,
       }
@@ -148,6 +167,7 @@ export default new Router({
       component: Home
     }
   ],
+  
 
   scrollBehavior(to, from, savePostion) {
     return savePostion | {x: 0, y: 0}
@@ -158,7 +178,8 @@ export default new Router({
     //   if (from.meta.keepAlive) {
     //     from.meta.savedPosition = document.body.scrollTop;
     //   }
-    //   return { x: 0, y: to.meta.savedPosition ||0}
+    //   return { x: 0, y: to.meta.savedPosition ||0}ttemplate
+
     // }
   }
 })

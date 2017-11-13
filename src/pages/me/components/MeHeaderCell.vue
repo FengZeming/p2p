@@ -30,7 +30,7 @@
     },
     methods: {
       goProfile() {
-        this.$router.push('./home');
+        this.$router.push('./profile');
       }
     },
     mounted(){

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import {cookie} from 'vux'
 
 
 /* ----------- Config ---------- */
@@ -13,6 +13,7 @@ import axios from 'axios';
 axios.defaults.baseURL = '/api';
 // vue-scroller
 import VueScroller from 'vue-scroller'
+
 Vue.use(VueScroller);
 /* ----------- Config ---------- */
 Vue.config.productionTip = true;
@@ -38,6 +39,13 @@ router.afterEach(route => {
         document.body.removeChild(hackIframe)
       }, 300)
     }
+  }
+});
+
+router.beforeEach(route => {
+  if (!cookie.get('unionid') && !dev ) {
+    // location.href = 'http://thu.prguanjia.com/home?callback=' + location.href
+    location.href = 'http://www.baidu.com';
   }
 });
 
