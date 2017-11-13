@@ -1,16 +1,15 @@
 <template>
   <div>
     <grid :cols="2">
-      <grid-item v-for="item,index in grid" style="height: 55px;padding: 10px;align-items: center;display: flex;">
-        <!--<router-link :to="{path:'/attention'}">-->
-        <div style="display: flex;align-items: center;" @click="onItemClick(item,index)">
+      <grid-item v-for="item,index in grid" style="height: 55px;padding: 10px;align-items: center;display: flex;"
+                 @on-item-click="onItemClick(item,index)">
+        <div style="display: flex;align-items: center;">
           <img :src="itemIcon(item)" v-if="item.icon"
                style="width: 30px;height: 30px;">
           <p style="color: #333;font-size: 15px; margin-left: 5px;" v-if="item.icon">
             {{item.title}}
           </p>
         </div>
-        <!--</router-link>-->
       </grid-item>
     </grid>
   </div>

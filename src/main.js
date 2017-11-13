@@ -12,6 +12,7 @@ import axios from 'axios';
 // axios.defaults.baseURL = 'http://localhost:7890/';
 axios.defaults.baseURL = '/api';
 import VueScroller from 'vue-scroller'
+
 Vue.use(VueScroller);
 /* ----------- Config ---------- */
 Vue.config.productionTip = true;
@@ -39,13 +40,13 @@ router.afterEach(route => {
 
 });
 
-router.beforeEach((to,from,next) => {
-  if (!cookie.get('unionid') && !config.dev ) {
-    // location.href = 'http://thu.prguanjia.com/home?callback=' + location.href
-    window.location.href = 'http://www.baidu.com';
-  }else {
-    next()
-  }
+router.beforeEach((to, from, next) => {
+  // if (!cookie.get('unionid') && !config.dev) {
+  //   // location.href = 'http://thu.prguanjia.com/home?callback=' + location.href
+  //   window.location.href = 'http://www.baidu.com';
+  //   return;
+  // }
+  next()
 });
 
 /* eslint-disable no-new */
