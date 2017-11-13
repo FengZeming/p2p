@@ -33,7 +33,7 @@
 </template>
 <script>
   import SymbolBar from './components/AttentionSymbolBar.vue'
-
+  import fetch from '../../api/http'
   export default {
 
     components: {
@@ -47,6 +47,14 @@
     },
     mounted() {
       this.$refs.gridContentContainer.addEventListener('scroll', this.scrollLeft)
+
+      fetch('http://tservice.prguanjia.com/account/followList')
+        .then(function (resp) {
+          console.log(resp)
+
+        }).catch(function (err) {
+          console.log(err);
+      })
     }
   }
 
