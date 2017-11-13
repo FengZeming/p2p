@@ -1,7 +1,6 @@
 <template>
   <div style="width: 100%;height: 100%;display: flex;">
     <symbol-bar ref="sybolBar" style="position: fixed;"></symbol-bar>
-
     <div
       style="display: flex;flex-direction: row; padding-top:44px;height: 1000px;min-width: 20%; align-items: center;">
       <div style="min-width: 100px;display: flex;flex-direction: column; height: 1000px;">
@@ -27,7 +26,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -60,5 +58,8 @@
 
 </script>
 <style scoped>
+
+
+
 
 </style>

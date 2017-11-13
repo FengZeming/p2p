@@ -39,10 +39,8 @@
         return this.message.length() / 5;
       },
       menu() {
-        console.log(' scroll  :  ' + this.$refs.gridHeaderContainer.scrollLeft)
       },
       scrollLeftTo(x) {
-        console.log(' scrollTo:' + x);
         this.$refs.gridHeaderContainer.scrollTo(x, 100);
       }
     },

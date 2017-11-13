@@ -26,13 +26,12 @@
       NavigatorBar
     },
     data() {
-      return {
-      }
+      return {}
     },
     computed: {
-        navHidden(){
-           return !this.$route.meta.navHidden;
-        }
+      navHidden() {
+        return !this.$route.meta.navHidden;
+      }
     }
   }
 </script>
@@ -40,6 +39,7 @@
 <style lang="less">
   @import "~vux/src/styles/reset.less";
   @import "./style/font.less";
+
   * {
     margin: 0;
     padding: 0;
@@ -57,8 +57,13 @@
     width: 100%;
     flex: 1;
   }
+
   #app {
     margin-bottom: 0 !important;
+  }
+
+  #scrollUpIco {
+    display: none
   }
 
 </style>
