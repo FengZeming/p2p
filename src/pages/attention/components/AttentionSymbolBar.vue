@@ -1,8 +1,8 @@
 <template>
-  <div style="display: flex;flex-direction: row;
+  <div style="display: flex;flex-direction: row;background-color: white;
     height: 40px;width: 100%; align-items: center;">
     <p style="display:flex; align-items: center;justify-content: center; font-size: 14px;min-width: 25%;height: 100%;">
-      {{indexTitle(0)}}
+      平台名称
     </p>
     <div style="display: flex;overflow: scroll;flex-direction: row;height: 100%; min-width:75%;" ref="gridHeaderContainer">
       <p class="wrapItem">
@@ -18,12 +18,14 @@
   </div>
 </template>
 <script>
+  import Divider from '../../../components/Divider1px'
+
   export default {
     props: ['message'],
+    components:{
+      Divider
+    },
     methods: {
-      indexTitle(i) {
-        return '平台名称';
-      },
       titleLength() {
         return this.message.length() / 5;
       },
