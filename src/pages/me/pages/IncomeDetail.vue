@@ -1,18 +1,17 @@
 <template>
-  <div>
-    <div class="contianer">
-      <p><span>1000</span> 元</p>
+  <div ref="container" style="height: 100%;width: 100%;">
+    <div class="contianer" >
+      <p><span>{{totalBalance}}</span> 元</p>
       <p style="font-family: PingFang-SC-Medium,normal; display: flex;align-items: center;margin-top: 5px;">
         <img style="width: 20px;height: 20px;" src="../../../assets/images/sign/问号.png" alt="">提现规则</p>
     </div>
-
     <div v-for="sectionItem,sctionIndex in list">
       <income-list-section-cell :message="sectionItem[0]"></income-list-section-cell>
       <div v-for="item,index in sectionItem">
         <income-list-cell :isLast="index ==sectionItem.length-1"></income-list-cell>
       </div>
     </div>
-
+    <div style="width: 100%;height: 10px;"></div>
   </div>
 </template>
 
@@ -33,8 +32,14 @@
       }
     },
     methonds: {},
-    computed: {},
+    computed: {
+      totalBalance(){
+        return this.$route.query?this.$route.query.mycoin:'0';
+      }
+    },
     mounted() {
+      console.log(this.$route.query)
+      this.$refs.container.parentNode.style.marginBottom='0px';
       fetch('http://tservice.prguanjia.com/account/walletDetail')
         .then(res => {
           let arr = [];

@@ -17,7 +17,7 @@
 
 </template>
 <script>
-  import Divider from '../../../components/Divider';
+  import Divider from '../../../components/Divider'
 
   export default {
     props: ['message'],
@@ -25,8 +25,8 @@
       Divider
     },
     methods: {
-      onClick(index) {
-          this.$router.push({path:'/incomeDetail'})
+      onClick (index) {
+        this.$router.push({path: '/incomeDetail', query: this.message})
       }
     }
   }

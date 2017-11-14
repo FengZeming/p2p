@@ -21,7 +21,7 @@
     methonds: {},
     computed: {
       marLeft(){
-        return this.isLast? '0px':'10px'
+        return this.isLast? '0px':'20px'
       }
     },
     mounted() {
