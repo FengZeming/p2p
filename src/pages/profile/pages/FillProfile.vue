@@ -21,13 +21,14 @@
       XButton,
       Group,
       Cell
-    }
+    },
+    mounted() {
 
+    }
   }
 </script>
 
 <style scoped>
-
 
 
 </style>

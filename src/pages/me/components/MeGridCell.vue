@@ -5,7 +5,7 @@
                  @on-item-click="onItemClick(item,index)">
         <div style="display: flex;align-items: center;">
           <img :src="itemIcon(item)" v-if="item.icon"
-               style="width: 30px;height: 30px;">
+               style="width: 25px;height: 25px;">
           <p style="color: #333;font-size: 15px; margin-left: 5px;" v-if="item.icon">
             {{item.title}}
           </p>

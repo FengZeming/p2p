@@ -1,20 +1,20 @@
 <template>
   <div>
-    <div style="display: flex;width: 100%;height: 80px;
+    <div style="display: flex;width: 100%;height: 100px;
       align-items: center; background-size: cover;background-repeat: no-repeat;"
          :style="{backgroundImage:'url('+pic+')'}">
-      <img :src="require('../../../assets/images/钱包.png')" @click="goProfile" alt="头像">
+      <img :src="message.headimgurl" @click="goProfile" alt=" ">
 
-      <p style="color: white;font-size: 17px;" @click="goProfile">miss古铜</p>
+      <p style="color: white;font-size: 17px;" @click="goProfile">{{message.nickname}}</p>
 
       <!--<div style="align-self: center;margin-left: -5px;">-->
       <!--<p style="color: white;font-size: 12px;">黄金会员</p>-->
       <!--</div>-->
     </div>
     <div
-      style="display: flex; background-color: #0c3481;justify-content: center;align-items: center;align-self: center;">
-      <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: 10.36 </p>
-      <button>提现</button>
+      style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;">
+      <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: {{message.withdrawable}} 元</p>
+      <button @click="onClick">提现</button>
     </div>
 
   </div>
@@ -22,7 +22,9 @@
 
 <script>
   import fetch from '../../../api/http';
+
   export default {
+    props: ['message'],
     data() {
       return {
         pic: require('../../../assets/images/user/bg_1.jpg')
@@ -31,10 +33,13 @@
     methods: {
       goProfile() {
         this.$router.push('./profile');
+      },
+      onClick(){
+        this.$emit('btnClick')
       }
     },
-    mounted(){
-
+    computed: {},
+    mounted() {
     }
   }
 </script>

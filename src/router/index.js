@@ -18,6 +18,8 @@ import Test from '../pages/test/Test.vue'
 import Profile from '../pages/profile/Profile.vue'
 import FillProfile from '../pages/profile/pages/FillProfile.vue'
 import Iframe from '../pages/iframe/Iframe.vue'
+import FillPhone from '../pages/profile/pages/FillPhone.vue'
+import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -150,6 +152,21 @@ export default new Router({
       path: '/profile',
       name: '个人资料',
       component: Profile,
+      meta: {
+        navHidden: true,
+      }
+    }
+    , {
+      path: '/fillPhone',
+      name: '验证手机号',
+      component: FillPhone,
+      meta: {
+        navHidden: true,
+      }
+    }   , {
+      path: '/incomeDetail',
+      name: '积分详情',
+      component: IncomeDetail,
       meta: {
         navHidden: true,
       }

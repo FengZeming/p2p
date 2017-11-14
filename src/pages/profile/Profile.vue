@@ -9,13 +9,13 @@
       <popup-picker title="性别" :data="sexs" v-model="sex" @on-show="onShow" @on-hide="onHide"
                     @on-change="onChange" placeholder="请选择性别"></popup-picker>
       <datetime v-model="date" @on-change="onChange" title="生日" :min-year=1950 :max-year=2017></datetime>
-      <cell title="手机号" :value="phoneNumber" is-link>
+      <cell title="手机号" :value="phoneNumber" is-link link="/fillPhone">
       </cell>
     </group>
 
     <group>
       <x-address title="地区" v-model="value" raw-value :list="addressData" hide-district></x-address>
-      <cell title="我的收货地址" value="北京市 朝阳区" is-link link="/fillProfile">
+      <cell title="我的收货地址" value="北京市 朝阳区" is-link :link="{path:'/fillProfile',query:{address:callBack}}">
       </cell>
     </group>
 
@@ -56,6 +56,10 @@
       }
     },
     methods: {
+      callBack( params) {
+
+      },
+
       onChange() {
 
       }, onShow() {
