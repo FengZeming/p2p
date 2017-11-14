@@ -17,6 +17,7 @@ import Shake from '../pages/game/shake/Shake.vue'
 import Test from '../pages/test/Test.vue'
 import Profile from '../pages/profile/Profile.vue'
 import FillProfile from '../pages/profile/pages/FillProfile.vue'
+import Iframe from '../pages/iframe/Iframe.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -153,6 +154,13 @@ export default new Router({
         navHidden: true,
       }
     }
+
+    , {
+      path: '/iframe',
+      name: '内嵌',
+      component: Iframe,
+
+    }
     , {
       path: '/fillProfile',
       name: '收货地址',
@@ -167,7 +175,7 @@ export default new Router({
       component: Home
     }
   ],
-  
+
 
   scrollBehavior(to, from, savePostion) {
     return savePostion | {x: 0, y: 0}

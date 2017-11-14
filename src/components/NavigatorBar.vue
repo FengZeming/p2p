@@ -24,6 +24,11 @@
       <img slot="icon-active" src="../assets/images/1.png">
       <span slot="label">我的</span>
     </tabbar-item>
+    <tabbar-item :link="{path:'/iframe'}" :selected="routePath =='/iframe'" v-if="isP2p(routePath)">
+      <img slot="icon" src="../assets/images/11.png">
+      <img slot="icon-active" src="../assets/images/1.png">
+      <span slot="label">我的</span>
+    </tabbar-item>
 
     <tabbar-item :link="{path:'/sign'}" :selected="routePath =='/sign'" v-if="isSign(routePath)">
       <img slot="icon" src="../assets/images/11.png">
@@ -65,7 +70,7 @@
         return this.$router.path === path;
       },
       isP2p(pageName) {
-        return ['/', '/home', '/deposit', '/trade', '/me'].includes(pageName);
+        return ['/', '/home', '/deposit', '/trade', '/me','/iframe'].includes(pageName);
       },
       isSign(pageName) {
         return ['/sign', '/signRanking', '/signScore'].includes(pageName);
