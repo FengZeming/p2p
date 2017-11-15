@@ -8,7 +8,7 @@
       <!--@on-change="change"-->
 
     </group>
-    <button>立即验证</button>
+    <x-button type="primary" >立即验证</x-button>
 
 
   </div>

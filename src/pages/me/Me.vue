@@ -1,5 +1,6 @@
 <template>
   <div style="flex:1; ;margin-bottom: 50px;">
+
     <me-header-cell :message="data" @btnClick="showDialog"></me-header-cell>
     <me-wealth-cell :message="data" style="margin-top: 5px;"></me-wealth-cell>
     <divider-onepx></divider-onepx>
@@ -39,13 +40,18 @@
             <divider-vertical-onepx></divider-vertical-onepx>
 
           </div>
-          <button style="margin-top: 40px;width: 133px;height: 35px;background-color: #2772ff;border-radius: 4px;align-self: center;
-      color: white;">立即验证
-          </button>
+          <x-button
+            style="margin-top: 40px;width: 133px;height: 40px;align-self: center;background:#2772ff;color: white;">
+            立即验证
+          </x-button>
         </div>
       </x-dialog>
     </div>
+    <button style="width: 30px;height: 30px;background-color: red; position: fixed;top: 150px;right: 0px;outline: none;border: none;border-radius: 4px 4px 20px 10px">
+
+    </button>
   </div>
+
 </template>
 
 <script>

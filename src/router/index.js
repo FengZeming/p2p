@@ -20,6 +20,7 @@ import FillProfile from '../pages/profile/pages/FillProfile.vue'
 import Iframe from '../pages/iframe/Iframe.vue'
 import FillPhone from '../pages/profile/pages/FillPhone.vue'
 import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
+import Withdrawal from '../pages/me/pages/Withdrawal.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -183,6 +184,13 @@ export default new Router({
       path: '/fillProfile',
       name: '收货地址',
       component: FillProfile,
+      meta: {
+        navHidden: true,
+      }
+    }   , {
+      path: '/withdrawal',
+      name: '提现',
+      component: Withdrawal,
       meta: {
         navHidden: true,
       }

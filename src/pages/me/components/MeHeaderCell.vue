@@ -14,7 +14,7 @@
     <div
       style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;">
       <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: {{message.withdrawable}} 元</p>
-      <button @click="onClick">提现</button>
+      <button style="border: none;outline: none;" @click="onClick">提现</button>
     </div>
 
   </div>
@@ -22,8 +22,12 @@
 
 <script>
   import fetch from '../../../api/http';
+  import {XButton} from 'vux';
 
   export default {
+    components: {
+      XButton
+    },
     props: ['message'],
     data() {
       return {
@@ -34,7 +38,7 @@
       goProfile() {
         this.$router.push('./profile');
       },
-      onClick(){
+      onClick() {
         this.$emit('btnClick')
       }
     },
@@ -58,11 +62,12 @@
     border-radius: 2px;
     border-color: darkblue;
     margin-top: 6px;
+    height: 24px;
+    width: 50px;
     margin-bottom: 6px;
     font-size: 15px;
-    color: blue;
+    color: #2772ff;
     margin-right: 10px;
-    padding: 2px 10px;
   }
 
 </style>
