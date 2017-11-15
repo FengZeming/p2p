@@ -40,16 +40,28 @@ export default new Router({
       path: '/home',
       name: '前100排名',
       component: Home
+      ,
+      meta: {
+        keepAlive: true
+      }
     }, {
 
       path: '/deposit',
       name: '存管',
       component: Deposit
+      ,
+      meta: {
+        keepAlive: true
+      }
 
     }, {
       path: '/trade',
       name: '交易量',
       component: Trade
+      ,
+      meta: {
+        keepAlive: true
+      }
     }, {
       path: '/detail',
       name: '平台详情',
@@ -149,7 +161,7 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    }   , {
+    }, {
       path: '/profile',
       name: '个人资料',
       component: Profile,
@@ -164,7 +176,7 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    }   , {
+    }, {
       path: '/incomeDetail',
       name: '积分详情',
       component: IncomeDetail,
@@ -187,7 +199,7 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    }   , {
+    }, {
       path: '/withdrawal',
       name: '提现',
       component: Withdrawal,

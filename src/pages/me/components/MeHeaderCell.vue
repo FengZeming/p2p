@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div style="display: flex;width: 100%;height: 100px;
-      align-items: center; background-size: cover;background-repeat: no-repeat;"
+    <div style="display: flex;width: 100%;
+    height: 100px;background-position: bottom;
+    align-items: center;
+    background-size: 100%;
+    background-color: #2772ff;
+     background-repeat: no-repeat; background-clip: border-box"
          :style="{backgroundImage:'url('+pic+')'}">
       <img :src="message.headimgurl" @click="goProfile" alt=" ">
 
