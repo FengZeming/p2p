@@ -42,6 +42,7 @@
 <style lang="less">
   @import "~vux/src/styles/reset.less";
   @import "./style/font.less";
+  @import "//at.alicdn.com/t/font_475875_ww9wct9yret81tt9.css";
 
   * {
     margin: 0;

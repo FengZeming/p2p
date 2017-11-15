@@ -1,15 +1,13 @@
 <template>
   <tabbar slot="bottom" style="position: fixed;">
     <tabbar-item :link="{path:'/home'}" :selected="routePath =='/home'||routePath=='/'" v-if="isP2p(routePath)">
-      <img slot="icon" src="../assets/images/44.png">
-      <img slot="icon-active" src="../assets/images/4.png">
+      <i slot="icon" class="icon iconfont icon-wxbzhuye"></i>
       <span slot="label">排名</span>
     </tabbar-item>
 
     <tabbar-item :link="{path:'/deposit'}" :selected="routePath =='/deposit'" v-if="isP2p(routePath)">
       <img slot="icon" src="../assets/images/33.png">
       <img slot="icon-active" src="../assets/images/3.png">
-
       <span slot="label">存管</span>
     </tabbar-item>
 
@@ -92,12 +90,8 @@
     color: #080363 !important;
   }
 
-  img {
-    max-width: 19px;
-    max-height: 19px;
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+  .icon{
+    position:relative;top: -4px;
   }
   span{
     font-size: 11px;
