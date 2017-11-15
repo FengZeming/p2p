@@ -1,9 +1,12 @@
 <template>
   <div id="app" style="height: 100%;margin-bottom: 50px;">
     <view-box class="box-container">
-      <keep-alive exclude="detail">
-        <router-view class="router-view"></router-view>
+      <!--exclude="detail"-->
+      <keep-alive>
+        <router-view class="router-view" v-if="$route.meta.keepAlive"></router-view>
       </keep-alive>
+      <router-view class="router-view" v-if="!$route.meta.keepAlive"></router-view>
+
     </view-box>
     <navigator-bar slot="bottom" style="position: fixed;" v-show="navHidden"></navigator-bar>
   </div>

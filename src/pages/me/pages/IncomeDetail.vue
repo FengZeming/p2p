@@ -1,14 +1,14 @@
 <template>
   <div ref="container" style="height: 100%;width: 100%;">
-    <div class="contianer" >
+    <div class="contianer" :style="{backgroundImage:'url('+headerBackgroudImage+')'}">
       <p><span>{{totalBalance}}</span> 元</p>
       <p style="font-family: PingFang-SC-Medium,normal; display: flex;align-items: center;margin-top: 5px;">
-        <img style="width: 20px;height: 20px;" src="../../../assets/images/sign/问号.png" alt="">提现规则</p>
+        <img style="width: 18px;height: 18px;background-size: 18px 18px;" src="../../../assets/images/user/问号.png" alt="">&nbsp;{{pageType?'提现':'积分'}}规则</p>
     </div>
     <div v-for="sectionItem,sctionIndex in list">
-      <income-list-section-cell :message="sectionItem[0]"></income-list-section-cell>
+      <income-list-section-cell :message="{item:sectionItem[0],pageType:pageType}"></income-list-section-cell>
       <div v-for="item,index in sectionItem">
-        <income-list-cell :isLast="index ==sectionItem.length-1"></income-list-cell>
+        <income-list-cell :message="{isLast:index ==sectionItem.length-1,item:item}"></income-list-cell>
       </div>
     </div>
     <div style="width: 100%;height: 10px;"></div>
@@ -33,14 +33,23 @@
     },
     methonds: {},
     computed: {
-      totalBalance(){
-        return this.$route.query?this.$route.query.mycoin:'0';
+      headerBackgroudImage(){
+        return require(this.pageType?'../../../assets/images/user/bg_2.jpg':'../../../assets/images/user/bg_1.jpg')
+      },
+      totalBalance() {
+        return this.queryParams? (this.pageType? this.queryParams.mywallet:this.queryParams.mycoin ):'0';
+      },
+      pageType(){
+        return this.$route.query.type;
+      },
+      queryParams(){
+        return this.$route.query.message;
       }
     },
     mounted() {
-      console.log(this.$route.query)
-      this.$refs.container.parentNode.style.marginBottom='0px';
-      fetch('http://tservice.prguanjia.com/account/walletDetail')
+      this.$refs.container.parentNode.style.marginBottom = '0px';
+      let url = 'http://tservice.prguanjia.com/account/'+ (this.pageType?'walletDetail':'coinDetail');
+      fetch(url)
         .then(res => {
           let arr = [];
           let currentMonth = -1;
@@ -93,7 +102,7 @@
   .contianer {
     width: 100%;
     height: 160px;
-    background: url('../../../assets/images/user/bg_2.jpg') no-repeat center;
+    background: url('../../../assets/images/user/bg_1.jpg') no-repeat center;
     background-size: 100% 160px;
     display: flex;
     justify-content: center;

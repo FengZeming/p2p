@@ -46,6 +46,8 @@ router.beforeEach((to, from, next) => {
   //   window.location.href = 'http://www.baidu.com';
   //   return;
   // }
+  console.log(to)
+  console.log(from)
   next()
 });
 

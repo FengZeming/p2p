@@ -168,7 +168,8 @@ export default new Router({
       name: '积分详情',
       component: IncomeDetail,
       meta: {
-        navHidden: true,
+        keepAlive: false,
+        navHidden: true
       }
     }
 
