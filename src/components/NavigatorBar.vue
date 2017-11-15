@@ -70,7 +70,7 @@
         return this.$router.path === path;
       },
       isP2p(pageName) {
-        return ['/', '/home', '/deposit', '/trade', '/me','/iframe'].includes(pageName);
+        return ['/', '/home', '/deposit', '/trade', '/me', '/iframe'].includes(pageName);
       },
       isSign(pageName) {
         return ['/sign', '/signRanking', '/signScore'].includes(pageName);
@@ -87,8 +87,16 @@
 
 </script>
 
-<style>
+<style scoped>
   .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label span {
     color: #080363 !important;
+  }
+
+  img {
+    max-width: 19px;
+    max-height: 19px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
   }
 </style>
