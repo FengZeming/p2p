@@ -32,6 +32,8 @@
 <script>
   import verification from 'verification-code';
   import { XInput, Group } from 'vux'
+
+
   export default {
     components:{
       XInput,

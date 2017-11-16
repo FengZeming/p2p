@@ -22,7 +22,7 @@
               style="width: 80%; margin-top: 40px;margin-left:10%;margin-bottom: 40px;height: 40px;font-size: 18px;"
               mini
               type="primary"
-              :disabled="JSON.stringify(this.data)==this.backupData"
+              :disabled="JSON.stringify(this.data)==this.backupData || !this.backupData"
     >保存
     </x-button>
 
