@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100%;width: 100%;" ref="contianer">
 
     <tab :line-width="1" custom-bar-width="70px" style="position: fixed;width:100%;">
       <tab-item selected @on-item-click="onItemClick(0)">未使用</tab-item>
@@ -17,6 +17,9 @@
         <coupons-list-cell :message="{item:item,pageType:2}"></coupons-list-cell>
       </div>
     </div>
+
+    <p v-if="!(this['list'+selectedIndex] && (this['list'+selectedIndex]).length>0)" class="hint">暂无数据</p>
+
   </div>
 
 </template>
@@ -59,16 +62,26 @@
       isItemSelected(index) {
         return this.selectedIndex === index;
       }
-    }
-    ,
+    },
     mounted() {
       this.fetchData();
+      this.$refs.container.parentNode.style.paddingBottom = 0;
     }
   }
 
 </script>
 
-<style>
+<style scoped>
+
+  .hint {
+    color: #666;
+    margin: auto;
+    position: absolute;
+    top: 50%; left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+  }
 
 
 </style>
