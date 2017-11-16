@@ -57,6 +57,13 @@
       }
     },
     mounted() {
+      this.data={
+        address: this.$route.query.address,
+        realname: this.$route.query.realname,
+        postcode: this.$route.query.postcode,
+        phone: this.$route.query.phone
+      }
+
 //      fetch('http://tservice.prguanjia.com/account/delivery')
 //        .then(res => {
 //          console.log(res);
