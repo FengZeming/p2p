@@ -8,22 +8,13 @@
     </tab>
     <div style="padding-top: 44px;">
       <div v-for="item in list0" v-if="isItemSelected(0)">
-        <coupons-list-cell>
-        </coupons-list-cell>
+        <coupons-list-cell :message="{item:item,pageType:0}"></coupons-list-cell>
       </div>
       <div v-for="item in list1" v-if="isItemSelected(1)">
-        <coupons-list-cell>
-        </coupons-list-cell>
-        <coupons-list-cell>
-        </coupons-list-cell>
+        <coupons-list-cell :message="{item:item,pageType:1}"></coupons-list-cell>
       </div>
       <div v-for="item in list2" v-if="isItemSelected(2)">
-        <coupons-list-cell>
-        </coupons-list-cell>
-        <coupons-list-cell>
-        </coupons-list-cell>
-        <coupons-list-cell>
-        </coupons-list-cell>
+        <coupons-list-cell :message="{item:item,pageType:2}"></coupons-list-cell>
       </div>
     </div>
   </div>
@@ -45,31 +36,33 @@
     data() {
       return {
         selectedIndex: 0,
-        list0: [1],
-        list1: [2],
-        list2: [2]
+        list0: null,
+        list1: null,
+        list2: null
       }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
       onItemClick(index) {
         this.selectedIndex = index;
+        if (!(this['list' + index])) {
+          this.fetchData();
+        }
       },
-      isItemSelected(index){
-        return this.selectedIndex ===index;
+      fetchData() {
+        fetch('http://tservice.prguanjia.com/account/myCoupons', {type: 'post', params: {type: this.selectedIndex}})
+          .then((res) => {
+            this['list' + this.selectedIndex] = res.data.list;
+          }).catch(err => {
+        })
+      },
+      isItemSelected(index) {
+        return this.selectedIndex === index;
       }
     }
     ,
     mounted() {
-      fetch('http://tservice.prguanjia.com/account/myCoupons', {type: 'post', params: {type: 0}})
-        .then((res) => {
-          console.log(res)
-        }).catch(err => {
-        console.log(err)
-      })
-
+      this.fetchData();
     }
   }
 

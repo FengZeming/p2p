@@ -40,7 +40,7 @@
     },
     methods: {
       goProfile() {
-        this.$router.push('./profile');
+        this.$router.push({path: './profile', query: this.message});
       },
       onClick() {
         this.$emit('btnClick')
@@ -67,10 +67,12 @@
     border-color: darkblue;
     margin-top: 6px;
     height: 24px;
-    width: 50px;
     margin-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 15px;
     color: #2772ff;
+    margin-left: 10px;
     margin-right: 10px;
   }
 

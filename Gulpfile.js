@@ -39,3 +39,12 @@ gulp.task('upload-aliyun', function () {
       remotePath: config.aliyun_sftp.remotePath
     }));
 });
+
+
+var tiny = require('gulp-tinypng-nokey');
+
+gulp.task('tinypng', function(cb) {
+  gulp.src('src/assets/**')
+    .pipe(tiny())
+    .pipe(gulp.dest('dist'));
+});
