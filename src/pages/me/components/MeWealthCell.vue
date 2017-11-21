@@ -42,16 +42,21 @@
 
   p + p {
     font-family: PingFang-SC-Regular;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: normal;
-    padding: 2px 2px;
+    padding: 2px 5px;
+    transform: scale(0.8);
     font-stretch: normal;
-    line-height: 10px;
+    line-height: 12px;
     letter-spacing: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
     color: #999999;
-    border-radius: 6px;
+    border-radius: 10px;
     border: solid 1px #bfbfbf;
-    margin-left: 5px;
+    margin-left: 0px;
   }
 
 </style>
