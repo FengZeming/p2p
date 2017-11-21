@@ -6,25 +6,24 @@
         <img slot="icon" width="40px" style="display:block;margin-right:20px;border-radius: 20px;"
              :src="$route.query.headimgurl">
       </cell>
-      <popup-picker title="性别" :data="sexs" v-model="sex" @on-show="onShow" @on-hide="onHide"
+      <popup-picker title="性别" :data="sexs" v-model="sex"
                     @on-change="onSexChange" placeholder="请选择性别"></popup-picker>
-      <datetime v-model="date" @on-change="onChange" title="生日" :min-year=1950 :max-year=2017></datetime>
+      <datetime v-model="date" @on-change="onBirthDayChange" title="生日" :min-year=1950 :max-year=2017></datetime>
       <cell title="手机号" :value="data.phone" is-link link="/fillPhone">
       </cell>
     </group>
 
     <group>
       <x-address title="地区" v-model="value" raw-value :list="addressData" hide-district></x-address>
-      <cell title="我的收货地址" :value="data.address" is-link :link="{path:'/fillProfile',query:data}">
+      <cell title="我的收货地址" :value="data.address" @on-change="onChange" is-link :link="{path:'/fillProfile',query:data}">
       </cell>
     </group>
-    <x-button @click.native="saveUserInfo"
-              style="width: 80%; margin-top: 40px;margin-left:10%;margin-bottom: 40px;height: 40px;font-size: 18px;"
-              mini
-              type="primary"
-              :disabled="JSON.stringify(this.data)==this.backupData || !this.backupData"
-    >保存
-    </x-button>
+    <!--<x-button @click.native="saveUserInfo"-->
+    <!--style="width: 80%; margin-top: 40px;margin-left:10%;margin-bottom: 40px;height: 40px;font-size: 18px;"-->
+    <!--mini-->
+    <!--type="primary"-->
+    <!--:disabled="JSON.stringify(this.data)==this.backupData || !this.backupData">保存-->
+    <!--</x-button>-->
 
   </div>
 
@@ -67,7 +66,6 @@
           address: '',
           postcode: ''
         },
-        backupData: '',
         addressData: ChinaAddressV4Data,
         value: ['北京市', '北京市'],
         showAddress: false,
@@ -82,20 +80,22 @@
 
       },
       onSexChange() {
-
-      }, onChange() {
-        console.log(this.data)
-        console.log( JSON.stringify(this.data)==this.backupData)
-      }
-      , onShow() {
-
-      }, onHide() {
-
+        this.saveUserInfo({sex: this.sex[0]});
+      }, onBirthDayChange() {
+        this.saveUserInfo({birth_day: this.data});
       },
-      buttonState() {
-        return  JSON.stringify(this.data)==this.backupData;
+      onChange() {
+        this.saveUserInfo({address: this.value});
       },
-      saveUserInfo() {
+      saveUserInfo(params) {
+        fetch('http://tservice.prguanjia.com/account/homeEdit', {type: 'post', params: params},true)
+          .then(res => {
+
+            console.log(res);
+          }).catch(err => {
+
+        })
+
       }
     },
 
@@ -103,8 +103,6 @@
       fetch('http://tservice.prguanjia.com/account/home')
         .then(res => {
           this.data = res.data;
-          this.backupData = JSON.stringify(res.data);
-          console.log(this.backupData)
         }).catch(err => {
 
       })

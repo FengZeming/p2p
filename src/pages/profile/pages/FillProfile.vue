@@ -6,7 +6,7 @@
                v-model="data.phone"></x-input>
 
       <x-input title="地址" :max="30" placeholder="请输入收货地址" v-model="data.address"></x-input>
-      <x-input title="邮编" :max="5" placeholder="请输入邮编" type="number" v-model="data.postcode"></x-input>
+      <x-input title="邮编" :max="6" placeholder="请输入邮编" type="number" v-model="data.postcode"></x-input>
     </group>
     <x-button style="margin-top: 30px; width: 80%;" type="primary" @click.native="saveAddressInfo">提交</x-button>
 
@@ -62,7 +62,7 @@
         realname: this.$route.query.realname,
         postcode: this.$route.query.postcode,
         phone: this.$route.query.phone
-      }
+      };
 
 //      fetch('http://tservice.prguanjia.com/account/delivery')
 //        .then(res => {
