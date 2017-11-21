@@ -21,6 +21,7 @@ import Iframe from '../pages/iframe/Iframe.vue'
 import FillPhone from '../pages/profile/pages/FillPhone.vue'
 import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
 import Withdrawal from '../pages/me/pages/Withdrawal.vue'
+import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -203,6 +204,13 @@ export default new Router({
       path: '/withdrawal',
       name: '提现',
       component: Withdrawal,
+      meta: {
+        navHidden: true,
+      }
+    }, {
+      path: '/scoreDeclare',
+      name: '积分规则',
+      component: ScoreDeclare,
       meta: {
         navHidden: true,
       }

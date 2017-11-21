@@ -20,7 +20,6 @@
       itemIcon() {
         return this.message.icon;
       }, itemTitle() {
-        console.log(this.message.icon);
         return this.message.title;
       },
     }

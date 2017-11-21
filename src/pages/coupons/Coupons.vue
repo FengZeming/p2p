@@ -65,7 +65,6 @@
     },
     mounted() {
       this.fetchData();
-      this.$refs.container.parentNode.style.paddingBottom = 0;
     }
   }
 
