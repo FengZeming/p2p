@@ -99,15 +99,33 @@
         this.showScrollBox2 = true
       },
       cancleScoreExchangeDialog() {
-        console.log('cancleScoreExchangeDialog')
-        this.showScrollBox = false;
-      },
-      scoreExchage(){
         this.showScrollBox2 = false;
-        this.$router.push({path:'/scoreDeclare'});
       },
-      exchangeScore(){
-         console.log('exchangeScore');
+      scoreExchage() {
+        this.showScrollBox2 = false;
+        this.$router.push({path: '/scoreDeclare'});
+      },
+      exchangeScore(coins) {
+
+        let url = 'http://tservice.prguanjia.com/account/exchange';
+        fetch(url, {type: 'post', params: {coins: coins}}).then(res => {
+          if (!res.message) {
+            this.cancleScoreExchangeDialog()
+            this.$vux.toast.show({
+              text: '兑换成功', type: 'text'
+            });
+            this.fetchData()
+          }else {
+            this.$vux.toast.show({
+              text: '兑换失败, 请稍后', type: 'text'
+            });
+          }
+        }).catch(err => {
+          this.$vux.toast.show({
+            text: '兑换失败, 请稍后', type: 'text'
+          });
+        });
+
       },
       getAuthCode() {
         if (this.count < 60 && this.count > 0) {
@@ -142,15 +160,18 @@
       },
       exchange() {
         this.showScrollBox2 = true;
+      },
+      fetchData() {
+        fetch('http://tservice.prguanjia.com/account/home')
+          .then(res => {
+            this.data = res.data;
+            console.log(this.data);
+          }).catch(err => {
+        })
       }
     },
     mounted() {
-      fetch('http://tservice.prguanjia.com/account/home')
-        .then(res => {
-          this.data = res.data;
-          console.log(this.data);
-        }).catch(err => {
-      })
+      this.fetchData()
     }
   }
 </script>

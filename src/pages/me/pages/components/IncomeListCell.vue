@@ -5,7 +5,7 @@
         <p style="font-family: PingFang-SC-Medium;font-size: 16px;font-weight: normal;
 	font-stretch: normal;line-height: 14px;letter-spacing: 0px;color: #282527;">{{message.item.title}}</p>
         <p style="margin-top: 12px;font-family: PingFang-SC-Medium;font-size: 12px;font-weight: normal;
-	font-stretch: normal;line-height: 14px;letter-spacing: -1px;color: #999999;">{{message.item.indate}}</p>
+	font-stretch: normal;line-height: 14px;color: #999999;">{{message.item.indate}}</p>
       </div>
       <p style="align-self: center;margin-right: 16px;" :style="{color:message.item.amount>0?'#333':'#f60'}">{{message.item.amount}}</p>
 

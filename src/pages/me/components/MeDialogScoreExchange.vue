@@ -8,20 +8,16 @@
       &nbsp;&nbsp;积分规则</p>
 
     <div style="display: flex;margin-left: 30px;margin-right: 30px;">
-      <p
-        style="border: solid 1px #bfbfbf;border-radius: 18px;display:flex;align-self:center;justify-content: center;line-height:38px;width: 36px;height: 36px;	font-size: 15px;	color: #bfbfbf;">
-        一</p>
-      <div style="display:flex;flex: 1;justify-content: center;align-self: center;">
-        <input type="text" v-model="score"
-               style="color:#2772ff;font-size: 18px; 	border-radius: 4px;border: solid 1px #bfbfbf;width: 80px;height: 30px;outline: none;padding-right: 5px;padding-left: 5px;">
-        <span
-          style="	color: #666666;font-size: 14px;text-align: center;display: flex;align-self: center;margin-left:8px;">积分</span>
+
+      <button class="calc" @click="minus" :disabled="minusStatus">一</button>
+      <div style=" display:flex;flex: 1;justify-content: center;align-self: center;">
+        <input type="text" v-model="score">
+        <span class="score">积分</span>
       </div>
-      <p
-        style="border: solid 1px #bfbfbf;border-radius: 18px;display:flex;align-self:center;justify-content: center;line-height:38px;width: 36px;height: 36px;	font-size: 18px;	color: #bfbfbf;">
-        ＋</p>
+      <button class="calc" style="font-size: 18px;" @click="add" :disabled="addStatus">＋</button>
 
     </div>
+
     <p style="color: #999999; font-size: 10px; text-align: left; margin: 20px 20px 15px 20px;">
       提示：提现金额以元为单位，须为10的整数倍。</p>
     <div
@@ -33,7 +29,8 @@
         style="display: flex;flex-direction: column;justify-content: center;align-self: center;
               width: 100%;height:100%;border-radius: 0 0 4px 4px;background-color: #eeeeee;">
 
-        <p style="font-size:34px;color: #ff6600;">{{parseInt(score / 100)}}.00<span style="color:#333;font-size: 12px;">元</span>
+        <p style="font-size:34px;color: #ff6600;">{{parseInt(score / 100)}}.00<span
+          style="color:#333;font-size: 12px;">元</span>
         </p>
 
         <div
@@ -77,14 +74,52 @@
         this.$emit("onScoreExchage")
       },
       doExchange() {
-        this.$emit("onExchange")
+        if (this.message.mycoin < this.score) {
+          this.$vux.toast.show({
+            text: '超过可用金币数量', type: 'text'
+          });
+          return;
+        }
+        if (this.score < 100) {
+          this.$vux.toast.show({
+            text: '至少兑换100个', type: 'text'
+          });
+          return;
+        }
+        if (this.score % 100) {
+          this.$vux.toast.show({
+            text: '请输入100的整数倍', type: 'text'
+          });
+          return;
+        }
+
+        this.$emit("onExchange", this.score)
       },
       doCancle() {
         this.$emit("onCancle")
+      },
+      minus() {
+        if (this.score > 100) {
+          this.score -= 100;
+        }
+      },
+      add() {
+        this.score += 100;
+
+        if (this.score < this.message.mycoin - 100) {
+          this.score += 100;
+        }
+      }
+    },
+    computed: {
+      minusStatus() {
+        return this.score <= 100
+      },
+      addStatus() {
+        return this.score >= this.message.mycoin - 100
       }
 
     },
-    computed: {},
     mounted() {
       this.$refs.box.parentNode.style.maxWidth = '92%';
       this.$refs.box.parentNode.style.width = '92%';
@@ -105,5 +140,56 @@
     border-bottom-color: #d8d8d8;
     border-left-color: #d8d8d8;
     transform: rotate(-45deg);
+  }
+
+  input {
+    color: #2772ff;
+    font-size: 18px;
+    border-radius: 4px;
+    border: solid 1px #bfbfbf;
+    width: 80px;
+    height: 30px;
+    outline: none;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .calc {
+    border: solid 1px #666666;
+    background-color: white;
+    border-radius: 18px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    outline: none;
+    line-height: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    color: #666666;
+  }
+
+  .calc:disabled {
+    border: solid 1px #eee;
+    background-color: white;
+    border-radius: 18px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    outline: none;
+    line-height: 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    color: #eee;
+  }
+
+  .score {
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    margin-left: 8px;
   }
 </style>
