@@ -54,7 +54,7 @@ function fetch(url, options, hideProgress) {
     });
   }
 
-
+  console.log(options ?  options.params : ' no params ');
 
   var opt = options || {};
   return new Promise((resolve, reject) => {
@@ -63,9 +63,9 @@ function fetch(url, options, hideProgress) {
       method: opt.type || 'get',
       url: url.includes('http')? url:'http://ti.prguanjia.com/'+url,
       // url: 'http://api.prguanjia.com/'+url,
-      params: opt.type !=='post'? opt.params : {},
+      params: opt.type !=='post'? (opt.params) : {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
-      data: (opt.headers ? opt.data : stringify(opt.data)) || {},
+      // data: (opt.headers ? opt.data : stringify(opt.data)) || {},
       data: opt.params || {},
       responseType: opt.dataType || 'json',
       // 设置默认请求头

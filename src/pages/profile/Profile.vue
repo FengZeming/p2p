@@ -88,7 +88,7 @@
         this.saveUserInfo({address: this.value});
       },
       saveUserInfo(params) {
-        fetch('http://tservice.prguanjia.com/account/homeEdit', {type: 'post', params: params},true)
+        fetch('http://tservice.prguanjia.com/account/homeEdit', {type: 'post', params:{param: JSON.stringify(params)}},true)
           .then(res => {
           }).catch(err => {
         })
