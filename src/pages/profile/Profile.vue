@@ -80,7 +80,7 @@
 
       },
       onSexChange() {
-        this.saveUserInfo({sex: this.sex[0]});
+        this.saveUserInfo({sex: ['未知','男','女'].indexOf(this.sex[0])});
       }, onBirthDayChange() {
         this.saveUserInfo({birth_day: this.data});
       },
@@ -90,12 +90,8 @@
       saveUserInfo(params) {
         fetch('http://tservice.prguanjia.com/account/homeEdit', {type: 'post', params: params},true)
           .then(res => {
-
-            console.log(res);
           }).catch(err => {
-
         })
-
       }
     },
 
@@ -104,7 +100,6 @@
         .then(res => {
           this.data = res.data;
         }).catch(err => {
-
       })
     }
 
