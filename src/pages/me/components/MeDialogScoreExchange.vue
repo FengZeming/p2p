@@ -11,7 +11,7 @@
 
       <button class="calc" @click="minus" :disabled="minusStatus">一</button>
       <div style=" display:flex;flex: 1;justify-content: center;align-self: center;">
-        <input type="text" v-model="score">
+        <input type="number" v-model="score">
         <span class="score">积分</span>
       </div>
       <button class="calc" style="font-size: 18px;" @click="add" :disabled="addStatus">＋</button>
@@ -27,14 +27,14 @@
       <divider-onepx style="flex: 1px;"></divider-onepx>
       <div
         style="display: flex;flex-direction: column;justify-content: center;align-self: center;
-              width: 100%;height:100%;border-radius: 0 0 4px 4px;background-color: #eeeeee;">
+              width: 100%;height:100%;border-radius: 0 0 2px 2px;background-color: #eee;">
 
-        <p style="font-size:34px;color: #ff6600;">{{parseInt(score / 100)}}.00<span
+        <p style="font-size:34px;color: #ff6600;margin-top: 20px;">{{parseInt(score / 100)}}.00<span
           style="color:#333;font-size: 12px;">元</span>
         </p>
 
         <div
-          style="width: 100%;display: flex; height: 32px;flex-direction: row;margin-top: 18px;margin-bottom: 20px;">
+          style="width: 100%;display: flex; height: 32px;flex-direction: row;margin-top: 18px;margin-bottom: 45px;">
           <div style="display: flex;flex: 1;">
             <x-button mini type="primary" style="width: 120px;color: white" @click.native="doExchange">确定</x-button>
           </div>
@@ -149,6 +149,8 @@
     border: solid 1px #bfbfbf;
     width: 80px;
     height: 30px;
+    text-shadow: none;
+    box-shadow: none;
     outline: none;
     padding-right: 5px;
     padding-left: 5px;
@@ -158,13 +160,14 @@
     border: solid 1px #666666;
     background-color: white;
     border-radius: 18px;
-    display: flex;
     align-self: center;
     justify-content: center;
     outline: none;
     line-height: 36px;
     width: 36px;
     height: 36px;
+    align-items: center;
+    text-align: center;
     font-size: 15px;
     color: #666666;
   }
@@ -173,15 +176,16 @@
     border: solid 1px #eee;
     background-color: white;
     border-radius: 18px;
-    display: flex;
     align-self: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     outline: none;
     line-height: 36px;
     width: 36px;
     height: 36px;
     font-size: 15px;
-    color: #eee;
+    color: #ccc;
   }
 
   .score {

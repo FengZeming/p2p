@@ -23,8 +23,7 @@
     <div v-transfer-dom>
       <x-dialog v-model="showScrollBox2" class="dialog-demo" hide-on-blur>
         <me-dialog-score-exchange ref="box" :message="data" @onScoreExchage="scoreExchage"
-                                  @onCancle="cancleScoreExchangeDialog"
-                                  @onExchange="exchangeScore"
+                                  @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
         ></me-dialog-score-exchange>
       </x-dialog>
     </div>
@@ -33,7 +32,7 @@
       display: flex;justify-content: center;align-items: center;
       border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">
       <img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">
-      <p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑奖</p>
+      <p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>
     </div>
   </div>
 
@@ -106,7 +105,6 @@
         this.$router.push({path: '/scoreDeclare'});
       },
       exchangeScore(coins) {
-
         let url = 'http://tservice.prguanjia.com/account/exchange';
         fetch(url, {type: 'post', params: {coins: coins}}).then(res => {
           if (!res.message) {
@@ -115,7 +113,7 @@
               text: '兑换成功', type: 'text'
             });
             this.fetchData()
-          }else {
+          } else {
             this.$vux.toast.show({
               text: '兑换失败, 请稍后', type: 'text'
             });

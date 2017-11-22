@@ -54,8 +54,6 @@ function fetch(url, options, hideProgress) {
     });
   }
 
-  console.log(options ?  options.params : ' no params ');
-
   var opt = options || {};
   return new Promise((resolve, reject) => {
 
