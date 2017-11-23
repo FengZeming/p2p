@@ -1,3 +1,4 @@
+
 module.exports = {
   sftp: {
     host: '117.121.26.112',
@@ -19,5 +20,5 @@ module.exports = {
     user: 'root',
     key: 'Qq277892183',
     remotePath: '/opt/www/'
-  },
-};
+  }
+}
