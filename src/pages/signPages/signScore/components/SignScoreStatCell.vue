@@ -49,6 +49,7 @@
     height: 8px;
     width: 8px;
     border-width: 1px;
+    background-color: white;
     border-color: transparent;
     border-style: solid;
     border-top-color: #d8d8d8;

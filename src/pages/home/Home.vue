@@ -39,7 +39,7 @@
     },
     methods: {
       getRankList() {
-        fetch('/table/rankList')
+        fetch('table/rankList')
           .then((response) => {
             this.list = response.data;
           }).catch(function (err) {

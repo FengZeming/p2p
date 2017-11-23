@@ -1,33 +1,62 @@
 <template>
-  <div style="background-image: url(https://i.loli.net/2017/11/01/59f9ae238ae93.png)">
-    <div style="display: flex;width: 100%;height: auto;">
-      <img :src="require('../../../assets/images/钱包.png')" alt="头像">
-      <div style="align-self: center;margin-left: -5px;">
-        <p style="color: white;font-size: 17px;">miss古铜</p>
-        <p style="color: white;font-size: 12px;">黄金会员</p>
-      </div>
+  <div>
+    <div style="display: flex;width: 100%;
+    height: 100px;background-position: bottom;
+    align-items: center;
+    background-size: 100%;
+    background-color: #2772ff;
+     background-repeat: no-repeat; background-clip: border-box"
+         :style="{backgroundImage:'url('+pic+')'}">
+      <img :src="message.headimgurl" @click="goProfile" alt=" ">
 
+      <p style="color: white;font-size: 17px;" @click="goProfile">{{message.nickname}}</p>
 
+      <!--<div style="align-self: center;margin-left: -5px;">-->
+      <!--<p style="color: white;font-size: 12px;">黄金会员</p>-->
+      <!--</div>-->
     </div>
     <div
-      style="display: flex; background-color: dodgerblue;justify-content: center;align-items: center;align-self: center;">
-      <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: 10.36 </p>
-      <button>提现</button>
-
+      style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;">
+      <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: {{message.withdrawable}} 元</p>
+      <button style="border: none;outline: none;" @click="onClick">提现</button>
     </div>
 
   </div>
 </template>
 
 <script>
+  import fetch from '../../../api/http';
+  import {XButton} from 'vux';
 
+  export default {
+    components: {
+      XButton
+    },
+    props: ['message'],
+    data() {
+      return {
+        pic: require('../../../assets/images/user/bg_1.jpg')
+      }
+    },
+    methods: {
+      goProfile() {
+        this.$router.push({path: './profile', query: this.message});
+      },
+      onClick() {
+        this.$emit('btnClick')
+      }
+    },
+    computed: {},
+    mounted() {
+    }
+  }
 </script>
 
 <style scoped>
   img {
     width: 44px;
     height: 44px;
-    margin: 20px;
+    margin: 0px 10px 0px 20px;
     background-color: black;
     border-radius: 22px;
   }
@@ -37,11 +66,14 @@
     border-radius: 2px;
     border-color: darkblue;
     margin-top: 6px;
+    height: 24px;
     margin-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size: 15px;
-    color: blue;
+    color: #2772ff;
+    margin-left: 10px;
     margin-right: 10px;
-    padding: 2px 10px;
   }
 
 </style>
