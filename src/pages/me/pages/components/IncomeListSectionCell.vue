@@ -21,14 +21,17 @@
     methonds: {},
     computed: {
       month() {
-        if (parseInt(this.message.item.indate.split('-')[1]) === new Date().getMonth() + 1) {
+        if (parseInt(this.message.item.indate.split('-')[1]) === new Date().getMonth() + 1
+            && parseInt(this.message.item.indate.split('-')[0]) === 1900+new Date().getYear() ) {
           return '当月'
         }
         return this.message.item.indate.split('-')[1] + '月';
       }
     },
     mounted() {
+      console.log(this.message)
     }
+
   }
 </script>
 

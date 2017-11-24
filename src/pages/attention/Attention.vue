@@ -77,9 +77,7 @@
       fetch('http://tservice.prguanjia.com/account/followList')
         .then((resp) => {
           this.list = resp.data;
-          console.log(this.list);
         }).catch(function (err) {
-        console.log(err);
       })
     }
   }
