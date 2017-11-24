@@ -102,7 +102,7 @@
       },
       scoreExchage() {
         this.showScrollBox2 = false;
-        this.$router.push({path: '/scoreDeclare'});
+        this.$router.push({path: '/scoreDeclare',query:{pageType:true}});
       },
       exchangeScore(coins) {
         let url = 'http://tservice.prguanjia.com/account/exchange';

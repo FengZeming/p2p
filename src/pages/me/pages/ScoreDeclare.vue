@@ -59,11 +59,12 @@
   export default {
     components: {XTable, DividerVertical},
     data() {
-      return require('./json/ScoreDeclareConfig').default
+      return require(this.$route.query.pageType?'./json/ScoreDeclareConfig.js' :'./json/WithdrawDepositConfig').default
     },
     methonds: {},
     computed: {},
     mounted() {
+      console.log(this.$route.query)
     }
   }
 </script>

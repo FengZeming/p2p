@@ -102,9 +102,9 @@
       }
     },
     mounted() {
-      this.onItemClick(0);
       this.selectedIndex = this.$route.query.selectedIndex;
-      console.log(this.$route.query)
+      this.onItemClick(0);
+
     }
   }
 
@@ -127,10 +127,7 @@
 
   img {
     margin-top: 44px;
-    min-width: 170px;
-    max-width: 170px;
-    min-height: 170px;
-    max-height: 170px;
+    width: 170px;
     overflow: hidden;
   }
 

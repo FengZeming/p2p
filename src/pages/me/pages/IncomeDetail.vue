@@ -40,7 +40,7 @@
     },
     methods: {
       onItemClick(){
-        this.$router.push({path: '/scoreDeclare'});
+        this.$router.push({path: '/scoreDeclare',query:{pageType:this.pageType}});
       },
 //      loadData() {
 //        fetch(this.url)
