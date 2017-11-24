@@ -72,7 +72,7 @@ align-items: center;
   }
 
 </script>
-<style>
+<style scoped>
   .semi-circle {
     border-radius: 8vw 8vw 0 0;
     height: 1.5vw;

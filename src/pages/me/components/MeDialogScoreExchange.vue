@@ -9,12 +9,12 @@
 
     <div style="display: flex;margin-left: 30px;margin-right: 30px;">
 
-      <button class="calc" @click="minus" :disabled="minusStatus">一</button>
+      <button class="calc" @click="minus" :disabled="minusStatus" style="text-align: center;display: block;">一</button>
       <div style=" display:flex;flex: 1;justify-content: center;align-self: center;">
         <input type="number" v-model="score">
         <span class="score">积分</span>
       </div>
-      <button class="calc" style="font-size: 18px;" @click="add" :disabled="addStatus">＋</button>
+      <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add" :disabled="addStatus">＋</button>
 
     </div>
 
@@ -36,14 +36,13 @@
         <div
           style="width: 100%;display: flex; height: 32px;flex-direction: row;margin-top: 18px;margin-bottom: 45px;">
           <div style="display: flex;flex: 1;">
-            <x-button mini type="primary" style="width: 120px;color: white" @click.native="doExchange">确定</x-button>
+            <x-button mini type="primary" style="width: 120px;color: white;height: 32px" @click.native="doExchange">确定</x-button>
           </div>
           <div style="flex: 1;display: flex;">
-            <x-button mini style="width: 120px;background-color: #999;color: white;" @click.native="doCancle">取消
+            <x-button mini style="width: 120px;height: 32px;background-color: #999;color: white;" @click.native="doCancle">取消
             </x-button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
