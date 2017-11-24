@@ -64,23 +64,27 @@
           realname: '',
           phone: '',
           address: '',
-          postcode: ''
+          postcode: '',
+          sex: 0
         },
         addressData: ChinaAddressV4Data,
         value: ['北京市', '北京市'],
         showAddress: false,
-        sexs: [['男', '女']],
+        sexs: [['保密','男', '女']],
         sex: [],
         date: '1990-1-1',
         phoneNumber: ''
       }
     },
+    computed: {
+
+    },
     methods: {
       callBack(params) {
 
       },
-      onSexChange() {
-        this.saveUserInfo({sex: ['未知','男','女'].indexOf(this.sex[0])});
+      onSexChange(sex) {
+        this.saveUserInfo({sex: ['保密', '男', '女'].indexOf(this.sex[0])});
       }, onBirthDayChange() {
         this.saveUserInfo({birth_day: this.data});
       },
@@ -88,7 +92,10 @@
         this.saveUserInfo({address: this.value});
       },
       saveUserInfo(params) {
-        fetch('http://tservice.prguanjia.com/account/homeEdit', {type: 'post', params:{param: JSON.stringify(params)}},true)
+        fetch('http://tservice.prguanjia.com/account/homeEdit', {
+          type: 'post',
+          params: {param: JSON.stringify(params)}
+        }, true)
           .then(res => {
           }).catch(err => {
         })
@@ -99,6 +106,7 @@
       fetch('http://tservice.prguanjia.com/account/home')
         .then(res => {
           this.data = res.data;
+          this.sex =[['保密','男', '女'][res.data.sex]]
         }).catch(err => {
       })
     }

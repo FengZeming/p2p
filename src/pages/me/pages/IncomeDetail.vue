@@ -5,7 +5,7 @@
     >
       <div class="contianer" :style="{backgroundImage:'url('+headerBackgroudImage+')'}">
         <p><span>{{totalBalance}}</span> 元</p>
-        <p style="font-family: PingFang-SC-Medium,normal; display: flex;align-items: center;margin-top: 5px;">
+        <p style="font-family: PingFang-SC-Medium,normal; display: flex;align-items: center;margin-top: 5px;" @click="onItemClick">
           <img style="width: 18px;height: 18px;background-size: 18px 18px;" src="../../../assets/images/user/问号.png"
                alt="">&nbsp;{{pageType ? '提现' : '积分'}}规则</p>
       </div>
@@ -39,6 +39,9 @@
       }
     },
     methods: {
+      onItemClick(){
+        this.$router.push({path: '/scoreDeclare'});
+      },
 //      loadData() {
 //        fetch(this.url)
 //          .then(res => {
@@ -101,11 +104,9 @@
                   arr.push(itemArr);
                   itemArr= [];
                   itemArr.push(item)
-
                 }
               });
               this.list = arr;
-              console.log(arr)
               if (done)
                 done();
             } else {
