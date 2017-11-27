@@ -4,7 +4,7 @@
     <me-header-cell :message="data" @btnClick="showDialog"></me-header-cell>
     <me-wealth-cell :message="data" style="margin-top: 5px;"></me-wealth-cell>
     <divider-onepx></divider-onepx>
-    <divider :message="{height:'10px'}"></divider>
+    <divider :message="{height:'15px'}"></divider>
     <divider-onepx></divider-onepx>
     <router-link :to="{path:'/coupons'}">
       <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:'1张待使用'}"></me-cell>
@@ -12,7 +12,7 @@
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
     <me-cell :message="{icon:require('../../assets/images/钱包.png'),title:'一起赚',warn:'进行中',desc:'现金红包不停发'}"></me-cell>
     <divider-onepx></divider-onepx>
-    <divider :message="{height:'10px'}"></divider>
+    <divider :message="{height:'15px'}"></divider>
     <me-grid-cell></me-grid-cell>
 
     <div v-transfer-dom>

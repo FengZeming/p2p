@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 60px;width: 100%; display: flex;align-items: center;">
+  <div style="height: 65px;width: 100%; display: flex;align-items: center;">
     <img :src="itemIcon" style="max-width: 50%;margin-left: 10px;
     max-height: 50%;" alt="卡券">
     <p style="font-size: 18px;color: #333;margin-right: 2px;">{{itemTitle}}</p>

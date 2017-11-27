@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div >
     <grid :cols="2">
       <grid-item v-for="item,index in grid" style="height: 55px;padding: 10px;align-items: center;display: flex;"
                  @on-item-click="onItemClick(item,index)">
-        <div style="display: flex;align-items: center;">
+        <div style="display: flex;align-items: center;height: 55px;">
           <img :src="itemIcon(item)" v-if="item.icon"
                style="width: 25px;height: 25px;">
           <p style="color: #333;font-size: 15px; margin-left: 5px;" v-if="item.icon">

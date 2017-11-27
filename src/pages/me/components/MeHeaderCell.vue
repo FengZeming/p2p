@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="display: flex;width: 100%;
-    height: 100px;background-position: bottom;
+    height: 104px;background-position: bottom;
     align-items: center;
     background-size: 100%;
     background-color: #2772ff;
@@ -16,7 +16,7 @@
       <!--</div>-->
     </div>
     <div
-      style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;">
+      style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;height: 40px;">
       <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额: {{message.withdrawable}} 元</p>
       <button style="border: none;outline: none;" @click="onClick">提现</button>
     </div>
