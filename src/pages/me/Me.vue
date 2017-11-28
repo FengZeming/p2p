@@ -93,8 +93,8 @@
       }
     },
     methods: {
-      hideDialog(){
-        this.showScrollBox=false;
+      hideDialog() {
+        this.showScrollBox = false;
       },
       withdraw() {
         let url = location.protocol + '//service.wx.prguanjia.com/account/withdraw';
@@ -121,10 +121,14 @@
         })
       },
       showDialog() {
+        console.log(cookie.get('fuwu_openid'));
         if (!this.data.phone) {
           this.showScrollBox = true
+        } else if (this.data.mycoin < 10) {
+          this.$vux.toast.show({type:'text',text:'可提现金额不足, 10元起提现'})
+
         } else {
-          if (cookie.get('fuwu_openid') || (this.route.query && this.route.query.auth * 1 === 1)) {
+          if (cookie.get('fuwu_openid') && (this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();
           } else {
             location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
