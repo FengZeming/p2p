@@ -2,7 +2,10 @@
   <div style="width: 100%;height: 100%;display: flex; flex-direction: column;" ref="contianer">
     <symbol-bar ref="sybolBar" style="position: relative;background-color: white;"></symbol-bar>
     <divider></divider>
-    <div style="width: 100%;height: 100%;display: flex; flex-direction: row;">
+
+    <p v-show="!list||list.length<=0" style="  width: 50%;text-align: center;
+  margin: auto;   position: absolute;   top: 50%; left: 50%;  transform: translate(-50%,-50%);   "> 暂无关注平台</p>
+    <div v-show="list&& list.length" style="width: 100%;height: 100%;display: flex; flex-direction: row;">
       <div
         style="display: flex;flex-direction: row; margin-top:0px;min-width: 25%; ">
         <div style="min-width: 100px;display: flex;flex-direction: column;"
@@ -67,7 +70,6 @@
         return index % 2 === 0 ? '#fff6d6' : 'white';
       },
       scrollLeft() {
-//        console.log(this.$refs.gridContentContainer.scrollLeft);
         this.$refs.sybolBar.scrollLeftTo(this.$refs.gridContentContainer.scrollLeft)
       }
     },

@@ -106,7 +106,6 @@
           }
         }).catch(err => {
           this.$router.push('/withdrawal');
-//          this.$router.push({path: '/withdrawal', query: {success: true}});
         })
       },
       p2pWithdrawpost() {
