@@ -53,6 +53,8 @@
 
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
 
+  import {cookie} from 'vux'
+
   export default {
     directives: {
       TransferDom
@@ -91,11 +93,40 @@
       }
     },
     methods: {
+      withdraw() {
+        let url = location.protocol + '//service.wx.prguanjia.com/account/withdraw';
+        fetch(url).then(res => {
+          if (!res.code) {
+            this.p2pWithdrawpost()
+          } else {
+            this.$router.push('/withdrawal');
+          }
+        }).catch(err => {
+          this.$router.push('/withdrawal');
+//          this.$router.push({path: '/withdrawal', query: {success: true}});
+        })
+      },
+      p2pWithdrawpost() {
+        let url = location.protocol + '//event.prguanjia.com/redpack/p2pWithdrawpost';
+        fetch(url).then(res => {
+          if (!res.code) {
+            this.$router.push({path: '/withdrawal', query: {success: true}});
+          } else {
+            this.$router.push('/withdrawal');
+          }
+        }).catch(err => {
+          this.$router.push('/withdrawal');
+        })
+      },
       showDialog() {
         if (!this.data.phone) {
           this.showScrollBox = true
         } else {
+          if (cookie.get('fuwu_openid') || (this.route.query && this.route.query.auth * 1 === 1)) {
 
+          } else {
+            location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
+          }
         }
       },
       showDialog2() {
@@ -172,7 +203,10 @@
       }
     },
     mounted() {
-      this.fetchData()
+      this.fetchData();
+      if ((this.$route.query.auth * 1 === 1)) {
+        this.withdraw();
+      }
     }
   }
 </script>

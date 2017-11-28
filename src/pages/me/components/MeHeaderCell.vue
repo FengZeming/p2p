@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="display: flex;width: 100%;
-    height: 104px;background-position: bottom;
+    height: 124px;background-position: bottom;
     align-items: center;
     background-size: 100%;
     background-color: #2772ff;

@@ -3,7 +3,7 @@ import {LoadingPlugin, ToastPlugin, AlertPlugin} from 'vux'
 import Vue from 'vue';
 import Qs from 'qs'
 
-export const dev = true;
+export const dev = false
 
 Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
@@ -56,12 +56,14 @@ function fetch(url, options, hideProgress) {
 
   var opt = options || {};
   return new Promise((resolve, reject) => {
-
+    if(!dev) {
+      url = url.replace('http://tservice.prguanjia.com', 'http://service.wx.prguanjia.com');
+    }
     axios({
       method: opt.type || 'get',
-      url: url.includes('http')? url:'http://ti.prguanjia.com/'+url,
+      url: url.includes('http') ? url : 'http://api.prguanjia.com/' + url,
       // url: 'http://api.prguanjia.com/'+url,
-      params: opt.type !=='post'? (opt.params) : {},
+      params: opt.type !== 'post' ? (opt.params) : {},
       // 判断是否有自定义头部，以对参数进行序列化。不定义头部，默认对参数序列化为查询字符串。
       // data: (opt.headers ? opt.data : stringify(opt.data)) || {},
       data: opt.params || {},
@@ -80,7 +82,7 @@ function fetch(url, options, hideProgress) {
       .then(response => {
         resolve(response.data)
 
-        Vue.$vux.loading.showing=false;
+        Vue.$vux.loading.showing = false;
 
         // if (response.data.code === 0) {
         // } else if (response.data.code === '000') {
@@ -93,7 +95,7 @@ function fetch(url, options, hideProgress) {
 
       })
       .catch(error => {
-        Vue.$vux.loading.showing=false;
+        Vue.$vux.loading.showing = false;
         console.log(error)
         reject(error)
         // 隐藏

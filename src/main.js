@@ -41,11 +41,12 @@ router.afterEach(route => {
 });
 
 router.beforeEach((to, from, next) => {
-  // if (!cookie.get('unionid') && !config.dev) {
-  //   // location.href = 'http://thu.prguanjia.com/home?callback=' + location.href
-  //   window.location.href = 'http://www.baidu.com';
-  //   return;
-  // }
+  console.log( ' unionid  '+cookie.get('unionid'))
+  if (!cookie.get('unionid') && !config.dev) {
+    location.href = 'http://service.wx.prguanjia.com/home?callback=' + location.href;
+    // window.location.href = 'http://www.baidu.com';
+    return;
+  }
   next()
 });
 
