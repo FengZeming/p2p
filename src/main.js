@@ -45,7 +45,6 @@ router.beforeEach((to, from, next) => {
   if (!cookie.get('unionid') && !config.dev) {
     // http://service.wx.prguanjia.com/redpack/auth?callback=
     location.href = 'http://service.wx.prguanjia.com/account/auth?callback=' + location.href;
-    // window.location.href = 'http://www.baidu.com';
     return;
   }
   next()

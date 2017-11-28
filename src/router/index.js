@@ -26,7 +26,7 @@ import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
-  base: '/',
+  base: '/p2p',
   saveScrollPosition: true,
   routes: [
     {
