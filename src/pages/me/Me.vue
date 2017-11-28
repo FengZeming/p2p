@@ -83,7 +83,7 @@
           headimgurl: '',
           mycoin: 0,
           mywallet: 0,
-          nickname: "聪",
+          nickname: "",
           withdrawable: 0,
           address: "",
           phone: "",
@@ -122,10 +122,9 @@
         })
       },
       showDialog() {
-        if (!this.data.phone || true) {
+        if (!this.data.phone) {
           this.showScrollBox = true
         } else {
-          console.log('http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1')
           if (cookie.get('fuwu_openid') || (this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();
           } else {
