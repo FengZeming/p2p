@@ -1,11 +1,20 @@
 <template>
   <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 320px;" ref="box">
-    <p @click="toScoreExchage"
-       style="display: flex;color: #999999; font-size: 12px;align-items: center;margin-top: 10px;align-self: flex-end;margin-bottom: 25px;margin-right: 20px;">
-      <img src="../../../assets/images/sign/问号.png"
-           style="width: 10px;height: 10px;padding:1px;border: solid 1px #bfbfbf;border-radius: 7px;"
-           alt=" ">
-      &nbsp;&nbsp;积分规则</p>
+
+    <div style="display: flex;margin-top: 10px;margin-bottom: 20px;margin-left: 14px;">
+
+      <p
+        style="flex: 1;text-align: start;	font-weight: normal;font-stretch: normal;	line-height: 13px;font-size: 12px;letter-spacing: 0px;color: #2772ff;">
+        当前<span
+        style="font-size: 18px;font-weight: normal;letter-spacing: 0px;	color: #2772ff;line-height: 18px;">{{message.mycoin}}</span>
+        积分</p>
+      <p @click="toScoreExchage"
+         style="display: flex;color: #999999; font-size: 12px;align-items: center;align-self: flex-end;margin-right: 20px;">
+        <img src="../../../assets/images/sign/问号.png"
+             style="width: 10px;height: 10px;padding:1px;border: solid 1px #bfbfbf;border-radius: 7px;"
+             alt=" ">
+        &nbsp;&nbsp;积分规则</p>
+    </div>
 
     <div style="display: flex;margin-left: 30px;margin-right: 30px;">
 
@@ -14,7 +23,9 @@
         <input type="number" v-model="score">
         <span class="score">积分</span>
       </div>
-      <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add" :disabled="addStatus">＋</button>
+      <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add"
+              :disabled="addStatus">＋
+      </button>
 
     </div>
 
@@ -36,10 +47,12 @@
         <div
           style="width: 100%;display: flex; height: 32px;flex-direction: row;margin-top: 18px;margin-bottom: 45px;">
           <div style="display: flex;flex: 1;">
-            <x-button mini type="primary" style="width: 120px;color: white;height: 32px" @click.native="doExchange">确定</x-button>
+            <x-button mini type="primary" style="width: 120px;color: white;height: 32px" @click.native="doExchange">确定
+            </x-button>
           </div>
           <div style="flex: 1;display: flex;">
-            <x-button mini style="width: 120px;height: 32px;background-color: #999;color: white;" @click.native="doCancle">取消
+            <x-button mini style="width: 120px;height: 32px;background-color: #999;color: white;"
+                      @click.native="doCancle">取消
             </x-button>
           </div>
         </div>

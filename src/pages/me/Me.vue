@@ -167,7 +167,6 @@
         fetch('http://tservice.prguanjia.com/account/home')
           .then(res => {
             this.data = res.data;
-            console.log(this.data);
           }).catch(err => {
         })
       }
