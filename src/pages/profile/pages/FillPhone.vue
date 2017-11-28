@@ -7,12 +7,11 @@
           {{count >= 60 ? '获取验证码' : (count + 's')}}
         </x-button>
       </x-input>
-      <x-input placeholder="请输入验证码" type="number" :min="4" :max="6" style="height: 35px;" v-model="code"
-               @click.native="verifyCode"></x-input>
+      <x-input placeholder="请输入验证码" type="number" :min="4" :max="6" style="height: 35px;" v-model="code"></x-input>
       <!--@on-change="change"-->
 
     </group>
-    <x-button type="primary">立即验证</x-button>
+    <x-button type="primary" @click.native="verifyCode">立即验证</x-button>
 
   </div>
 </template>
@@ -44,7 +43,7 @@
           this.$vux.toast.show({text: '手机号有误', type: 'text'});
           return;
         }
-        fetch('http://api.prguanjia.com/account/sendAuthCode', {
+        fetch('http://api.prguanjia.com/user/sendAuthCode', {
           type: 'post',
           params: {phone: this.phone, state: 2}
         })
@@ -69,8 +68,34 @@
         }, 1000);
       },
       verifyCode() {
+        if (!this.phone) {
+          this.$vux.toast.show({type: 'text', text: '请输入手机号'})
+          return;
+        }
+        if (!(/^1[34578]\d{9}$/.test(this.phone))) {
+          this.$vux.toast.show({text: '手机号有误', type: 'text'});
+          return;
+        }
 
+        if (!this.code) {
+          this.$vux.toast.show({type: 'text', text: '请输入验证码'})
+          return;
+        }
 
+        fetch('http://tservice.prguanjia.com/account/savePhone', {
+          type: 'post',
+          params: {phone: this.phone, code: this.code}
+        })
+          .then(res => {
+            if (!res.result) {
+              this.$vux.toast.show({type: 'text', text: '保存成功'})
+              this.$router.back();
+            }else {
+              this.$vux.toast.show({type: 'text', text: res.msg})
+            }
+          }).catch(err => {
+          this.$vux.toast.show({type: 'text', text: '保存失败'})
+        })
       }
     },
     computed: {},

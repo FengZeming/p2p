@@ -17,7 +17,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showScrollBox" class="dialog-demo" hide-on-blur>
-        <me-dialog-score-bind-phone></me-dialog-score-bind-phone>
+        <me-dialog-score-bind-phone @onHideDialog="hideDialog"></me-dialog-score-bind-phone>
       </x-dialog>
     </div>
     <div v-transfer-dom>
@@ -93,10 +93,13 @@
       }
     },
     methods: {
+      hideDialog(){
+        this.showScrollBox=false;
+      },
       withdraw() {
         let url = location.protocol + '//service.wx.prguanjia.com/account/withdraw';
         fetch(url).then(res => {
-          if (!res.code) {
+          if (!res.result) {
             this.p2pWithdrawpost()
           } else {
             this.$router.push('/withdrawal');
@@ -109,7 +112,7 @@
       p2pWithdrawpost() {
         let url = location.protocol + '//event.prguanjia.com/redpack/p2pWithdrawpost';
         fetch(url).then(res => {
-          if (!res.code) {
+          if (!res.result) {
             this.$router.push({path: '/withdrawal', query: {success: true}});
           } else {
             this.$router.push('/withdrawal');
@@ -119,14 +122,14 @@
         })
       },
       showDialog() {
-        if (!this.data.phone) {
+        if (!this.data.phone || true) {
           this.showScrollBox = true
         } else {
           console.log('http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1')
           if (cookie.get('fuwu_openid') || (this.route.query && this.route.query.auth * 1 === 1)) {
-//            this.withdraw();
+            this.withdraw();
           } else {
-//            location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
+            location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
           }
         }
       },
@@ -170,7 +173,7 @@
           this.$vux.toast.show({text: '手机号有误', type: 'text'});
           return;
         }
-        fetch('http://api.prguanjia.com/account/sendAuthCode', {
+        fetch('http://api.prguanjia.com/user/sendAuthCode', {
           type: 'post',
           params: {phone: this.phone, state: 2}
         }).then(res => {
@@ -205,9 +208,9 @@
     },
     mounted() {
       this.fetchData();
-//      if ((this.$route.query.auth * 1 === 1)) {
-//        this.withdraw();
-//      }
+      if ((this.$route.query.auth * 1 === 1)) {
+        this.withdraw();
+      }
     }
   }
 </script>
