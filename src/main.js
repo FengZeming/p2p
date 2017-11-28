@@ -43,7 +43,8 @@ router.afterEach(route => {
 router.beforeEach((to, from, next) => {
   console.log( ' unionid  '+cookie.get('unionid'))
   if (!cookie.get('unionid') && !config.dev) {
-    location.href = 'http://service.wx.prguanjia.com/home?callback=' + location.href;
+    // http://service.wx.prguanjia.com/redpack/auth?callback=
+    location.href = 'http://service.wx.prguanjia.com/account/auth?callback=' + location.href;
     // window.location.href = 'http://www.baidu.com';
     return;
   }

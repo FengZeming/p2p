@@ -42,8 +42,6 @@
       <img slot="icon-active" src="../assets/images/1.png">
       <span slot="label">脑容量</span>
     </tabbar-item>
-
-
   </tabbar>
 </template>
 <script>

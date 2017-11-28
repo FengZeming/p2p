@@ -41,7 +41,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .itemContainer {
     display: flex;
     flex-direction: row;

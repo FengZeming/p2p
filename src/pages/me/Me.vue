@@ -122,10 +122,11 @@
         if (!this.data.phone) {
           this.showScrollBox = true
         } else {
+          console.log('http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1')
           if (cookie.get('fuwu_openid') || (this.route.query && this.route.query.auth * 1 === 1)) {
-
+//            this.withdraw();
           } else {
-            location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
+//            location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
           }
         }
       },
@@ -204,9 +205,9 @@
     },
     mounted() {
       this.fetchData();
-      if ((this.$route.query.auth * 1 === 1)) {
-        this.withdraw();
-      }
+//      if ((this.$route.query.auth * 1 === 1)) {
+//        this.withdraw();
+//      }
     }
   }
 </script>
