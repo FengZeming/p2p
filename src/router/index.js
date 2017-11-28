@@ -26,7 +26,7 @@ import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
 Vue.use(Router);
 export default new Router({
   mode: 'history',
-  base: '/',
+  base: '/p2p',
   saveScrollPosition: true,
   routes: [
     {
@@ -40,8 +40,7 @@ export default new Router({
     {
       path: '/home',
       name: '前100排名',
-      component: Home
-      ,
+      component: Home,
       meta: {
         keepAlive: true
       }
