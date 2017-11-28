@@ -65,7 +65,7 @@
           this.$vux.toast.show({text: '手机号有误', type: 'text'});
           return;
         }
-        fetch('http://tservice.prguanjia.com/account/sendAuthCode', {
+        fetch('http://service.wx.prguanjia.com/account/sendAuthCode', {
           type: 'post',
           params: {phone: this.phone, state: 2}
         })
