@@ -2,7 +2,7 @@
   <div style="flex:1; ;margin-bottom: 50px;">
 
     <me-header-cell :message="data" @btnClick="showDialog"></me-header-cell>
-    <me-wealth-cell :message="data" style="margin-top: 5px;"></me-wealth-cell>
+    <me-wealth-cell :message="data" style="margin-top: 5px;" @doExchange="showDialog2"></me-wealth-cell>
     <divider-onepx></divider-onepx>
     <divider :message="{height:'15px'}"></divider>
     <divider-onepx></divider-onepx>
@@ -27,13 +27,13 @@
         ></me-dialog-score-exchange>
       </x-dialog>
     </div>
-    <div @click="showDialog2"
-         style="width: 60px;height: 22px;background-color: white; position: fixed;top: 150px;right: 0px;
-      display: flex;justify-content: center;align-items: center;
-      border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">
-      <img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">
-      <p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>
-    </div>
+    <!--<div @click="showDialog2"-->
+         <!--style="width: 60px;height: 22px;background-color: white; position: fixed;top: 150px;right: 0px;-->
+      <!--display: flex;justify-content: center;align-items: center;-->
+      <!--border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">-->
+      <!--<img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">-->
+      <!--<p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>-->
+    <!--</div>-->
   </div>
 
 </template>

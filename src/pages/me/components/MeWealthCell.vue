@@ -1,5 +1,6 @@
 <template>
-  <div style="display: flex;width: 100%;background-color: white;height: 100px;justify-content: center;align-items: center;">
+  <div
+    style="display: flex;width: 100%;background-color: white;height: 100px;justify-content: center;align-items: center;">
     <div style="display: flex;flex-direction: column;flex: 1;align-items: flex-start;padding: 12px;"
          @click="onClick(true)"
     >
@@ -9,10 +10,21 @@
         <p>明细</p>
       </div>
     </div>
-    <div style="display: flex;flex-direction: column;flex: 1;align-items: flex-start;padding: 12px;"
-         @click="onClick(false)"
-    >
-      <p style="color:#999;font-size: 13px;">金币&nbsp;(个)</p>
+    <div style="display: flex;flex-direction: column;flex: 1;align-items: flex-start;padding: 12px; padding-right: 0px;"
+         @click="onClick(false)">
+      <div style="display: flex; width: 100%;">
+        <p style="color:#999;font-size: 13px;">金币&nbsp;(个)</p>
+        <i style="flex: 1;"> </i>
+        <div @click="onExchange"
+             style="width: 60px;height: 22px;background-color: white;
+      display: flex;justify-content: center;align-items: center;
+      border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">
+          <img src="../.././../assets/images/user/gift.png" alt=" "
+               style="align-self: center; width:15px; height:15px; ">
+          <p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>
+        </div>
+      </div>
+
       <div style="margin-top: 13px; display: flex; align-items: flex-end;">
         <p style="font-size: 23px;color: #333;line-height: 22px;">{{message.mycoin}}</p>
         <p>明细</p>
@@ -34,6 +46,10 @@
     methods: {
       onClick(type) {
         this.$router.push({path: '/incomeDetail', query: {message: this.message, type: type}})
+      },
+      onExchange(ev) {
+        this.$emit('doExchange');
+        ev.cancelBubble = true;
       }
     }
   }
