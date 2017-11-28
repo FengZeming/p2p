@@ -28,11 +28,11 @@
       </x-dialog>
     </div>
     <!--<div @click="showDialog2"-->
-         <!--style="width: 60px;height: 22px;background-color: white; position: fixed;top: 150px;right: 0px;-->
-      <!--display: flex;justify-content: center;align-items: center;-->
-      <!--border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">-->
-      <!--<img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">-->
-      <!--<p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>-->
+    <!--style="width: 60px;height: 22px;background-color: white; position: fixed;top: 150px;right: 0px;-->
+    <!--display: flex;justify-content: center;align-items: center;-->
+    <!--border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">-->
+    <!--<img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">-->
+    <!--<p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>-->
     <!--</div>-->
   </div>
 
@@ -83,16 +83,20 @@
           mywallet: 0,
           nickname: "聪",
           withdrawable: 0,
-          address: "北京怀柔",
-          phone: "18857408796",
-          postcode: "10001",
-          realname: "whc",
+          address: "",
+          phone: "",
+          postcode: "",
+          realname: "",
         }
       }
     },
     methods: {
       showDialog() {
-        this.showScrollBox = true
+        if (!this.data.phone) {
+          this.showScrollBox = true
+        } else {
+
+        }
       },
       showDialog2() {
         this.showScrollBox2 = true
@@ -102,7 +106,7 @@
       },
       scoreExchage() {
         this.showScrollBox2 = false;
-        this.$router.push({path: '/scoreDeclare',query:{pageType:true}});
+        this.$router.push({path: '/scoreDeclare', query: {pageType: true}});
       },
       exchangeScore(coins) {
         let url = 'http://tservice.prguanjia.com/account/exchange';
