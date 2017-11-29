@@ -27,7 +27,6 @@
         <detail-review-cell :message='item'></detail-review-cell>
         <divider :message="{height:'5px'}"></divider>
       </div>
-      <div style="width: 38px;height: 100%;"></div>
 
       <div style="display:flex; position: fixed;bottom:0; height: 38px;width: 100%;background-color: #0e67d6;">
         <p @click="showCover" :to="{path:''}">投资咨询</p>

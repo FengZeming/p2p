@@ -26,12 +26,12 @@
           {
             title: '每日签到',
             icon: require('../../../assets/images/签到.png'),
-            url: 'http://service.wx.prguanjia.com/check/index.html'
+            url: 'http://game.prguanjia.com/check/index.html'
           },
           {
             title: '网贷评测',
             icon: require('../../../assets/images/评测.png'),
-            url: 'http://service.wx.prguanjia.com/investtest/result.html'
+            url: 'http://game.prguanjia.com/investtest/result.html'
           },
           {title: '会员福利', icon: require('../../../assets/images/会员福利.png'), path: ''},
           {title: '我的账本', icon: require('../../../assets/images/记账本.png')},

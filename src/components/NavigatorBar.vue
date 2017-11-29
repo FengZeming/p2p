@@ -20,10 +20,10 @@
       <i slot="icon" class="icon iconfont icon-wxbzhanghu"></i>
       <span slot="label">我的</span>
     </tabbar-item>
-    <tabbar-item :link="{path:'/iframe'}" :selected="routePath =='/iframe'" v-if="isP2p(routePath)">
-      <i slot="icon" class="icon iconfont icon-iconfontxingxing"></i>
-      <span slot="label">我的</span>
-    </tabbar-item>
+    <!--<tabbar-item :link="{path:'/iframe'}" :selected="routePath =='/iframe'" v-if="isP2p(routePath)">-->
+      <!--<i slot="icon" class="icon iconfont icon-iconfontxingxing"></i>-->
+      <!--<span slot="label">我的</span>-->
+    <!--</tabbar-item>-->
 
     <tabbar-item :link="{path:'/sign'}" :selected="routePath =='/sign'" v-if="isSign(routePath)">
       <img slot="icon" src="../assets/images/11.png">

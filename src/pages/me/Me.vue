@@ -121,7 +121,6 @@
         })
       },
       showDialog() {
-        console.log(cookie.get('fuwu_openid'));
         if (!this.data.phone) {
           this.showScrollBox = true
         } else if (this.data.mycoin < 10) {
@@ -210,7 +209,7 @@
     },
     mounted() {
       this.fetchData();
-      if ((this.$route.query.auth * 1 === 1)) {
+      if ((this.$route.query.auth * 1 === 1&& cookie.get('fuwu_openid') )) {
         this.withdraw();
       }
     }
