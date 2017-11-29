@@ -20,7 +20,7 @@
 
       <button class="calc" @click="minus" :disabled="minusStatus" style="text-align: center;display: block;">一</button>
       <div style=" display:flex;flex: 1;justify-content: center;align-self: center;">
-        <input type="number" v-model="score">
+        <input type="number" v-model="score" autofocus @blur="onBlur()">
         <span class="score">积分</span>
       </div>
       <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add"
@@ -46,13 +46,14 @@
 
         <div
           style="width: 100%;display: flex; height: 32px;flex-direction: row;margin-top: 18px;margin-bottom: 45px;">
-          <div style="display: flex;flex: 1;">
-            <x-button mini type="primary" style="width: 120px;color: white;height: 32px" @click.native="doExchange">确定
-            </x-button>
-          </div>
+
           <div style="flex: 1;display: flex;">
             <x-button mini style="width: 120px;height: 32px;background-color: #999;color: white;"
                       @click.native="doCancle">取消
+            </x-button>
+          </div>
+          <div style="display: flex;flex: 1;">
+            <x-button mini type="primary" style="width: 120px;color: white;height: 32px" @click.native="doExchange">确定
             </x-button>
           </div>
         </div>
@@ -82,13 +83,31 @@
       }
     },
     methods: {
+      onBlur() {
+        if(!this.score){
+          this.score=0;
+        }
+        let tmpScore = parseInt(this.score, 10)
+
+        if (tmpScore < 0) {
+          this.score = 0;
+        }
+        if (this.score && this.score.startsWith(0)&& parseInt(this.score )>0) {
+          this.score = parseInt(this.score)
+        }
+
+        if (this.score>this.message.mycoin){
+          this.score= parseInt(this.message.mycoin*1/100)*100
+        }
+
+      },
       toScoreExchage() {
         this.$emit("onScoreExchage")
       },
       doExchange() {
         if (this.message.mycoin < this.score) {
           this.$vux.toast.show({
-            text: '超过可用金币数量', type: 'text'
+            text: '超过可用积分数量', type: 'text'
           });
           return;
         }

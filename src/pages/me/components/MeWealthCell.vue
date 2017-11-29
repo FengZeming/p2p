@@ -13,7 +13,7 @@
     <div style="display: flex;flex-direction: column;flex: 1;align-items: flex-start;padding: 12px; padding-right: 0px;"
          @click="onClick(false)">
       <div style="display: flex; width: 100%;">
-        <p style="color:#999;font-size: 13px;">金币&nbsp;(个)</p>
+        <p style="color:#999;font-size: 13px;">积分&nbsp;(个)</p>
         <i style="flex: 1;"> </i>
         <div @click="onExchange"
              style="width: 60px;height: 22px;background-color: white;

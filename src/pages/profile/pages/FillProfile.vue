@@ -2,7 +2,7 @@
   <div>
     <group gutter="0">
       <x-input title="姓名" name="username" placeholder="请输入姓名" is-type="china-name" v-model="data.realname"></x-input>
-      <x-input title="手机号码" name="mobile" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile"
+      <x-input title="号码" name="mobile" placeholder="请输入手机号码" keyboard="number" is-type="china-mobile"
                v-model="data.phone"></x-input>
 
       <x-input title="地址" :max="30" placeholder="请输入收货地址" v-model="data.address"></x-input>

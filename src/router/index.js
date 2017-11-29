@@ -103,7 +103,6 @@ export default new Router({
       name: '我的',
       component: Me,
       meta: {
-        keepAlive: true,
         navHidden: false
       }
     },

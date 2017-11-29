@@ -3,11 +3,17 @@
     <scroller
       :on-infinite="loadMore"
     >
-      <div class="contianer" :style="{backgroundImage:'url('+headerBackgroudImage+')'}">
+      <div class="contianer"
+       :style="{backgroundColor:pageType ? '#7c4dff':'#2772ff' }">
+        <div class="contianer" style="flex: 1;margin-top: 30px;background-color: transparent;">
+
         <p><span>{{totalBalance}}</span> 元</p>
-        <p style="font-family: PingFang-SC-Medium,normal; display: flex;align-items: center;margin-top: 5px;" @click="onItemClick">
-          <img style="width: 18px;height: 18px;background-size: 18px 18px;" src="../../../assets/images/user/问号.png"
+        <p style=" display: flex;align-items: center;margin-top: 5px;" @click="onItemClick">
+          <img style="width: 18px;height: 18px;background-size: 18px 18px;"
+               src="../../../assets/images/user/问号.png"
                alt="">&nbsp;{{pageType ? '提现' : '积分'}}规则</p>
+        </div>
+        <img :src="headerBackgroudImage" alt=" " style="width:100%;height: 40px;">
       </div>
 
       <div v-for="sectionItem,sctionIndex in list">
@@ -163,13 +169,14 @@
   .contianer {
     width: 100%;
     height: 160px;
-    background: url('../../../assets/images/user/bg_1.jpg') no-repeat center;
-    background-size: 100% 160px;
+    background-color:#2772ff ;
+    background-size: 100% auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
   }
-
+  /*background: url('../../../assets/images/user/bg_1.jpg') no-repeat center;*/
+  /*:style="{backgroundImage:'url('+headerBackgroudImage+')'}"*/
 </style>

@@ -10,7 +10,7 @@
       <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:'1张待使用'}"></me-cell>
     </router-link>
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
-    <me-cell :message="{icon:require('../../assets/images/钱包.png'),title:'一起赚',warn:'进行中',desc:'现金红包不停发'}"></me-cell>
+    <me-cell :message="{icon:require('../../assets/images/钱包.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
     <divider-onepx></divider-onepx>
     <divider :message="{height:'15px'}"></divider>
     <me-grid-cell></me-grid-cell>
@@ -123,9 +123,8 @@
       showDialog() {
         if (!this.data.phone) {
           this.showScrollBox = true
-        } else if (this.data.mycoin < 10) {
-          this.$vux.toast.show({type:'text',text:'可提现金额不足, 10元起提现'})
-
+        } else if (this.data.mywallet < 10) {
+          this.$vux.toast.show({type:'text',text:'可提现金额不足 10元起提现'})
         } else {
           if (cookie.get('fuwu_openid') && (this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();

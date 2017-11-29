@@ -1,12 +1,14 @@
 <template>
-  <div >
+  <div>
     <grid :cols="2">
       <grid-item v-for="item,index in grid" style="height: 55px;padding: 10px;align-items: center;display: flex;"
                  @on-item-click="onItemClick(item,index)">
         <div style="display: flex;align-items: center;height: 55px;">
           <img :src="itemIcon(item)" v-if="item.icon"
                style="width: 25px;height: 25px;">
-          <p style="color: #333;font-size: 15px; margin-left: 5px;" v-if="item.icon">
+          <p style="font-size: 15px; margin-left: 5px;"
+             :style="{color:themeColor(item)}"
+             v-if="item.icon">
             {{item.title}}
           </p>
         </div>
@@ -21,7 +23,6 @@
   export default {
     data() {
       return {
-
         grid: [
           {
             title: '每日签到',
@@ -34,7 +35,7 @@
             url: 'http://game.prguanjia.com/investtest/result.html'
           },
           {title: '会员福利', icon: require('../../../assets/images/会员福利.png'), path: ''},
-          {title: '我的账本', icon: require('../../../assets/images/记账本.png')},
+          {title: '我的账本', icon: require('../../../assets/images/记账本.png'), disabled: true},
           {title: '我的关注', icon: require('../../../assets/images/关注.png'), path: '/attention'},
           {title: '', icon: ''}
         ]
@@ -45,6 +46,9 @@
       GridItem
     },
     methods: {
+      themeColor(item){
+        return item.disabled?'#999':'#333'
+      },
       itemIcon(item) {
         return item.icon;
       },
@@ -55,6 +59,9 @@
           this.$router.push({path: item.path})
         }
       }
+    },
+    computed:{
+
     }
   }
 </script>
