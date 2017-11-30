@@ -49,6 +49,8 @@
     computed: {},
     mounted() {
       this.getRankList();
+      this.wxShare(this.$wechat,location.href);
+
     },
 
   }

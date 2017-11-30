@@ -213,13 +213,7 @@
         this.withdraw();
       }
 
-      let title = '神奇的百度'; //分享的标题
-      let shareimg = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'; //分享的图片
-      let desc = '神奇的百度'; //分享的描述信息
-      let link =location.href;
-      let url = 'http://service.wx.prguanjia.com/share/setShareData?url='+location.href; //用户要分享的网址
-
-      this.wxShare(this.$wechat,title, desc, link, shareimg, url,);
+      this.wxShare(this.$wechat,location.href);
 
     }
   }

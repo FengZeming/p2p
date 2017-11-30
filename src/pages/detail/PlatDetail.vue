@@ -102,6 +102,8 @@
           this.reviews = response.data;
         }).catch(function (err) {
       })
+      this.wxShare(this.$wechat,location.href);
+
     }
 
   }

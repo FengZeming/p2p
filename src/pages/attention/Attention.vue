@@ -81,6 +81,8 @@
           this.list = resp.data;
         }).catch(function (err) {
       })
+      this.wxShare(this.$wechat,location.href);
+
     }
   }
 

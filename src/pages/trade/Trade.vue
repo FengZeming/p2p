@@ -35,6 +35,8 @@
     },
     mounted() {
       this.refresh();
+      this.wxShare(this.$wechat,location.href);
+
     },
     methods: {
       refresh(done) {
