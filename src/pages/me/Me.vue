@@ -10,7 +10,7 @@
       <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:'1张待使用'}"></me-cell>
     </router-link>
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
-    <me-cell :message="{icon:require('../../assets/images/钱包.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
+    <me-cell :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
     <divider-onepx></divider-onepx>
     <divider :message="{height:'15px'}"></divider>
     <me-grid-cell></me-grid-cell>
@@ -54,6 +54,7 @@
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
 
   import {cookie} from 'vux'
+
 
   export default {
     directives: {
@@ -124,7 +125,7 @@
         if (!this.data.phone) {
           this.showScrollBox = true
         } else if (this.data.mywallet < 10) {
-          this.$vux.toast.show({type:'text',text:'可提现金额不足 10元起提现'})
+          this.$vux.toast.show({type: 'text', text: '可提现金额不足 10元起提现'})
         } else {
           if (cookie.get('fuwu_openid') && (this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();
@@ -208,9 +209,20 @@
     },
     mounted() {
       this.fetchData();
-      if ((this.$route.query.auth * 1 === 1&& cookie.get('fuwu_openid') )) {
+      if ((this.$route.query.auth * 1 === 1 && cookie.get('fuwu_openid') )) {
         this.withdraw();
       }
+
+
+//      console.log(this.wxShare)
+//
+//      var url = 'http://www.baidu.com'; //用户要分享的网址
+//      var title = '神奇的百度'; //分享的标题
+//      var shareimg = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'; //分享的图片
+//      var desc = '神奇的百度'; //分享的描述信息
+//      var link = 'http://www.baidu.com'
+//      this.wxShare(title, desc, link, shareimg, url,);
+
     }
   }
 </script>

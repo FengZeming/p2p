@@ -19,7 +19,6 @@
 </template>
 <script>
   import {Grid, GridItem, GroupTitle} from 'vux'
-
   export default {
     data() {
       return {
@@ -32,10 +31,10 @@
           {
             title: '网贷评测',
             icon: require('../../../assets/images/评测.png'),
-            url: 'http://game.prguanjia.com/investtest/result.html'
+            url: 'http://game.prguanjia.com/investtest/index.html'
           },
           {title: '会员福利', icon: require('../../../assets/images/会员福利.png'), path: ''},
-          {title: '我的账本', icon: require('../../../assets/images/记账本.png'), disabled: true},
+          {title: '我的账本', icon: require('../../../assets/images/user/icon_book.png'), disabled: true},
           {title: '我的关注', icon: require('../../../assets/images/关注.png'), path: '/attention'},
           {title: '', icon: ''}
         ]
