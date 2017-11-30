@@ -10,6 +10,7 @@
              :style="{color:themeColor(item)}"
              v-if="item.icon">
             {{item.title}}
+            <span v-if="item.disabled" style="font-size: 12px;">(建设中)</span>
           </p>
         </div>
       </grid-item>
@@ -29,7 +30,7 @@
             url: 'http://game.prguanjia.com/check/index.html'
           },
           {
-            title: '网贷评测',
+            title: '投资人评测',
             icon: require('../../../assets/images/评测.png'),
             url: 'http://game.prguanjia.com/investtest/index.html'
           },

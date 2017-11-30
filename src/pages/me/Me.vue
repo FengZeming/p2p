@@ -213,15 +213,13 @@
         this.withdraw();
       }
 
+      let title = '神奇的百度'; //分享的标题
+      let shareimg = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'; //分享的图片
+      let desc = '神奇的百度'; //分享的描述信息
+      let link =location.href;
+      let url = 'http://service.wx.prguanjia.com/share/setShareData?url='+location.href; //用户要分享的网址
 
-//      console.log(this.wxShare)
-//
-//      var url = 'http://www.baidu.com'; //用户要分享的网址
-//      var title = '神奇的百度'; //分享的标题
-//      var shareimg = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/logo_white_fe6da1ec.png'; //分享的图片
-//      var desc = '神奇的百度'; //分享的描述信息
-//      var link = 'http://www.baidu.com'
-//      this.wxShare(title, desc, link, shareimg, url,);
+      this.wxShare(this.$wechat,title, desc, link, shareimg, url,);
 
     }
   }
