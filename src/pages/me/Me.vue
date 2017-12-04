@@ -13,7 +13,7 @@
     <me-cell :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
     <divider-onepx></divider-onepx>
     <divider :message="{height:'15px'}"></divider>
-    <me-grid-cell></me-grid-cell>
+    <me-grid-cell :message="data.welfareData"></me-grid-cell>
 
     <div v-transfer-dom>
       <x-dialog v-model="showScrollBox" class="dialog-demo" hide-on-blur>
@@ -54,8 +54,6 @@
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
 
   import {cookie} from 'vux'
-
-
   export default {
     directives: {
       TransferDom
@@ -90,6 +88,7 @@
           phone: "",
           postcode: "",
           realname: "",
+          welfareData:[]
         }
       }
     },
