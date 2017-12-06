@@ -31,7 +31,7 @@
       <!--</div>-->
       <!--</div>-->
       <div v-for=" item,index in reviews">
-        <detail-review-cell :message='item'></detail-review-cell>
+        <detail-review-cell :message='item' ></detail-review-cell>
         <divider :message="{height:'5px'}"></divider>
       </div>
 
@@ -106,7 +106,7 @@
           this.detail = response.data;
         }).catch(function (err) {
       });
-      fetch('/table/evaluationListGet', {type: 'post', params: {'platid': this.$route.query.platid}})
+      fetch('http://service.wx.prguanjia.com/account/evaluationListGet', {type: 'post', params: {'platid': this.$route.query.platid}})
         .then((response) => {
           this.reviews = response.data;
         }).catch(function (err) {

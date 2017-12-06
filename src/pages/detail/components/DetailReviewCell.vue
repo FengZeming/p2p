@@ -67,7 +67,7 @@
         return this.message.avatarurl;
       },
       zan() {
-        return require(this.item.like ? '../../../assets/images/praised.png' : '../../../assets/images/unpraised.png');
+        return require(this.item.ilike ? '../../../assets/images/praised.png' : '../../../assets/images/unpraised.png');
       }
     },
     mounted() {
