@@ -5,7 +5,8 @@
 
       <div
         style="   display: flex;justify-content: center;align-items: center; width: 100%;height: 100%;flex-direction: column;">
-        <img @click.stop="onQrcodeClick" :src="detail.qrcode ? detail.qrcode:require('../../assets/images/qrcode.jpg')" alt=" ">
+        <img @click.stop="onQrcodeClick" :src="detail.qrcode ? detail.qrcode:require('../../assets/images/qrcode.jpg')"
+             alt=" ">
         <div class="consult" style="height: 100px;">投资咨询请添加微信<br>
           licaishi1122或licaishi1123
         </div>
@@ -31,7 +32,7 @@
       <!--</div>-->
       <!--</div>-->
       <div v-for=" item,index in reviews">
-        <detail-review-cell :message='item' ></detail-review-cell>
+        <detail-review-cell :message='item' @onZan="loadReviewData"></detail-review-cell>
         <divider :message="{height:'5px'}"></divider>
       </div>
 
@@ -80,16 +81,30 @@
         this.coverShow = ''
       },
       onQrcodeClick() {
-
       },
       attention() {
         fetch('http://tservice.prguanjia.com/account/follow', {
           type: 'post',
           params: {platid: this.$route.query.platid, type: 1}
-        }).then( (respones) =>{
-          this.$vux.toast.show({text: respones.result?'关注失败':'关注成功', type: 'text'});
+        }).then((respones) => {
+          this.$vux.toast.show({text: respones.result ? '关注失败' : '关注成功', type: 'text'});
         }).catch(function (err) {
           console.log(err)
+        })
+      },
+      loadData() {
+        fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.platid}})
+          .then((response) => {
+            this.detail = response.data;
+          }).catch(function (err) {
+        });
+       this.loadReviewData()
+      },
+      loadReviewData(){
+        fetch('http://service.wx.prguanjia.com/account/evaluationListGet', {type: 'post', params: {'platid': this.$route.query.platid}})
+          .then((response) => {
+            this.reviews = response.data;
+          }).catch(function (err) {
         })
       }
     },
@@ -101,16 +116,7 @@
       }
     },
     mounted() {
-      fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.platid}})
-        .then((response) => {
-          this.detail = response.data;
-        }).catch(function (err) {
-      });
-      fetch('http://service.wx.prguanjia.com/account/evaluationListGet', {type: 'post', params: {'platid': this.$route.query.platid}})
-        .then((response) => {
-          this.reviews = response.data;
-        }).catch(function (err) {
-      })
+      this.loadData()
       this.wxShare(this.$wechat, location.href);
     }
 

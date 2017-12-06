@@ -53,7 +53,7 @@
       doStar() {
         fetch('http://tservice.prguanjia.com/account/evaluationLike', {type: 'post', params: {eid: this.message.eid, like: 1}})
           .then(res => {
-
+            this.$emit('onZan')
           }).catch(err => {
 
         })
