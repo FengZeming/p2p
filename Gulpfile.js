@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var sftp=require('gulp-sftp')
 var ssh=require('gulp-ssh')
+var tiny = require('gulp-tinypng-nokey');
 
 var config = require('./ftpconfig.js')
 
-//上传到远程服务器任务
 gulp.task('upload-test', function () {
   return gulp.src('/Users/guider/Documents/vue/p2p/dist/**')
     .pipe(sftp({
@@ -16,7 +16,6 @@ gulp.task('upload-test', function () {
     }));
 });
 
-//上传到远程服务器任务
 gulp.task('upload', function () {
   return gulp.src('/Users/guider/Documents/vue/p2p/dist/**')
     .pipe(sftp({
@@ -28,7 +27,6 @@ gulp.task('upload', function () {
     }));
 });
 
-//上传到远程服务器任务
 gulp.task('upload-aliyun', function () {
   return gulp.src('/Users/guider/Documents/vue/p2p/dist/**')
     .pipe(sftp({
@@ -39,9 +37,6 @@ gulp.task('upload-aliyun', function () {
       remotePath: config.aliyun_sftp.remotePath
     }));
 });
-
-
-var tiny = require('gulp-tinypng-nokey');
 
 gulp.task('tinypng', function(cb) {
   gulp.src('src/assets/**')

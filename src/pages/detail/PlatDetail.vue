@@ -1,9 +1,16 @@
 <template>
   <div>
     <div @click="hideCover" :style="{display:coverShow}"
-         style="background-color: rgba(0,0,0,0.8);width: 100%;height: 100%;z-index: 1; position: fixed;">
-      <p>投资咨询请添加微信<br>
-        licaishi1122或licaishi1123</p>
+         style="background-color: rgba(0,0,0,0.8);width: 100%;height: 100%;z-index: 1; position: fixed; ">
+
+      <div
+        style="   display: flex;justify-content: center;align-items: center; width: 100%;height: 100%;flex-direction: column;">
+        <img @click.stop="onQrcodeClick" :src="detail.qrcode ? detail.qrcode:require('../../assets/images/qrcode.jpg')" alt=" ">
+        <div class="consult" style="height: 100px;">投资咨询请添加微信<br>
+          licaishi1122或licaishi1123
+        </div>
+      </div>
+
     </div>
     <div style="width: 100%;height: 100%; margin-bottom: 44px;">
       <!--<div v-for="item,index in detail">-->
@@ -72,15 +79,17 @@
       showCover() {
         this.coverShow = ''
       },
+      onQrcodeClick() {
+
+      },
       attention() {
         fetch('http://tservice.prguanjia.com/account/follow', {
           type: 'post',
           params: {platid: this.$route.query.platid, type: 1}
-        }).then(function (respones) {
-          console.log(respones)
-
+        }).then( (respones) =>{
+          this.$vux.toast.show({text: respones.result?'关注失败':'关注成功', type: 'text'});
         }).catch(function (err) {
-            console.log(err)
+          console.log(err)
         })
       }
     },
@@ -102,8 +111,7 @@
           this.reviews = response.data;
         }).catch(function (err) {
       })
-      this.wxShare(this.$wechat,location.href);
-
+      this.wxShare(this.$wechat, location.href);
     }
 
   }
@@ -114,7 +122,6 @@
     height: 100%;
     flex: 1;
     display: flex;
-    font-family: MicrosoftYaHei;
     font-size: 15px;
     font-weight: normal;
     font-stretch: normal;
@@ -125,5 +132,23 @@
     color: #fefefe;
   }
 
+  img {
+    width: 100px;
+    align-content: center;
+    align-items: center;
+    height: 100px;
+
+  }
+
+  .consult {
+    width: 100%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 16px;
+
+  }
 
 </style>

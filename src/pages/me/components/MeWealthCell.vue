@@ -4,7 +4,7 @@
     <div style="display: flex;flex-direction: column;flex: 1;align-items: flex-start;padding: 12px;"
          @click="onClick(true)"
     >
-      <p style="color:#999;font-size: 13px;">金库余额&nbsp;(元)</p>
+      <p style="color:#999;font-size: 13px;">现金余额&nbsp;(元)</p>
       <div style="margin-top: 13px; display: flex; align-items: flex-end;">
         <p style="font-size: 23px;color: #333;line-height: 22px;">{{message.mywallet}}</p>
         <p>明细</p>

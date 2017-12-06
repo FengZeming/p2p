@@ -15,7 +15,7 @@ import VueScroller from 'vue-scroller'
 
 Vue.use(VueScroller);
 import { WechatPlugin } from 'vux'
-Vue.use(WechatPlugin)
+Vue.use(WechatPlugin);
 
 /* ----------- Config ---------- */
 Vue.config.productionTip = !config.dev;
