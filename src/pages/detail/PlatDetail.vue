@@ -16,10 +16,11 @@
     <div style="width: 100%;height: 100%; margin-bottom: 44px;">
       <!--<div v-for="item,index in detail">-->
       <detail-header-cell class="cell" :message='detail'></detail-header-cell>
+      <divider :message="{height:'8px'}"></divider>
       <detail-info-cell :message='detail'></detail-info-cell>
-      <divider></divider>
+      <divider :message="{height:'7px'}"></divider>
       <detail-data-cell :message='detail'></detail-data-cell>
-      <divider></divider>
+      <divider :message="{height:'8px'}"></divider>
       <detail-power-cell :message='detail'></detail-power-cell>
       <divider :message="{height:'5px'}"></divider>
       <router-link :to="{path:'/evaluate',query:detail}">
@@ -33,7 +34,7 @@
       <!--</div>-->
       <div v-for=" item,index in reviews">
         <detail-review-cell :message='item' @onZan="loadReviewData"></detail-review-cell>
-        <divider :message="{height:'5px'}"></divider>
+        <divider :message="{height:'8px'}"></divider>
       </div>
 
       <div style="display:flex; position: fixed;bottom:0; height: 38px;width: 100%;background-color: #0e67d6;">

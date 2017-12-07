@@ -5,7 +5,7 @@
       <p style="color: white; font-size: 24px;">
         {{message.platform}} <span style="color:#ffea00; font-size: 14px; ">{{message.background}}</span>
       </p>
-      <p style="font-size: 14px; color: #b6ccd9;">
+      <p style="font-size: 16px; color: #b6ccd9;">
         正常运营:<span style="font-size: 15px;"> {{message.timeOperation}} </span>
       </p>
     </div>
