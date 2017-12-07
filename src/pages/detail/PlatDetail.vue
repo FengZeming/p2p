@@ -25,7 +25,7 @@
       <router-link :to="{path:'/evaluate',query:detail}">
         <detail-button-cell :message='detail'></detail-button-cell>
       </router-link>
-      <divider :message="{height:'5px'}"></divider>
+      <divider :message="{height:'5px'}" :style="{marginBottom:reviews&& reviews.length>0? 0:(50+'px') }"></divider>
 
       <!--<div>-->
       <!--<qrcode value="https://vux.li?x-page=demo_qrcode" type="img"></qrcode>-->
