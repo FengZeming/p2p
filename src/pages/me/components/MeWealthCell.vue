@@ -57,7 +57,6 @@
 <style scoped>
 
   p + p {
-    font-family: PingFang-SC-Regular;
     font-size: 12px;
     font-weight: normal;
     padding: 2px 5px;

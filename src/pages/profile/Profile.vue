@@ -85,8 +85,9 @@
       },
       onSexChange(sex) {
         this.saveUserInfo({sex: ['保密', '男', '女'].indexOf(this.sex[0])});
-      }, onBirthDayChange() {
-        this.saveUserInfo({birth_day: this.data});
+      },
+      onBirthDayChange() {
+        this.saveUserInfo({birth_day: this.date});
       },
       onChange() {
         this.saveUserInfo({address: this.value});

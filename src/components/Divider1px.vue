@@ -30,7 +30,7 @@
   /*}*/
   /*或者*/
   .background-gradient-1px {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #c8c7cc), to(#c8c7cc)) left bottom repeat-x;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #d8d8d8), to(#d8d8d8)) left bottom repeat-x;
     background-size: 100% 1px;
     height: 1px;
   }
