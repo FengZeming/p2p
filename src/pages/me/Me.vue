@@ -7,10 +7,12 @@
     <divider :message="{height:'15px'}"></divider>
     <divider-onepx></divider-onepx>
     <router-link :to="{path:'/coupons'}">
-      <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:data.withdrawable+'张待使用'}"></me-cell>
+      <me-cell
+        :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:data.coupon_number?'即将过期':'',desc:data.coupon_number+'张待使用'}"></me-cell>
     </router-link>
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
-    <me-cell :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
+    <me-cell
+      :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
     <divider-onepx></divider-onepx>
     <divider :message="{height:'15px'}"></divider>
     <me-grid-cell :message="data.welfareData"></me-grid-cell>
@@ -27,13 +29,24 @@
         ></me-dialog-score-exchange>
       </x-dialog>
     </div>
-    <!--<div @click="showDialog2"-->
-    <!--style="width: 60px;height: 22px;background-color: white; position: fixed;top: 150px;right: 0px;-->
-    <!--display: flex;justify-content: center;align-items: center;-->
-    <!--border: solid 1px #2772ff;border-radius: 12px 0px 0px 12px">-->
-    <!--<img src="../../assets/images/user/gift.png" alt=" " style="align-self: center; width:15px; height:15px; ">-->
-    <!--<p style="color: #2772ff;font-size: 13px; margin-left: 3px;align-self: center;">兑换</p>-->
-    <!--</div>-->
+
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showWarnBox" class="dialog-demo" hide-on-blur>
+        <me-dialog-warn ref="box" :message="data"
+                        @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
+        ></me-dialog-warn>
+      </x-dialog>
+    </div>
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showWarnBox2" class="dialog-demo" hide-on-blur>
+        <me-dialog-warn2 ref="box" :message="data"
+                         @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
+        ></me-dialog-warn2>
+      </x-dialog>
+    </div>
+
   </div>
 
 </template>
@@ -50,10 +63,12 @@
   import DividerVerticalOnepx from '../../components/DividerVertical1px'
   import MeDialogScoreExchange from './components/MeDialogScoreExchange.vue'
   import MeDialogScoreBindPhone from './components/MeDialogScoreBindPhone.vue'
+  import MeDialogWarn from './components/MeDialogWarn.vue'
+  import MeDialogWarn2 from './components/MeDialogWarn2.vue'
 
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
-
   import {cookie} from 'vux'
+
   export default {
     directives: {
       TransferDom
@@ -72,13 +87,18 @@
       XInput,
       DividerVerticalOnepx,
       MeDialogScoreBindPhone,
-      MeDialogScoreExchange
+      MeDialogScoreExchange,
+      MeDialogWarn,
+      MeDialogWarn2
     },
     data() {
       return {
         showScrollBox: false,
         showScrollBox2: false,
+        showWarnBox: false,
+        showWarnBox2: false,
         data: {
+          coupon_number:0,
           headimgurl: '',
           mycoin: 0,
           mywallet: 0,
@@ -88,7 +108,7 @@
           phone: "",
           postcode: "",
           realname: "",
-          welfareData:[]
+          welfareData: []
         }
       }
     },
@@ -100,7 +120,7 @@
         let url = location.protocol + '//service.wx.prguanjia.com/account/withdraw';
         fetch(url).then(res => {
           if (!res.result) {
-            this.p2pWithdrawpost()
+            this.p2pWithdrawpost(res.pbid)
           } else {
             this.$router.push('/withdrawal');
           }
@@ -108,9 +128,9 @@
           this.$router.push('/withdrawal');
         })
       },
-      p2pWithdrawpost() {
+      p2pWithdrawpost(orderId) {
         let url = location.protocol + '//event.prguanjia.com/redpack/p2pWithdrawpost';
-        fetch(url).then(res => {
+        fetch(url,{type:'post',params:{'pbid':orderId}}).then(res => {
           if (!res.result) {
             this.$router.push({path: '/withdrawal', query: {success: true}});
           } else {
@@ -124,9 +144,9 @@
         if (!this.data.phone) {
           this.showScrollBox = true
         } else if (this.data.mywallet < 10) {
-          this.$vux.toast.show({type: 'text', text: '可提现金额不足 10元起提现'})
+          this.showWarnBox = true;
         } else {
-          if (cookie.get('fuwu_openid') && (this.route.query && this.route.query.auth * 1 === 1)) {
+          if (cookie.get('fuwu_openid') && (this.route&&this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();
           } else {
             location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
@@ -134,6 +154,10 @@
         }
       },
       showDialog2() {
+        if (this.data.mycoin < 100) {
+          this.showWarnBox2 = true;
+          return;
+        }
         this.showScrollBox2 = true
       },
       cancleScoreExchangeDialog() {
@@ -208,11 +232,11 @@
     },
     mounted() {
       this.fetchData();
-      if ((this.$route.query.auth * 1 === 1 && cookie.get('fuwu_openid') )) {
+      if ((this.$route.query.auth * 1 === 1 && cookie.get('fuwu_openid'))) {
         this.withdraw();
       }
 
-      this.wxShare(this.$wechat,location.href);
+      this.wxShare(this.$wechat, location.href);
 
     }
   }
