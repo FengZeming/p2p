@@ -7,7 +7,7 @@
        :style="{backgroundColor:pageType ? '#7c4dff':'#2772ff' }">
         <div class="contianer" style="flex: 1;margin-top: 30px;background-color: transparent;">
 
-        <p><span>{{totalBalance}}</span> 元</p>
+        <p><span>{{totalBalance}}</span> {{pageType?'元':''}}</p>
         <p style=" display: flex;align-items: center;margin-top: 5px;" @click="onItemClick">
           <img style="width: 18px;height: 18px;background-size: 18px 18px;"
                src="../../../assets/images/user/问号.png"
@@ -148,7 +148,6 @@
 
 <style scoped>
   p {
-    font-family: PingFang-SC-Medium;
     font-size: 18px;
     font-weight: normal;
     font-stretch: normal;
@@ -157,7 +156,6 @@
   }
 
   span {
-    font-family: PingFang-SC-Medium;
     font-size: 50px;
     font-weight: normal;
     font-stretch: normal;

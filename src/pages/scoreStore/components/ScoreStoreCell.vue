@@ -1,11 +1,9 @@
 <template>
   <div style="width: 100%;height: 90px;display: flex;align-items: center;">
     <div style="flex: 1;">
-      <p style="margin-left: 10px;display: flex;color:#1f60db;font-size: 16px;flex: 1;line-height: 30px;
- font-weight: bold;
-">
+      <p style="margin-left: 10px;display: flex;color:#1f60db;font-size: 16px;flex: 1;line-height: 30px;font-weight: bold;">
         {{message.desc}}&nbsp;<span style="color: #333333;font-weight: lighter">+{{message.value}}分</span></p>
-      <p style="font-size: 12px;color: #999;margin-left: 10px;line-height: 20px;">{{message.abstract}}</p>
+      <p style="font-size: 12px;color: #999;margin-left: 10px;line-height: 20px;margin-right: 20px;">{{message.abstract}}</p>
     </div>
     <div
       @click="onClick"

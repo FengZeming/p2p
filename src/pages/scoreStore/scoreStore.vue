@@ -5,19 +5,26 @@
            :style="{backgroundImage:'url('+require('../../assets/images/user/圆角矩形3@2x.png')+')'}"
       >
         <div style="flex: 1;"></div>
-        <p
+        <div
           @click="toDetial"
-          style="align-items: center;flex-direction: column;color: #be4201;font-size: 14px;margin-right: 16px; height: 35px;">
-          <i style="font-size: 20px;">·</i> 明细</p>
+          style="margin-right: 16px; height: 35px;display: flex;justify-content: center;align-items: center;">
+          <span
+            style="font-size: 20px;display: flex;width: 3px;height: 3px;background: #be4201;border: solid 1px #ffffff;border-radius:3px;margin-right: 4px;"></span>
+          <span style="color: #be4201;font-size: 14px;">明细</span>
+        </div>
       </div>
 
       <div style="width: 100%;height: 55px;display: flex;align-items: center;">
 
-        <p style="margin-right:16px; margin-left: 10px;display: flex;color:#666;font-size: 16px;flex: 1;align-items: center;">当前积分&nbsp;
+        <p
+          style="margin-right:16px; margin-left: 10px;display: flex;color:#666;font-size: 16px;flex: 1;align-items: center;">
+          当前积分&nbsp;
           <span style="font-size: 20px;color:#666;display:flex;align-items: center;">{{data.mycoin}}</span>
           <img
-            @click="toDetial"
-            src="../../assets/images/user/组1@2x.png" style="margin-left:6px; width: 13px;height: 13px;align-items: center;justify-self: center;justify-content: center;" alt="">
+            @click="toRule"
+            src="../../assets/images/user/组1@2x.png"
+            style="margin-left:6px; width: 13px;height: 13px;align-items: center;justify-self: center;justify-content: center;"
+            alt="">
         </p>
         <div
           @click="onItemClick"
@@ -57,6 +64,7 @@
   import MeDialogWarn2 from '../me/components/MeDialogWarn2'
 
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
+
   export default {
     directives: {
       TransferDom
@@ -76,11 +84,11 @@
         list: []
       }
     },
-    computed:{
-      data(){
+    computed: {
+      data() {
         return this.$route.query;
       },
-      queryParams(){
+      queryParams() {
         return this.$route.query;
       }
     },
@@ -128,6 +136,9 @@
         this.showScrollBox2 = true
       },
       toDetial() {
+        this.$router.push({path: '/incomeDetail', query: {message: this.queryParams, type: false}})
+      },
+      toRule() {
         this.$router.push({path: '/scoreDeclare', query: {pageType: true}});
       },
       loadData(done) {
@@ -143,7 +154,6 @@
     },
     mounted() {
       this.loadData()
-      console.log(this.$route.query)
     }
   }
 </script>

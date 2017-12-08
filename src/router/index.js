@@ -179,7 +179,7 @@ export default new Router({
       }
     }, {
       path: '/incomeDetail',
-      name: '积分详情',
+      name: '明细',
       component: IncomeDetail,
       meta: {
         keepAlive: false,
