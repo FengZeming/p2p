@@ -14,7 +14,7 @@
       <div style="display: flex;">
         <div @click="goProfile">
           <p class="edit">编辑资料</p>
-          <p v-if="message.is_perfect">未完成</p>
+          <p v-if="!message.is_perfect">未完成</p>
         </div>
         <img class="arraw" :src="require('../../../assets/images/user/icon拷贝@2x.png')" alt=" ">
       </div>
@@ -25,7 +25,7 @@
     <div
       style="display: flex; background-color: rgb(0,62,203);justify-content: center;align-items: center;align-self: center;height: 40px;">
       <p style="color: white;font-size: 16px;padding: 5px; flex: 1;align-self: center;">可提现金额:
-        {{parseInt(message.withdrawable/10) *10}} 元</p>
+        {{message.withdrawable/10}} 元</p>
       <button style="border: none;outline: none;" @click="onClick">提现</button>
     </div>
 

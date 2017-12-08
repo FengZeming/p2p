@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%;">
-    <p style="padding-left: 10px;padding-top: 6px;padding-bottom: 3px;font-size: 13px;color: #999;">平台数据</p>
+    <p style="padding-left: 10px;padding-top: 8px;padding-bottom: 5px;font-size: 13px;color: #999;">平台数据</p>
     <div style="width: 100%;height: 1px;background-color: #f4f4f4;"></div>
 
     <div style="display: flex;flex-direction: row; flex-wrap: wrap;width: 100%; margin-bottom:10px;">

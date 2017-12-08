@@ -7,7 +7,7 @@
     <divider :message="{height:'15px'}"></divider>
     <divider-onepx></divider-onepx>
     <router-link :to="{path:'/coupons'}">
-      <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:'1张待使用'}"></me-cell>
+      <me-cell :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:'即将过期',desc:data.withdrawable+'张待使用'}"></me-cell>
     </router-link>
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
     <me-cell :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
