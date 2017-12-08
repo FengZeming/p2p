@@ -7,8 +7,10 @@
     <divider :message="{height:'10px'}"></divider>
     <!--<divider-onepx></divider-onepx>-->
 
-    <router-link :to="{path:'/task'}">
-      <div class="task"></div>
+    <router-link :to="{path:'/scoreStore',query:this.data}">
+      <div class="task"
+           :style="{backgroundImage:'url('+require('../../assets/images/user/轮播@2x.png')+')'}"
+      ></div>
     </router-link>
     <!--<divider-onepx></divider-onepx>-->
     <divider :message="{height:'10px'}"></divider>
@@ -273,7 +275,6 @@
     width: 100%;
     height: 80px;
     background-size: 100%;
-    background-image: url("../../assets/images/user/轮播@2x.png");
     background-position: 100%;
   }
 </style>

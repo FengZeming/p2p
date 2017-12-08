@@ -18,19 +18,19 @@
 
     <div style="display: flex;margin-left: 30px;margin-right: 30px;">
 
-      <button class="calc" @click="minus" :disabled="minusStatus" style="text-align: center;display: block;">一</button>
+      <!--:disabled="minusStatus"-->
+      <button class="calc" @click="minus" style="text-align: center;display: block;">一</button>
       <div style=" display:flex;flex: 1;justify-content: center;align-self: center;">
         <input type="number" v-model="score" autofocus @blur="onBlur()">
         <span class="score">积分</span>
       </div>
-      <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add"
-              :disabled="addStatus">＋
-      </button>
+      <!--:disabled="addStatus"-->
+      <button class="calc" style="font-size: 18px;text-align: center;display: block;" @click="add">＋</button>
 
     </div>
 
-    <p style="color: #999999; font-size: 10px; text-align: left; margin: 20px 20px 15px 20px;">
-      提示：提现金额以元为单位，须为10的整数倍。</p>
+    <p style="color: #999999; font-size: 12px; text-align: left; margin: 20px 20px 15px 20px;">
+      提示：提现金额以元为单位，须为100的整数倍。</p>
     <div
       style="flex: 1;width: 100%;justify-content: center;align-items: center;align-self: center;flex-direction: column;">
       <div id="arrow"
@@ -84,20 +84,20 @@
     },
     methods: {
       onBlur() {
-        if(!this.score){
-          this.score=0;
+        if (!this.score) {
+          this.score = 0;
         }
         let tmpScore = parseInt(this.score, 10)
 
         if (tmpScore < 0) {
           this.score = 0;
         }
-        if (this.score && this.score.startsWith(0)&& parseInt(this.score )>0) {
+        if (this.score && this.score.startsWith(0) && parseInt(this.score) > 0) {
           this.score = parseInt(this.score)
         }
 
-        if (this.score>this.message.mycoin){
-          this.score= parseInt(this.message.mycoin*1/100)*100
+        if (this.score > this.message.mycoin) {
+          this.score = parseInt(this.message.mycoin * 1 / 100) * 100
         }
 
       },
@@ -130,11 +130,24 @@
         this.$emit("onCancle")
       },
       minus() {
-        if (this.score > 100) {
+        if (this.score <=100) {
+          this.$vux.toast.show({
+            text: '至少兑换100个', type: 'text'
+          });
+          return;
+        }
+        if (this.score >= 100) {
           this.score -= 100;
         }
       },
       add() {
+        if (this.score > this.message.mycoin - 100) {
+          this.$vux.toast.show({
+            text: '超过可用积分数量', type: 'text'
+          });
+          return;
+        }
+
         this.score += 100;
 
         if (this.score < this.message.mycoin - 100) {

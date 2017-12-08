@@ -22,6 +22,7 @@ import FillPhone from '../pages/profile/pages/FillPhone.vue'
 import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
 import Withdrawal from '../pages/me/pages/Withdrawal.vue'
 import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
+import ScoreStore from '../pages/scoreStore/scoreStore'
 
 Vue.use(Router);
 export default new Router({
@@ -184,15 +185,17 @@ export default new Router({
         keepAlive: false,
         navHidden: true
       }
-    }
-
-    , {
+    }, {
       path: '/iframe',
       name: '内嵌',
       component: Iframe,
 
-    }
-    , {
+    }, {
+      path: '/scoreStore',
+      name: '积分商城',
+      component: ScoreStore,
+
+    }, {
       path: '/fillProfile',
       name: '收货地址',
       component: FillProfile,
