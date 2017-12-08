@@ -14,7 +14,7 @@
       <div style="display: flex;">
         <div @click="goProfile">
           <p class="edit">编辑资料</p>
-          <p v-if="!message.is_perfect">未完成</p>
+          <p v-if="">{{message.is_perfect ?'已':'未' }}完成</p>
         </div>
         <img class="arraw" :src="require('../../../assets/images/user/icon拷贝@2x.png')" alt=" ">
       </div>

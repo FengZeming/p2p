@@ -4,7 +4,14 @@
     <me-header-cell :message="data" @btnClick="showDialog"></me-header-cell>
     <me-wealth-cell :message="data" style="margin-top: 5px;" @doExchange="showDialog2"></me-wealth-cell>
     <divider-onepx></divider-onepx>
-    <divider :message="{height:'15px'}"></divider>
+    <divider :message="{height:'10px'}"></divider>
+    <divider-onepx></divider-onepx>
+
+    <router-link :to="{path:'/task'}">
+      <div class="task"></div>
+    </router-link>
+    <divider-onepx></divider-onepx>
+    <divider :message="{height:'10px'}"></divider>
     <divider-onepx></divider-onepx>
     <router-link :to="{path:'/coupons'}">
       <me-cell
@@ -98,7 +105,7 @@
         showWarnBox: false,
         showWarnBox2: false,
         data: {
-          coupon_number:0,
+          coupon_number: 0,
           headimgurl: '',
           mycoin: 0,
           mywallet: 0,
@@ -129,8 +136,8 @@
         })
       },
       p2pWithdrawpost(orderId) {
-        let url = location.protocol + '//event.prguanjia.com/redpack/p2pWithdrawpost';
-        fetch(url,{type:'post',params:{'pbid':orderId}}).then(res => {
+        let url = location.protocol + '//service.wx.prguanjia.com/redpack/p2pWithdrawpost';
+        fetch(url, {type: 'post', params: {'pbid': orderId}}).then(res => {
           if (!res.result) {
             this.$router.push({path: '/withdrawal', query: {success: true}});
           } else {
@@ -146,9 +153,11 @@
         } else if (this.data.mywallet < 10) {
           this.showWarnBox = true;
         } else {
-          if (cookie.get('fuwu_openid') && (this.route&&this.route.query && this.route.query.auth * 1 === 1)) {
+          if (cookie.get('fuwu_openid') && (this.route && this.route.query && this.route.query.auth * 1 === 1)) {
             this.withdraw();
           } else {
+            let tmpUrl = location.href;
+            tmpUrl.replace('?auth=1', '');
             location.href = 'http://service.wx.prguanjia.com/redpack/auth?callback=' + location.href + '?auth=1'
           }
         }
@@ -258,5 +267,13 @@
       width: 100% !important;
       overflow: hidden;
     }
+  }
+
+  .task {
+    width: 100%;
+    height: 80px;
+    background-size: 100%;
+    background-image: url("../../assets/images/user/轮播@2x.png");
+    background-position: 100%;
   }
 </style>

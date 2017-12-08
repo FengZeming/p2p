@@ -2,8 +2,6 @@
   <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 190px;align-items: center;"
        ref="box">
 
-
-
       <img :src="require('../../../assets/images/user/叹号@2x.png')" alt=" "
            style="width: 30px;height: 30px;align-self: center;margin-top: 22px;">
 
