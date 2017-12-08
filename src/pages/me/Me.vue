@@ -3,16 +3,16 @@
 
     <me-header-cell :message="data" @btnClick="showDialog"></me-header-cell>
     <me-wealth-cell :message="data" style="margin-top: 5px;" @doExchange="showDialog2"></me-wealth-cell>
-    <divider-onepx></divider-onepx>
+    <!--<divider-onepx></divider-onepx>-->
     <divider :message="{height:'10px'}"></divider>
-    <divider-onepx></divider-onepx>
+    <!--<divider-onepx></divider-onepx>-->
 
     <router-link :to="{path:'/task'}">
       <div class="task"></div>
     </router-link>
-    <divider-onepx></divider-onepx>
+    <!--<divider-onepx></divider-onepx>-->
     <divider :message="{height:'10px'}"></divider>
-    <divider-onepx></divider-onepx>
+    <!--<divider-onepx></divider-onepx>-->
     <router-link :to="{path:'/coupons'}">
       <me-cell
         :message="{icon:require('../../assets/images/卡券.png'),title:'我的优惠券',warn:data.coupon_number?'即将过期':'',desc:data.coupon_number+'张待使用'}"></me-cell>
@@ -20,7 +20,7 @@
     <divider-onepx :message="{marginLeft:'10px'}"></divider-onepx>
     <me-cell
       :message="{icon:require('../../assets/images/user/icon_wallet.png'),title:'一起赚',desc:'开发中',disabled:true}"></me-cell>
-    <divider-onepx></divider-onepx>
+    <!--<divider-onepx></divider-onepx>-->
     <divider :message="{height:'15px'}"></divider>
     <me-grid-cell :message="data.welfareData"></me-grid-cell>
 
