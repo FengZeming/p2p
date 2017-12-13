@@ -6,9 +6,7 @@
 <script>
   export default {
 
-
     mounted(){
-     console.log( ['1','2'].includes('1'));
 
 
     }

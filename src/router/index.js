@@ -192,7 +192,7 @@ export default new Router({
 
     }, {
       path: '/scoreStore',
-      name: '积分商城',
+      name: '积分活动',
       component: ScoreStore,
 
     }, {

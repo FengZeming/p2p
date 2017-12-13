@@ -64,7 +64,6 @@
     methonds: {},
     computed: {},
     mounted() {
-      console.log(this.$route.query)
     }
   }
 </script>

@@ -147,9 +147,6 @@
           });
           return;
         }
-
-        this.score += 100;
-
         if (this.score < this.message.mycoin - 100) {
           this.score += 100;
         }

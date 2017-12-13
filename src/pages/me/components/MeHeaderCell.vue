@@ -11,7 +11,7 @@
 
       <p style="color: white;font-size: 17px;" @click="goProfile">{{message.nickname}}</p>
       <i style="flex: 1;"></i>
-      <div style="display: flex;">
+      <div style="display: flex;" v-show="false">
         <div @click="goProfile">
           <p class="edit">编辑资料</p>
           <p v-if="">{{message.is_perfect ?'已':'未' }}完成</p>
@@ -48,7 +48,7 @@
     },
     methods: {
       goProfile() {
-        this.$router.push({path: './profile', query: this.message});
+        // this.$router.push({path: './profile', query: this.message});
       },
       onClick() {
         this.$emit('btnClick')

@@ -20,11 +20,10 @@
           style="margin-right:16px; margin-left: 10px;display: flex;color:#666;font-size: 16px;flex: 1;align-items: center;">
           当前积分&nbsp;
           <span style="font-size: 20px;color:#666;display:flex;align-items: center;">{{data.mycoin}}</span>
-          <img
+          <span
             @click="toRule"
-            src="../../assets/images/user/组1@2x.png"
-            style="margin-left:6px; width: 13px;height: 13px;align-items: center;justify-self: center;justify-content: center;"
-            alt="">
+            style="margin-left:6px;align-items: center;justify-self: end;justify-content: end;font-size: 12px;color: #ab3c01;margin-top: 4px;"
+            >说明</span>
         </p>
         <div
           @click="onItemClick"
@@ -154,6 +153,7 @@
     },
     mounted() {
       this.loadData()
+      this.wxShare(this.$wechat, location.href);
     }
   }
 </script>
