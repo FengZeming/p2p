@@ -107,23 +107,36 @@
     },
     computed: {},
     methods: {
+      hasShare() {
+        return !cookie.get(new Date().toLocaleDateString() + 'has_share');
+      },
       eggClass(item) {
         return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
       start(item) {
         if (this.selectedIndex) {
-          return
+          return;
         }
-
-        if (this.data.data.isover) {
-          this.$vux.toast.show({type: 'text', text: '活动已结束'});
-          // return;
-        }
-
+        //
+        // if (this.data.data.isover) {
+        //   this.$vux.toast.show({type: 'text', text: '活动已结束'});
+        //   return;
+        // }
+        //
         if (this.data.data.total - this.data.data.used <= 0) {
           this.$vux.toast.show({type: 'text', text: '今日机会已用完'})
-          // return;
+          return;
         }
+        if(this.data.data.used=this.data.data.total-1 && this.data.data.total  &&!this.hasShare){
+          this.$vux.toast.show({text:'机会已用完 分享+1'})
+          return;
+        }
+        if(this.data.data.used=this.data.data.total-1 && this.data.data.total  &&this.hasShare){
+          this.$vux.toast.show({text:'机会已用完 '})
+          return;
+        }
+
+
 
         this.selectedIndex = item;
         setTimeout(() => {
@@ -185,7 +198,14 @@
           self.$refs.list.scrollTop = 0;
         }
       }, 40);
-      this.wxShare(this.$wechat, location.href);
+      let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';
+      this.wxShare(this.$wechat, location.href, () => {
+        if (this.hasShare) {
+          this.data.data.used--;
+          console.log(' true')
+        }
+        cookie.set(KEY_SHARE, true)
+      });
     }
   }
 </script>
@@ -253,6 +273,7 @@
       overflow: hidden;
     }
   }
+
   .egg {
     width: 84.5px;
     height: 112px;

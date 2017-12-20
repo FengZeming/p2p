@@ -60,8 +60,7 @@ router.beforeEach((to, from, next) => {
 
 //设置微信分享全局函数
 const http = axios;
-Vue.prototype.wxShare = function (wx, url) {
-
+Vue.prototype.wxShare = function (wx, url,callback) {
   let originUrl = url;
   url = 'http://service.wx.prguanjia.com/share/setShareData?url=' + url;
   // this.$wechat,title, desc, link, shareimg,
@@ -78,13 +77,13 @@ Vue.prototype.wxShare = function (wx, url) {
       signature: Data.signature, // 必填，签名，见附录1
       jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-    ready(wx, shareData, originUrl)
+    ready(wx, shareData, originUrl,callback)
   }).catch(err => {
     console.log(err);
   });
 };
 
-function ready(wx, shareData, originUrl) {
+function ready(wx, shareData, originUrl, calllback) {
   wx.ready(() => {
     // 所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，
     // 则可以直接调用，不需要放在ready函数中。
@@ -95,6 +94,9 @@ function ready(wx, shareData, originUrl) {
       imgUrl: shareData.image,// 分享图标
       // 用户确认分享后执行的回调函数
       success: function () {
+        if (calllback) {
+          calllback();
+        }
         console.log('分享成功');
       },
       // 用户取消分享后执行的回调函数
@@ -111,6 +113,9 @@ function ready(wx, shareData, originUrl) {
       // 用户确认分享后执行的回调函数
       success: function () {
         console.log("分享成功");
+        if (calllback) {
+          calllback();
+        }
       },
       // 用户取消分享后执行的回调函数
       cancel: function () {
@@ -120,9 +125,11 @@ function ready(wx, shareData, originUrl) {
     wx.error(function (res) {
       // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，
       // 也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+      console.log(res);//
     });
   });
 }
+
 
 /* eslint-disable no-new */
 new Vue({
