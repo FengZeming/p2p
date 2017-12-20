@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ShuangDan from '../pages/activity/ShuangDan';
+import ShuangDanResult from '../pages/activity/ShuangDanResult';
 
 Vue.use(Router);
 export default new Router({
@@ -19,11 +20,17 @@ export default new Router({
         title: '双旦狂欢',
         navHidden: true,
       }
-    }
-    , {
+    },{
+      path: '/result',
+      name: 'result',
+      component: ShuangDanResult,
+      meta: {
+        title: '领奖',
+        navHidden: true,
+      }
+    }, {
       path: '/*',
-      name: '首页',
-      component: ShuangDan
+      redirect:'/shuangdan'
     }
   ],
 

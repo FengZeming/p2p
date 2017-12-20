@@ -5,8 +5,8 @@
     <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
          style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
          background-repeat: no-repeat;position: fixed;right: 0;"
-         @click="showGiftList"
-    ></div>
+         @click="showGiftList">
+    </div>
 
     <div class="box"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
@@ -117,7 +117,6 @@
         if (this.selectedIndex) {
           return;
         }
-        //
         // if (this.data.data.isover) {
         //   this.$vux.toast.show({type: 'text', text: '活动已结束'});
         //   return;
@@ -138,6 +137,9 @@
 
 
 
+
+
+
         this.selectedIndex = item;
         setTimeout(() => {
           this.selectedIndex = 0;
@@ -145,7 +147,6 @@
         setTimeout(() => {
           fetch('http://tservice.prguanjia.com/xiaoying/draw', {}, true)
             .then(res => {
-
               if (!res.result) {
                 console.log()
                 this.data.data.used = res.data.used;
@@ -153,7 +154,6 @@
                 this.data.data.total = res.data.total;
                 this.data.gift = res.data;
                 this.showGiftDialog = true;
-
               } else {
                 this.$vux.toast.show({type: 'text', text: res.msg})
               }

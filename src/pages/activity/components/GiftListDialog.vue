@@ -3,18 +3,19 @@
        :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/我的奖品@2x.png')+')'}"
        ref="box">
     <div class="listContainer" style="overflow: scroll;">
-      <div v-for="item in list"
+      <div v-for="item in list" @click="onClick(item)"
            style="width: 76vw; height: 24.5vw; background-size: 100%; background-repeat: no-repeat;margin-bottom: 15px;
         display: flex;"
            :style="{backgroundImage:'url('+(itemBg(item))+')'}">
-
         <div style="flex: 173; height: 100%;background-color: transparent;color: white;font-size: 20px;
         display: flex;justify-content: center;align-items: center;padding-top: 10px;">
           ¥&nbsp;{{item.desc}}
         </div>
-        <div style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
+        <div
+          style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
           <p style="color:#333333;font-size: 15px;text-align: left;padding-left: 15px;">{{item.name}}</p>
-          <p style="color: #999;font-size: 12px;margin-top: 5px;text-align: left;padding-left: 15px;">{{item.indate}}-{{item.deadline}}</p>
+          <p style="color: #999;font-size: 12px;margin-top: 5px;text-align: left;padding-left: 15px;">
+            {{item.indate}}-{{item.deadline}}</p>
         </div>
       </div>
 
@@ -68,12 +69,15 @@
       }
     },
     methods: {
-      toRule(pageType) {
+      onClick(item) {
+        if ('0' != item.isexchange) {
+          this.$router.push({name: 'result', params: item})
+        }
       },
-      itemBg(item){
-        if (item.isexchange=='0'){
+      itemBg(item) {
+        if (item.isexchange == '0') {
           return require('../../../assets/images/shuangdan/已使用@2x.png');
-        }else {
+        } else {
           return require('../../../assets/images/shuangdan/未使用@2x.png');
         }
       }
