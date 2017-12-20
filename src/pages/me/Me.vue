@@ -27,12 +27,12 @@
     <me-grid-cell :message="data.welfareData"></me-grid-cell>
 
     <div v-transfer-dom>
-      <x-dialog v-model="showScrollBox" class="dialog-demo" hide-on-blur>
+      <x-dialog v-model="showScrollBox" class="dialog" hide-on-blur>
         <me-dialog-score-bind-phone @onHideDialog="hideDialog"></me-dialog-score-bind-phone>
       </x-dialog>
     </div>
     <div v-transfer-dom>
-      <x-dialog v-model="showScrollBox2" class="dialog-demo" hide-on-blur>
+      <x-dialog v-model="showScrollBox2" class="dialog" hide-on-blur>
         <me-dialog-score-exchange ref="box" :message="data" @onScoreExchage="scoreExchage"
                                   @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
         ></me-dialog-score-exchange>
@@ -41,7 +41,7 @@
 
 
     <div v-transfer-dom>
-      <x-dialog v-model="showWarnBox" class="dialog-demo" hide-on-blur>
+      <x-dialog v-model="showWarnBox" class="dialog" hide-on-blur>
         <me-dialog-warn ref="box" :message="data"
                         @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
         ></me-dialog-warn>
@@ -49,7 +49,7 @@
     </div>
 
     <div v-transfer-dom>
-      <x-dialog v-model="showWarnBox2" class="dialog-demo" hide-on-blur>
+      <x-dialog v-model="showWarnBox2" class="dialog" hide-on-blur>
         <me-dialog-warn2 ref="box" :message="data"
                          @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore"
         ></me-dialog-warn2>
@@ -255,7 +255,7 @@
 
 <style lang="less" scoped>
 
-  .dialog-demo {
+  .dialog {
     .weui-dialog {
       border-radius: 8px;
       padding-bottom: 8px;

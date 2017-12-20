@@ -23,6 +23,7 @@ import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
 import Withdrawal from '../pages/me/pages/Withdrawal.vue'
 import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
 import ScoreStore from '../pages/scoreStore/scoreStore'
+import ShuangDan from '../pages/activity/ShuangDan';
 
 Vue.use(Router);
 export default new Router({
@@ -214,6 +215,14 @@ export default new Router({
       name: '积分规则',
       component: ScoreDeclare,
       meta: {
+        navHidden: true,
+      }
+    }, {
+      path: '/shuangdan',
+      name: 'shuangdan',
+      component: ShuangDan,
+      meta: {
+        title:'双旦狂欢',
         navHidden: true,
       }
     }

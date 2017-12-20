@@ -1,15 +1,12 @@
 <template>
   <div style="justify-content: center;display: flex;align-items: center;
         height: 100%;flex-direction: column;">
-
     <group class="weui-cells_form" style="margin: 10px;">
       <x-input title="验证码" class="weui-cell_vcode">
         <img slot="right" :src="code" class="tianxie_img weui-vcode-img" @click="change" >
       </x-input>
     </group>
-
     <div style="width: 100%;margin-top: 20px;">
-
       <div class="stage">
         <div class="slider" id="slider">
           <div class="label">向右滑动验证</div>
@@ -23,11 +20,7 @@
         </div>
       </div>
     </div>
-
-
   </div>
-
-
 </template>
 <script>
   import verification from 'verification-code';

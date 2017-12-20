@@ -27,7 +27,7 @@ export default {
     desc: "+10分"
   }, {
     title: "完成投资测试",
-    desc: "+50分"
+    desc: "+20分"
   }, {
     title: "使用早知道记账",
     desc: "+100分"
