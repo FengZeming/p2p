@@ -5,62 +5,62 @@
     <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
          style="width: 110px;height: 35px;margin-top: 230px;align-self: flex-end;background-size: 100%;
          background-repeat: no-repeat;"
-        @click="showGiftList"
+         @click="showGiftList"
     ></div>
 
 
-      <div class="box"
-           :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
-        <div v-for=" item,index in 3"  :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
-             :style="{marginLeft:index==1?'18px':'0' , marginRight:index==1?'18px':'0',
-           backgroundImage:'url('+require('../../assets/images/shuangdan/egg0.png')+')'}">
-        </div>
-      </div>
-
-
-      <div class="listContainer"
-           :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
-        <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
-          <p>幸运用户</p>
-          <p>所获奖品</p>
-        </div>
-        <div style="flex: 1;overflow: hidden;margin-bottom: 20px;" ref="list">
-          <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;" ref="child">
-            <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-              <p>{{item.nickname}}</p>
-              <p>{{item.prize}}</p>
-            </div>
-          </div>
-          <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
-            <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-              <p>{{item.nickname}}</p>
-              <p>{{item.prize}}</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="listContainer" style="height: 470px;"
-           :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
-      </div>
-
-      <div v-transfer-dom>
-        <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
-          <gift-list-dialog ref="dialog" :message="data"
-                            @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
-          </gift-list-dialog>
-        </x-dialog>
-      </div>
-
-      <div v-transfer-dom>
-        <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
-          <gift-got-dialog :message="data"
-                           @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
-          </gift-got-dialog>
-        </x-dialog>
+    <div class="box"
+         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
+      <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
+           :style="{marginLeft:index==1?'12px':'0' , marginRight:index==1?'12px':'0',
+           backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
+
+
+    <div class="listContainer"
+         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
+      <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
+        <p>幸运用户</p>
+        <p>所获奖品</p>
+      </div>
+      <div style="flex: 1;overflow: hidden;margin-bottom: 20px;" ref="list">
+        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;" ref="child">
+          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
+            <p>{{item.nickname}}</p>
+            <p>{{item.prize}}</p>
+          </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
+            <p>{{item.nickname}}</p>
+            <p>{{item.prize}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="listContainer" style="height: 470px;"
+         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
+    </div>
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
+        <gift-list-dialog ref="dialog" :message="data"
+                          @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
+        </gift-list-dialog>
+      </x-dialog>
+    </div>
+
+    <div v-transfer-dom>
+      <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
+        <gift-got-dialog ref="dialog" :message="data"
+                         @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
+        </gift-got-dialog>
+      </x-dialog>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -88,33 +88,30 @@
       return {
         showListDialog: false,
         showGiftDialog: false,
-        selectedIndex:false,
+        selectedIndex: false,
         list: [],
         data: {}
       }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
-      eggClass(item){
-        console.log(item)
-       return this.selectedIndex ==item?'egg anim':'egg';
+      eggClass(item) {
+        return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
-      start(item){
-        if (this.selectedIndex){
+      start(item) {
+        if (this.selectedIndex) {
           return
         }
-        this.selectedIndex=item;
+        this.selectedIndex = item;
         // console.log(this.$refs['index'+index]).attr('class','egg anim')
-        setTimeout(()=>{
-          this.selectedIndex=0;
+        setTimeout(() => {
+          this.selectedIndex = 0;
           console.log('end')
-        },2000);
+        }, 3000);
 
       },
-      showGiftList(){
-        this.showListDialog=true;
+      showGiftList() {
+        this.showListDialog = true;
       },
       cancleScoreExchangeDialog() {
 
@@ -136,7 +133,7 @@
       this.getList();
       let self = this;
       setInterval(() => {
-        self.$refs.list.scrollTop ++;
+        self.$refs.list.scrollTop++;
         if (self.$refs.list.scrollTop >= 39 * 25) {
           self.$refs.list.scrollTop = 0;
         }
@@ -211,31 +208,34 @@
   }
 
   .egg {
-    width: 80px;
-    height: 110px;
-    background-size: 100%;
+    width: 84.5px;
+    height: 112px;
+    background-size: 400%;
     background-repeat: no-repeat;
+    /*background-position: 33% 0;*/
+    background-image: url("../../assets/images/shuangdan/gif/egg.png");
+
   }
 
   .anim {
-    animation: run 3s;
+    animation:run 1s steps(1) 0s infinite both;
   }
 
   @keyframes run {
     0% {
-      background-image: url("../../assets/images/shuangdan/gif/egg0.png");
+      background-position: 0 0;
     }
     30% {
-      background-image: url("../../assets/images/shuangdan/gif/egg1.png");
+      background-position: -84.5px 0;
     }
     60% {
-      background-image: url("../../assets/images/shuangdan/gif/egg2.png");
+      background-position: -169px 0;
     }
     90% {
-      background-image: url("../../assets/images/shuangdan/gif/egg3.png");
+      background-position: -253.5px 0 ;
     }
     100% {
-      background-image: url("../../assets/images/shuangdan/gif/egg0.png");
+      background-position: 0 0;
     }
   }
 </style>
