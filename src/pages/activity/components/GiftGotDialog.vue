@@ -12,7 +12,9 @@
   <!--</div>-->
 
   <div style="height: 244px;width: 224px;background-size: 100%;" ref="box"
-       :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/88@2x.png')+')'}"></div>
+       :style="{backgroundImage:'url('+giftImage+')'}"
+       @click="onClick"
+  ></div>
 
 </template>
 
@@ -34,7 +36,13 @@
       return {}
     },
     methods: {
-      toRule(pageType) {
+      onClick() {
+
+      }
+    },
+    computed: {
+      giftImage() {
+        return  require('../../../assets/images/shuangdan/88@2x.png')
       }
     },
     mounted() {
@@ -42,6 +50,7 @@
       this.$refs.box.parentNode.style.width = '224px';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
     }
+
   }
 </script>
 

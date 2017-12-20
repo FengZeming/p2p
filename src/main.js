@@ -25,9 +25,10 @@ Vue.config.productionTip = !config.dev;
 // 省略...
 router.afterEach(route => {
   // 从路由的元信息中获取 title 属性
-  if (route.name) {
-    document.title = route.name;
-
+  // if (route.name) {
+  //   document.title = route.name;
+  if ((route.meta && route.meta.title) || route.name) {
+    document.title = (route.meta && route.meta.title) ? route.meta.title : route.name;
     // 如果是 iOS 设备，则使用如下 hack 的写法实现页面标题的更新
     if (navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
       const hackIframe = document.createElement('iframe')

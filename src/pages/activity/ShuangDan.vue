@@ -3,8 +3,8 @@
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/双旦背景.jpg')+')'}">
 
     <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
-         style="width: 110px;height: 35px;margin-top: 230px;align-self: flex-end;background-size: 100%;
-         background-repeat: no-repeat;"
+         style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
+         background-repeat: no-repeat;position: fixed;right: 0;"
          @click="showGiftList"
     ></div>
 
@@ -37,7 +37,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="listContainer" style="height: 470px;"
@@ -54,7 +53,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
-        <gift-got-dialog ref="dialog" :message="data"
+        <gift-got-dialog ref="dialog" :message="gift"
                          @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
         </gift-got-dialog>
       </x-dialog>
@@ -63,7 +62,7 @@
 </template>
 
 <script>
-  import fetch from '../../../dist/src/api/http'
+  import fetch from '../../api/http.js'
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
   import GiftListDialog from './components/GiftListDialog.vue'
   import GiftGotDialog from './components/GiftGotDialog.vue'
@@ -89,7 +88,21 @@
         showGiftDialog: false,
         selectedIndex: false,
         list: [],
-        data: {}
+        data: {
+          hance: 0,
+          guanzhu: 0,
+          isover: 0,
+          total: 0,
+          used: 0,
+        },
+        gift: {
+          chance: 100,
+          isover: 0,
+          prize: 0,
+          prizeid: "31",
+          total: 100,
+          used: 0
+        }
       }
     },
     computed: {},
@@ -101,12 +114,39 @@
         if (this.selectedIndex) {
           return
         }
+
+        if (this.data.data.isover) {
+          this.$vux.toast.show({type: 'text', text: '活动已结束'});
+          // return;
+        }
+
+        if (this.data.data.total - this.data.data.used <= 0) {
+          this.$vux.toast.show({type: 'text', text: '今日机会已用完'})
+          // return;
+        }
+
         this.selectedIndex = item;
-        // console.log(this.$refs['index'+index]).attr('class','egg anim')
         setTimeout(() => {
           this.selectedIndex = 0;
-          console.log('end')
-        }, 3000);
+        }, 2000);
+        setTimeout(() => {
+          fetch('http://tservice.prguanjia.com/xiaoying/draw', {}, true)
+            .then(res => {
+
+              if (!res.result) {
+                console.log()
+                this.data.data.used = res.data.used;
+                this.data.data.isover = res.data.isover;
+                this.data.data.total = res.data.total;
+                this.data.gift = res.data;
+                this.showGiftDialog = true;
+
+              } else {
+                this.$vux.toast.show({type: 'text', text: res.msg})
+              }
+            }).catch(err => {
+          });
+        }, 1500);
 
       },
       showGiftList() {
@@ -123,8 +163,16 @@
           .then(res => {
             this.list = res.data;
           }).catch(err => {
-
         });
+
+        fetch('http://tservice.prguanjia.com/xiaoying/checkChance')
+          .then(res => {
+            this.data.data = res.data;
+            console.log(this.data.data);
+          }).catch(err => {
+
+        })
+
       }
     },
     mounted() {
@@ -137,6 +185,7 @@
           self.$refs.list.scrollTop = 0;
         }
       }, 40);
+      this.wxShare(this.$wechat, location.href);
     }
   }
 </script>
@@ -156,7 +205,7 @@
   .box {
     width: 90%;
     display: flex;
-    margin-top: 50px;
+    margin-top: 330px;
     height: 170px;
     justify-content: center;
     align-items: center;
@@ -217,7 +266,7 @@
   }
 
   .anim {
-    animation:run 1s steps(1) 0s infinite both;
+    animation: run 1s steps(1) 0s infinite both;
   }
 
   @keyframes run {
@@ -231,7 +280,7 @@
       background-position: -169px 0;
     }
     90% {
-      background-position: -253.5px 0 ;
+      background-position: -253.5px 0;
     }
     100% {
       background-position: 0 0;

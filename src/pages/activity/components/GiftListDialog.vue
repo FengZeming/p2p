@@ -13,14 +13,15 @@
           ¥&nbsp;{{item.desc}}
         </div>
         <div style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
-          <p style="color:#333333;font-size: 14px;">{{item.name}}</p>
-          <p style="color: #999;font-size: 12px;margin-top: 6px;">{{item.indate}}-{{item.deadline}}</p>
-
+          <p style="color:#333333;font-size: 15px;text-align: left;padding-left: 15px;">{{item.name}}</p>
+          <p style="color: #999;font-size: 12px;margin-top: 5px;text-align: left;padding-left: 15px;">{{item.indate}}-{{item.deadline}}</p>
         </div>
       </div>
 
     </div>
 
+
+    <p v-if="!(list&&list.length)" style="width: 100%;height: 100%;text-align: center;">暂无奖品</p>
 
     <!--<div style="width: 100%;height:60%;display: flex;flex-direction: column;align-items: center;-->
     <!--background: #eeeeee;">-->
@@ -84,7 +85,6 @@
       fetch('http://tservice.prguanjia.com/xiaoying/myprize')
         .then(res => {
           this.list = res.data;
-          console.log(res.data);
         }).catch(err => {
 
       })
