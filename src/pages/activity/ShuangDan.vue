@@ -243,7 +243,6 @@
   }
 
   .dialog {
-
     .dialog-title {
       line-height: 30px;
       color: #666;
@@ -254,15 +253,12 @@
       overflow: hidden;
     }
   }
-
   .egg {
     width: 84.5px;
     height: 112px;
     background-size: 400%;
     background-repeat: no-repeat;
-    /*background-position: 33% 0;*/
     background-image: url("../../assets/images/shuangdan/gif/egg.png");
-
   }
 
   .anim {
