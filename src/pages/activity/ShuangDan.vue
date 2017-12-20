@@ -8,7 +8,6 @@
          @click="showGiftList"
     ></div>
 
-
     <div class="box"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
       <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"

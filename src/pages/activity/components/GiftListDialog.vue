@@ -1,11 +1,22 @@
 <template>
-  <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 120vw;align-items: center;"
-       :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/图层4@2x.png')+')'}"
+  <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 126.86vw;align-items: center;"
+       :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/我的奖品@2x.png')+')'}"
        ref="box">
     <div class="listContainer" style="overflow: scroll;">
-      <div v-for="item in 3"
-           style="width: 76vw; height: 23.1vw; background-size: 100%; background-repeat: no-repeat;margin-bottom: 15px;"
-           :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/已使用@2x.png')+')'}">
+      <div v-for="item in list"
+           style="width: 76vw; height: 24.5vw; background-size: 100%; background-repeat: no-repeat;margin-bottom: 15px;
+        display: flex;"
+           :style="{backgroundImage:'url('+(itemBg(item))+')'}">
+
+        <div style="flex: 173; height: 100%;background-color: transparent;color: white;font-size: 20px;
+        display: flex;justify-content: center;align-items: center;padding-top: 10px;">
+          ¥&nbsp;{{item.desc}}
+        </div>
+        <div style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
+          <p style="color:#333333;font-size: 14px;">{{item.name}}</p>
+          <p style="color: #999;font-size: 12px;margin-top: 6px;">{{item.indate}}-{{item.deadline}}</p>
+
+        </div>
       </div>
 
     </div>
@@ -40,6 +51,7 @@
 
   import {XDialog, XButton, Group} from 'vux'
   import DividerOnepx from '../../../components/Divider1px'
+  import fetch from '../../../api/http';
 
   export default {
     props: ['message'],
@@ -50,16 +62,33 @@
       DividerOnepx
     },
     data() {
-      return {}
+      return {
+        list: []
+      }
     },
     methods: {
       toRule(pageType) {
+      },
+      itemBg(item){
+        if (item.isexchange=='0'){
+          return require('../../../assets/images/shuangdan/已使用@2x.png');
+        }else {
+          return require('../../../assets/images/shuangdan/未使用@2x.png');
+        }
       }
     },
     mounted() {
       this.$refs.box.parentNode.style.maxWidth = '90%';
       this.$refs.box.parentNode.style.width = '90%';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
+      fetch('http://tservice.prguanjia.com/xiaoying/myprize')
+        .then(res => {
+          this.list = res.data;
+          console.log(res.data);
+        }).catch(err => {
+
+      })
+
     }
   }
 </script>
