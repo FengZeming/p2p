@@ -7,7 +7,6 @@
          background-repeat: no-repeat;position: fixed;right: 0;"
          @click="showGiftList">
     </div>
-
     <div class="box"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
       <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
@@ -15,7 +14,6 @@
            backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
-
 
     <div class="listContainer"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
@@ -58,9 +56,18 @@
         </gift-got-dialog>
       </x-dialog>
     </div>
+    <div v-transfer-dom>
+      <x-dialog v-model="showWarn" class="dialog" hide-on-blur>
+        <gift-warn-dialog ref="dialog" :message="warn" @onClick="exchangeScore">
+        </gift-warn-dialog>
+      </x-dialog>
+    </div>
 
-    <div class="shareImage" v-if="showQrcode" @click="onBgClick">
-      <img class="qrcode" src="../../../dist/images/qrcode.jpg" alt=" " @click.preventDefault="onQrCodeClick">
+    <div class="shareImage" v-if="showQrcode" @click="onBgClick" style="    align-items: center;">
+      <img class="qrcode" src="../../../dist/images/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
+    </div>
+    <div class="shareImage" v-if="showShare" @click="onBgClick">
+      <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
     </div>
   </div>
 </template>
@@ -70,6 +77,7 @@
   import {XDialog, XButton, Group, XSwitch, TransferDomDirective as TransferDom, XInput} from 'vux'
   import GiftListDialog from './components/GiftListDialog.vue'
   import GiftGotDialog from './components/GiftGotDialog.vue'
+  import GiftWarnDialog from './components/GiftWarnDialog.vue'
   import {cookie} from 'vux'
 
   export default {
@@ -84,14 +92,17 @@
       XSwitch,
       XInput,
       GiftGotDialog,
-      GiftListDialog
+      GiftListDialog,
+      GiftWarnDialog
     },
     data() {
       return {
         showListDialog: false,
         showGiftDialog: false,
         selectedIndex: false,
-        showQrcode:true,
+        showQrcode: false,
+        showShare: false,
+        showWarn: true,
         list: [],
         data: {
           hance: 0,
@@ -107,16 +118,19 @@
           prizeid: "31",
           total: 100,
           used: 0
+        },
+        warn: {
+          state: 0
         }
       }
     },
     computed: {},
     methods: {
-      onQrCodeClick(){
+      onQrCodeClick() {
 
       },
-      onBgClick(){
-        this.showQrcode= false;
+      onBgClick() {
+        this.showQrcode = false;
       },
       hasShare() {
         return !cookie.get(new Date().toLocaleDateString() + 'has_share');
@@ -321,14 +335,18 @@
     position: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 
   .qrcode {
     border: 4px solid #004624;
     width: 112px;
     height: 112px;
-    position: fixed;
+  }
+
+  .share {
+    width: 195px;
+    margin-top: 100px;
+    height: 182px;
   }
 </style>
