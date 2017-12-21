@@ -46,7 +46,6 @@ router.afterEach(route => {
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(' unionid  ' + cookie.get('unionid'))
   if (!cookie.get('unionid') && !config.dev) {
     // http://service.wx.prguanjia.com/redpack/auth?callback=
     location.href = 'http://service.wx.prguanjia.com/account/auth?callback=' + location.href;

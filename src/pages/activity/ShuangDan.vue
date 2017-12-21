@@ -41,7 +41,7 @@
     </div>
 
     <div class="shareImage" v-if="showQrcode" @click="onBgClick" style="    align-items: center;">
-      <img class="qrcode" src="../../../dist/images/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
+      <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
     </div>
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
