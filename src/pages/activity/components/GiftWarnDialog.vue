@@ -37,7 +37,7 @@
     },
     methods: {
       onClick() {
-        this.$router.push({name: 'result', params: this.message})
+        this.$emit('onClick',this.message.state)
       }
     },
     computed: {

@@ -11,7 +11,7 @@ module.exports = {
     port: 4003,
     user: 'root',
     key: 'Imess2016',
-    remotePath: '/opt/prguanjia/prguanjia/web/mobile/p2p/'
+    remotePath: '/opt/prguanjia/prguanjia/web/mobile/activity/'
   },
   aliyun_sftp: {
     host: '47.93.11.12',

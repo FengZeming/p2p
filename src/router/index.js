@@ -6,7 +6,7 @@ import ShuangDanResult from '../pages/activity/ShuangDanResult';
 Vue.use(Router);
 export default new Router({
   mode: 'history',
-  base: '/p2p',
+  base: '/activity',
   saveScrollPosition: true,
   routes: [
     {

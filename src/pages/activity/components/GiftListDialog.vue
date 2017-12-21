@@ -71,6 +71,7 @@
     methods: {
       onClick(item) {
         if ('0' != item.isexchange) {
+          console.log(item)
           this.$router.push({name: 'result', params: item})
         }
       },

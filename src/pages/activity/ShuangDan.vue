@@ -37,28 +37,27 @@
       </div>
     </div>
 
-    <div class="listContainer" style="height: 470px;"
+    <div class="listContainer" style="height: 121vw;"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
     </div>
 
     <div v-transfer-dom>
       <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
         <gift-list-dialog ref="dialog" :message="data"
-                          @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
+                          @onExchange="exchangeScore">
         </gift-list-dialog>
       </x-dialog>
     </div>
 
     <div v-transfer-dom>
       <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
-        <gift-got-dialog ref="dialog" :message="gift"
-                         @onCancle="cancleScoreExchangeDialog" @onExchange="exchangeScore">
+        <gift-got-dialog ref="dialog" :message="gift" @onExchange="exchangeScore">
         </gift-got-dialog>
       </x-dialog>
     </div>
     <div v-transfer-dom>
       <x-dialog v-model="showWarn" class="dialog" hide-on-blur>
-        <gift-warn-dialog ref="dialog" :message="warn" @onClick="exchangeScore">
+        <gift-warn-dialog ref="dialog" :message="warn" @onClick="onWarnDialogItemClick">
         </gift-warn-dialog>
       </x-dialog>
     </div>
@@ -102,7 +101,7 @@
         selectedIndex: false,
         showQrcode: false,
         showShare: false,
-        showWarn: true,
+        showWarn: false,
         list: [],
         data: {
           hance: 0,
@@ -126,6 +125,12 @@
     },
     computed: {},
     methods: {
+      onWarnDialogItemClick(state) {
+        this.showWarn = false;
+        this.showQrcode = state;
+        this.showShare = !state;
+        console.log(state);
+      },
       onQrCodeClick() {
 
       },
@@ -191,9 +196,6 @@
       showGiftList() {
         this.showListDialog = true;
       },
-      cancleScoreExchangeDialog() {
-
-      },
       exchangeScore() {
 
       },
@@ -219,15 +221,18 @@
       this.getList();
       let self = this;
       setInterval(() => {
-        self.$refs.list.scrollTop++;
-        if (self.$refs.list.scrollTop >= 39 * 25) {
-          self.$refs.list.scrollTop = 0;
+        if (self.$refs.list) {
+          self.$refs.list.scrollTop++;
+          if (self.$refs.list.scrollTop >= 39 * 25) {
+            self.$refs.list.scrollTop = 0;
+          }
         }
       }, 40);
       let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';
       this.wxShare(this.$wechat, location.href, () => {
         if (this.hasShare) {
           this.data.data.used--;
+          this.showShare = false;
           console.log(' true')
         }
         cookie.set(KEY_SHARE, true)
@@ -251,7 +256,7 @@
     width: 90%;
     display: flex;
     margin-top: 330px;
-    height: 170px;
+    height: 47.5vw;
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
@@ -262,7 +267,7 @@
   .listContainer {
     width: 90%;
     display: flex;
-    height: 265px;
+    height: 69.3vw;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: 100%;

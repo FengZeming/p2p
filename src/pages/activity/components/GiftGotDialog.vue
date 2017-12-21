@@ -37,6 +37,7 @@
     },
     methods: {
       onClick() {
+        console.log(this.message);
         this.$router.push({name: 'result', params: this.message})
       }
     },

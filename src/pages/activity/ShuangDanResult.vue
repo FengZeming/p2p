@@ -3,14 +3,14 @@
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
     <img :src="image" alt=" "
          style="width: 168px;height: 71px;margin-top: 60px;margin-left: -90px;">
-    <p class="title">第一步：扫码添加微信 <span style="font-weight: bold;">licaishi1122</span></p>
+    <p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>
 
-    <img class="qrcode" src="../../../dist/images/qrcode.jpg" alt="">
+    <img class="qrcode" :src="qrcode" alt="">
 
     <div style="display: flex;margin-right:22px;">
       <p class="title" style="margin-top: 0;display: flex;">第二步：</p>
       <p style="display: inline-block;float: left;font-size: 14px;color: #333;flex: 1;">
-        注册并投资相应金额即可获得！(限即日起至12月20日新注册用户）</p>
+        {{data[type].desc}}</p>
     </div>
     <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
       *本活动奖品由互金每日早知道提供。最终解释权归互金每日
@@ -22,18 +22,41 @@
 
 <script>
   export default {
+    prop: ['message'],
     components: {},
     data() {
-      return {}
+      return {
+        data: {
+          type0: {
+            step1: '第一步：扫码添加微信',
+            wxcode: '',
+            desc: '注册并投资相应金额即可获得！(限即日起至12月20日新注册用户）',
+          },
+          type1: {
+            step1: '第一步：关注公众号',
+            wxcode: '互金每日早知道',
+            desc: '在公众号“互金每日早知道”内回复“领奖”，即可兑奖。',
+          }
+        }
+      }
     },
     methods: {},
     computed: {
+      type(){
+        return 'type0'
+      },
       image() {
         return require('../../assets/images/shuangdan/58yuan.png')
+      },
+      qrcode(){
+        return require('../../assets/images/shuangdan/wxqrcode.jpg');
       }
     },
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
+      console.log(this.$route.params)
+
+
     }
   }
 </script>
