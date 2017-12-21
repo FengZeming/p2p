@@ -107,7 +107,11 @@
         }
       }
     },
-    computed: {},
+    computed: {
+      hasShare() {
+        return (cookie.get(new Date().toLocaleDateString() + 'has_share', false));
+      },
+    },
     methods: {
       onGiftListDialogClick() {
         this.showListDialog = false;
@@ -116,7 +120,7 @@
       onGiftGotDialogClick(showShare) {
         this.showGiftDialog = false;
         this.showListDialog = false;
-        this.showShare=showShare;
+        this.showShare = showShare;
       },
 
       onWarnDialogItemClick(state) {
@@ -131,9 +135,7 @@
         this.showQrcode = false;
         this.showShare = false;
       },
-      hasShare() {
-        return !cookie.get(new Date().toLocaleDateString() + 'has_share');
-      },
+
       eggClass(item) {
         return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
@@ -146,21 +148,26 @@
           this.$vux.toast.show({type: 'text', text: '活动已结束'});
           return;
         }
-        if (this.data.data.total >=4 &&  this.data.data.total <= this.data.data.used) {
+        if ((this.data.data.total >= 4 && this.data.data.total <= this.data.data.used) || this.data.data.used >= 4) {
           this.$vux.toast.show({type: 'text', text: '今日机会已用完, 请明日再来'});
           return;
         }
+        console.log(this.hasShare)
+        console.log(3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare)
         if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
-          this.showShare = true;
+          this.showWarn = true;
+          console.log('showshare')
           return;
         }
         if (4 == this.data.data.total && 3 == this.data.data.used && !this.hasShare) {
-          this.showShare = true;
+          this.showWarn = true;
+          console.log('showshare2')
           return;
         }
 
-        if (2 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
+        if (3 == this.data.data.used && 3 == this.data.data.total &&this.hasShare){
           this.showQrcode = true;
+          console.log('showqrcode')
           return;
         }
 
@@ -212,10 +219,9 @@
 
       let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';
       this.wxShare(this.$wechat, location.href, () => {
-        if (this.hasShare) {
+        if (!this.hasShare) {
           this.data.data.used--;
           this.showShare = false;
-          console.log(' true')
         }
         cookie.set(KEY_SHARE, true)
       });
