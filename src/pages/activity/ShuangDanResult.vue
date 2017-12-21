@@ -42,23 +42,25 @@
     methods: {},
     computed: {
       type() {
-        return 'type' + (this.$route.params && this.$route.params.prize==1 ?'1':'0')
+        return 'type' + (this.$route.query && this.$route.query.prize==1 ?'1':'0')
       },
       image() {
-        return require('../../assets/images/shuangdan/' + (this.$route.params && this.$route.params.prize ? this.$route.params.prize : 2) + 'yuan.png')
+        return require('../../assets/images/shuangdan/' + (this.$route.query && this.$route.query.prize ? this.$route.query.prize : 2) + 'yuan.png')
       },
       qrcode() {
-        console.log(this.$route.params)
-        console.log(this.$route.params.prize == 1)
-        if (this.$route.params.prize == 1) {
+        console.log(this.$route.query)
+        console.log(this.$route.query.prize == 1)
+        if (this.$route.query.prize == 1) {
           return require('../../assets/images/shuangdan/qrcode.jpg');
         } else {
           return require('../../assets/images/shuangdan/wxqrcode.jpg')
         }
       }
     },
+
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
+      console.log('mounted')
     }
   }
 </script>

@@ -71,7 +71,7 @@
       onClick(item) {
         if ('0' == item.isexchange) {
           this.$emit('onClick');
-          this.$router.push({name: 'result', params: item})
+          this.$router.push({path: '/result', query: item})
         }
       },
       itemBg(item) {
