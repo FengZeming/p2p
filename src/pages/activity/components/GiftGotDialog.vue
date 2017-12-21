@@ -37,13 +37,12 @@
     },
     methods: {
       onClick() {
-        console.log(this.message);
         this.$router.push({name: 'result', params: this.message})
       }
     },
     computed: {
       giftImage() {
-        return require('../../../assets/images/shuangdan/88@2x.png')
+        return require('../../../assets/images/shuangdan/' + ((this.message && this.message.prize) ? this.message.prize : 2) + '@2x.png')
       }
     },
     mounted() {

@@ -1,5 +1,5 @@
 <template>
-  <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 126.86vw;align-items: center;"
+  <div class="img-box" style="width: 100%;display: flex;flex-direction: column;height: 114.2vw;align-items: center;"
        :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/我的奖品@2x.png')+')'}"
        ref="box">
     <div class="listContainer" style="overflow: scroll;">
@@ -8,9 +8,7 @@
         display: flex;"
            :style="{backgroundImage:'url('+(itemBg(item))+')'}">
         <div style="flex: 173; height: 100%;background-color: transparent;color: white;font-size: 20px;
-        display: flex;justify-content: center;align-items: center;padding-top: 10px;">
-          ¥&nbsp;{{item.desc}}
-        </div>
+        display: flex;justify-content: center;align-items: center;padding-top: 10px;">{{item.desc}}</div>
         <div
           style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
           <p style="color:#333333;font-size: 15px;text-align: left;padding-left: 15px;">{{item.name}}</p>
@@ -70,16 +68,18 @@
     },
     methods: {
       onClick(item) {
-        if ('0' != item.isexchange) {
+        if ('0' == item.isexchange) {
           console.log(item)
           this.$router.push({name: 'result', params: item})
         }
       },
       itemBg(item) {
-        if (item.isexchange == '0') {
+        if (item.isexchange != '0') {
           return require('../../../assets/images/shuangdan/已使用@2x.png');
-        } else {
+        } else if (item.prize ==1 ){
           return require('../../../assets/images/shuangdan/未使用@2x.png');
+        }else {
+          return require('../../../assets/images/shuangdan/未使用拷贝@2x.png');
         }
       }
     },

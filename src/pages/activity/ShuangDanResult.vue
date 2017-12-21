@@ -42,21 +42,22 @@
     },
     methods: {},
     computed: {
-      type(){
+      type() {
         return 'type0'
       },
       image() {
-        return require('../../assets/images/shuangdan/58yuan.png')
+        return require('../../assets/images/shuangdan/' + (this.$route.params && this.$route.params.prize ? this.$route.params.prize : 2) + 'yuan.png')
       },
-      qrcode(){
-        return require('../../assets/images/shuangdan/wxqrcode.jpg');
+      qrcode() {
+        if (this.$route.params.prize == 1) {
+          return require('../../assets/images/shuangdan/qrcode.jpg');
+        } else {
+          return require('../../assets/images/shuangdan/wxqrcode.jpg')
+        }
       }
     },
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
-      console.log(this.$route.params)
-
-
     }
   }
 </script>
@@ -64,7 +65,7 @@
 <style scoped>
   .container {
     width: 100%;
-    height: 242%;
+    height: 100%;
     flex-direction: column;
     display: flex;
     align-items: center;

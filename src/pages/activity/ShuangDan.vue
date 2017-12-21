@@ -22,8 +22,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
-        <gift-list-dialog ref="dialog" :message="data"
-                          @onExchange="exchangeScore">
+        <gift-list-dialog ref="dialog" :message="data" @onExchange="exchangeScore">
         </gift-list-dialog>
       </x-dialog>
     </div>
@@ -110,7 +109,6 @@
         this.showWarn = false;
         this.showQrcode = state;
         this.showShare = !state;
-        console.log(state);
       },
       onQrCodeClick() {
 
@@ -128,29 +126,30 @@
         if (this.selectedIndex) {
           return;
         }
-        // if (this.data.data.isover) {
-        //   this.$vux.toast.show({type: 'text', text: '活动已结束'});
-        //   return;
-        // }
-        //
+        if (this.data.data.isover) {
+          this.$vux.toast.show({type: 'text', text: '活动已结束'});
+          return;
+        }
         if (this.data.data.total <= this.data.data.used) {
-          this.$vux.toast.show({type: 'text', text: '今日机会已用完'})
+          this.$vux.toast.show({type: 'text', text: '今日机会已用完'});
           return;
         }
         if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 分享+1'})
+          this.$vux.toast.show({text: '机会已用完 分享+1'});
+          this.showShare=true;
           return;
         }
         if (4 == this.data.data.total && 3 == this.data.data.used && !this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 分享+1'})
+          this.$vux.toast.show({text: '机会已用完 分享+1'});
+          this.showShare=true;
           return;
         }
 
         if (2 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 '})
+          this.$vux.toast.show({text: '机会已用完 关注+1'});
+          this.showQrcode=true;
           return;
         }
-
 
         this.selectedIndex = item;
         setTimeout(() => {
@@ -175,13 +174,15 @@
 
       },
       showGiftList() {
+        if (this.selectedIndex) {
+          return;
+        }
         this.showListDialog = true;
       },
       exchangeScore() {
 
       },
       getList() {
-
         fetch('http://tservice.prguanjia.com/egg/checkChance')
           .then(res => {
             this.data.data = res.data;
@@ -300,6 +301,7 @@
       background-position: 0 0;
     }
   }
+
   .shareImage {
     width: 100%;
     height: 100%;
@@ -308,6 +310,7 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
   }
+
   .qrcode {
     border: 4px solid #004624;
     width: 112px;
