@@ -14,28 +14,7 @@
            backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
-
-    <div class="listContainer"
-         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
-      <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
-        <p>幸运用户</p>
-        <p>所获奖品</p>
-      </div>
-      <div style="flex: 1;overflow: hidden;margin-bottom: 20px;" ref="list">
-        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;" ref="child">
-          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-            <p>{{item.nickname}}</p>
-            <p>{{item.prize}}</p>
-          </div>
-        </div>
-        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
-          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-            <p>{{item.nickname}}</p>
-            <p>{{item.prize}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <gift-winners-list></gift-winners-list>
 
     <div class="listContainer" style="height: 121vw;"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
@@ -77,6 +56,7 @@
   import GiftListDialog from './components/GiftListDialog.vue'
   import GiftGotDialog from './components/GiftGotDialog.vue'
   import GiftWarnDialog from './components/GiftWarnDialog.vue'
+  import GiftWinnersList from './components/GiftWinnersList.vue'
   import {cookie} from 'vux'
 
   export default {
@@ -92,7 +72,8 @@
       XInput,
       GiftGotDialog,
       GiftListDialog,
-      GiftWarnDialog
+      GiftWarnDialog,
+      GiftWinnersList
     },
     data() {
       return {
@@ -200,11 +181,6 @@
 
       },
       getList() {
-        fetch('http://tservice.prguanjia.com/xiaoying/luckyDogList')
-          .then(res => {
-            this.list = res.data;
-          }).catch(err => {
-        });
 
         fetch('http://tservice.prguanjia.com/xiaoying/checkChance')
           .then(res => {
@@ -219,15 +195,7 @@
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
       this.getList();
-      let self = this;
-      setInterval(() => {
-        if (self.$refs.list) {
-          self.$refs.list.scrollTop++;
-          if (self.$refs.list.scrollTop >= 39 * 25) {
-            self.$refs.list.scrollTop = 0;
-          }
-        }
-      }, 40);
+
       let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';
       this.wxShare(this.$wechat, location.href, () => {
         if (this.hasShare) {
@@ -309,7 +277,6 @@
     height: 112px;
     background-size: 400%;
     background-repeat: no-repeat;
-    background-image: url("../../assets/images/shuangdan/gif/egg.png");
   }
 
   .anim {
@@ -333,7 +300,6 @@
       background-position: 0 0;
     }
   }
-
   .shareImage {
     width: 100%;
     height: 100%;
@@ -342,7 +308,6 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
   }
-
   .qrcode {
     border: 4px solid #004624;
     width: 112px;
