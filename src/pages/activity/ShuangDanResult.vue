@@ -13,8 +13,7 @@
         {{data[type].desc}}</p>
     </div>
     <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
-      *本活动奖品由互金每日早知道提供。最终解释权归互金每日
-      早知道所有
+      *本活动奖品由互金每日早知道提供。最终解释权归互金每日早知道所有
     </p>
 
   </div>
@@ -83,6 +82,7 @@
   }
 
   .qrcode {
+
     border: 4px solid #004624;
     width: 112px;
     height: 112px;
