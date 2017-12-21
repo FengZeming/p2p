@@ -11,7 +11,7 @@
   <!--</div>-->
   <!--</div>-->
 
-  <div style="height: 244px;width: 224px;background-size: 100%;" ref="box"
+  <div style="height: 244px;width: 224px;background-size: 100%;background-repeat: no-repeat;" ref="box"
        :style="{backgroundImage:'url('+giftImage+')'}"
        @click="onClick"
   ></div>
@@ -37,21 +37,21 @@
     },
     methods: {
       onClick() {
-        this.$emit('onClick');
-        this.$router.push({name: 'result', params: this.message})
+        this.$emit('onClick', (!this.message || !this.message.prize));
+        if ((this.message && this.message.prize)) {
+          this.$router.push({name: 'result', params: this.message})
+        }
       }
     },
     computed: {
       giftImage() {
-        console.log(this.message )
-        return require('../../../assets/images/shuangdan/' + ((this.message && this.message.prize) ? this.message.prize : 2) + '@2x.png')
+        return require('../../../assets/images/shuangdan/' + ((this.message && this.message.prize) ? this.message.prize : '未中奖') + '@2x.png')
       }
     },
     mounted() {
       this.$refs.box.parentNode.style.maxWidth = '224px';
       this.$refs.box.parentNode.style.width = '224px';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
-
     }
 
   }
@@ -84,6 +84,5 @@
     padding-right: 5px;
     padding-left: 5px;
   }
-
 
 </style>

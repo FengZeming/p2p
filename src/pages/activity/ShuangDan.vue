@@ -40,8 +40,12 @@
       </x-dialog>
     </div>
 
-    <div class="shareImage" v-if="showQrcode" @click="onBgClick" style="    align-items: center;">
+    <div class="shareImage" v-if="showQrcode" @click="onBgClick" style=" align-items: center;flex-direction: column;">
       <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
+      <div style="margin-top: 20px;">
+        <!--<p style="flex: 0;color: white;">1. 长按关注公众号 互金每日早知道&nbsp;&nbsp;</p>-->
+        <p style="flex: 0;color: white;margin-top: 10px;">公众号内回复"再来一个"增加一枚金蛋</p>
+      </div>
     </div>
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
@@ -107,9 +111,12 @@
     methods: {
       onGiftListDialogClick() {
         this.showListDialog = false;
-      },
-      onGiftGotDialogClick() {
         this.showGiftDialog = false;
+      },
+      onGiftGotDialogClick(showShare) {
+        this.showGiftDialog = false;
+        this.showListDialog = false;
+        this.showShare=showShare;
       },
 
       onWarnDialogItemClick(state) {
@@ -122,6 +129,7 @@
       },
       onBgClick() {
         this.showQrcode = false;
+        this.showShare = false;
       },
       hasShare() {
         return !cookie.get(new Date().toLocaleDateString() + 'has_share');
@@ -130,6 +138,7 @@
         return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
       start(item) {
+        console.log(this.data.data);
         if (this.selectedIndex) {
           return;
         }
@@ -137,8 +146,8 @@
           this.$vux.toast.show({type: 'text', text: '活动已结束'});
           return;
         }
-        if (this.data.data.total <= this.data.data.used) {
-          this.$vux.toast.show({type: 'text', text: '今日机会已用完'});
+        if (this.data.data.total >=4 &&  this.data.data.total <= this.data.data.used) {
+          this.$vux.toast.show({type: 'text', text: '今日机会已用完, 请明日再来'});
           return;
         }
         if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
@@ -234,7 +243,6 @@
     align-items: center;
     background-repeat: no-repeat;
     background-size: 100%;
-
   }
 
   .listContainer {
@@ -322,6 +330,8 @@
   }
 
   .share {
+
+
     width: 195px;
     margin-top: 100px;
     height: 182px;
