@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import fetch from '../../../../dist/src/api/http'
+  import fetch from '../../../api/http'
   export default {
     components: {},
     data() {
