@@ -42,6 +42,7 @@
     },
     computed: {
       giftImage() {
+        console.log(this.message )
         return require('../../../assets/images/shuangdan/' + ((this.message && this.message.prize) ? this.message.prize : 2) + '@2x.png')
       }
     },
@@ -49,6 +50,7 @@
       this.$refs.box.parentNode.style.maxWidth = '224px';
       this.$refs.box.parentNode.style.width = '224px';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
+
     }
 
   }
