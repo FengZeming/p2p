@@ -170,6 +170,10 @@
           console.log('showqrcode')
           return;
         }
+        if (3 == this.data.data.used && 3 == this.data.data.total && !this.hasShare) {
+          this.showQrcode = true;
+          return;
+        }
 
         this.selectedIndex = item;
         setTimeout(() => {

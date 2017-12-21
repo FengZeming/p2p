@@ -42,12 +42,14 @@
     methods: {},
     computed: {
       type() {
-        return 'type0'
+        return 'type' + (this.$route.params && this.$route.params.prize==1 ?'1':'0')
       },
       image() {
         return require('../../assets/images/shuangdan/' + (this.$route.params && this.$route.params.prize ? this.$route.params.prize : 2) + 'yuan.png')
       },
       qrcode() {
+        console.log(this.$route.params)
+        console.log(this.$route.params.prize == 1)
         if (this.$route.params.prize == 1) {
           return require('../../assets/images/shuangdan/qrcode.jpg');
         } else {
