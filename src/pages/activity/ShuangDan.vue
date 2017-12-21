@@ -58,6 +58,10 @@
         </gift-got-dialog>
       </x-dialog>
     </div>
+
+    <div class="shareImage" v-if="showQrcode" @click="onBgClick">
+      <img class="qrcode" src="../../../dist/images/qrcode.jpg" alt=" " @click.preventDefault="onQrCodeClick">
+    </div>
   </div>
 </template>
 
@@ -87,6 +91,7 @@
         showListDialog: false,
         showGiftDialog: false,
         selectedIndex: false,
+        showQrcode:true,
         list: [],
         data: {
           hance: 0,
@@ -107,6 +112,12 @@
     },
     computed: {},
     methods: {
+      onQrCodeClick(){
+
+      },
+      onBgClick(){
+        this.showQrcode= false;
+      },
       hasShare() {
         return !cookie.get(new Date().toLocaleDateString() + 'has_share');
       },
@@ -122,22 +133,23 @@
         //   return;
         // }
         //
-        if (this.data.data.total - this.data.data.used <= 0) {
+        if (this.data.data.total <= this.data.data.used) {
           this.$vux.toast.show({type: 'text', text: '今日机会已用完'})
           return;
         }
-        if(this.data.data.used=this.data.data.total-1 && this.data.data.total  &&!this.hasShare){
-          this.$vux.toast.show({text:'机会已用完 分享+1'})
+        if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
+          this.$vux.toast.show({text: '机会已用完 分享+1'})
           return;
         }
-        if(this.data.data.used=this.data.data.total-1 && this.data.data.total  &&this.hasShare){
-          this.$vux.toast.show({text:'机会已用完 '})
+        if (4 == this.data.data.total && 3 == this.data.data.used && !this.hasShare) {
+          this.$vux.toast.show({text: '机会已用完 分享+1'})
           return;
         }
 
-
-
-
+        if (2 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
+          this.$vux.toast.show({text: '机会已用完 '})
+          return;
+        }
 
 
         this.selectedIndex = item;
@@ -211,7 +223,6 @@
 </script>
 
 <style lang="less" scoped>
-
   .container {
     width: 100%;
     height: 242%;
@@ -302,5 +313,22 @@
     100% {
       background-position: 0 0;
     }
+  }
+
+  .shareImage {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+  }
+
+  .qrcode {
+    border: 4px solid #004624;
+    width: 112px;
+    height: 112px;
+    position: fixed;
   }
 </style>
