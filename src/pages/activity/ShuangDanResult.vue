@@ -82,7 +82,6 @@
   }
 
   .qrcode {
-
     border: 4px solid #004624;
     width: 112px;
     height: 112px;

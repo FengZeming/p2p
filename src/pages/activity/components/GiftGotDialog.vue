@@ -38,6 +38,7 @@
     methods: {
       onClick() {
         this.$emit('onClick', (!this.message || !this.message.prize));
+        console.log(this.message)
         if ((this.message && this.message.prize)) {
           this.$router.push({name: 'result', params: this.message})
         }

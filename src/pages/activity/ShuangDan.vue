@@ -29,7 +29,7 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
-        <gift-got-dialog ref="dialog" :message="gift" @onClick="onGiftGotDialogClick">
+        <gift-got-dialog ref="dialog" :message="data.gift" @onClick="onGiftGotDialogClick">
         </gift-got-dialog>
       </x-dialog>
     </div>
@@ -95,11 +95,11 @@
           used: 0,
         },
         gift: {
-          chance: 100,
+          chance: 0,
           isover: 0,
           prize: 0,
-          prizeid: "31",
-          total: 100,
+          prizeid: "",
+          total: 0,
           used: 0
         },
         warn: {
@@ -165,7 +165,7 @@
           return;
         }
 
-        if (3 == this.data.data.used && 3 == this.data.data.total &&this.hasShare){
+        if (3 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
           this.showQrcode = true;
           console.log('showqrcode')
           return;
@@ -179,12 +179,19 @@
           fetch('http://tservice.prguanjia.com/egg/draw', {}, true)
             .then(res => {
               if (!res.result) {
-                console.log()
+                console.log(res)
                 this.data.data.used = res.data.used;
                 this.data.data.isover = res.data.isover;
                 this.data.data.total = res.data.total;
+
+                // this.data.gift.chance = res.data.chance;
+                // this.data.gift.isover = res.data.isover;
+                // this.data.gift.prize = res.data.prize;
+                // this.data.gift.prizeid = res.data.prizeid;
                 this.data.gift = res.data;
                 this.showGiftDialog = true;
+                console.log(this.data.gift);
+
               } else {
                 this.$vux.toast.show({type: 'text', text: res.msg})
               }
@@ -336,6 +343,7 @@
   }
 
   .share {
+
     width: 195px;
     margin-top: 100px;
     height: 182px;
