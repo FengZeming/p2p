@@ -22,14 +22,14 @@
 
     <div v-transfer-dom>
       <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
-        <gift-list-dialog ref="dialog" :message="data" @onExchange="exchangeScore">
+        <gift-list-dialog ref="dialog" :message="data" @onClick="onGiftListDialogClick">
         </gift-list-dialog>
       </x-dialog>
     </div>
 
     <div v-transfer-dom>
       <x-dialog v-model="showGiftDialog" class="dialog" hide-on-blur>
-        <gift-got-dialog ref="dialog" :message="gift" @onExchange="exchangeScore">
+        <gift-got-dialog ref="dialog" :message="gift" @onClick="onGiftGotDialogClick">
         </gift-got-dialog>
       </x-dialog>
     </div>
@@ -105,6 +105,13 @@
     },
     computed: {},
     methods: {
+      onGiftListDialogClick() {
+        this.showListDialog = false;
+      },
+      onGiftGotDialogClick() {
+        this.showGiftDialog = false;
+      },
+
       onWarnDialogItemClick(state) {
         this.showWarn = false;
         this.showQrcode = state;
@@ -135,19 +142,16 @@
           return;
         }
         if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 分享+1'});
-          this.showShare=true;
+          this.showShare = true;
           return;
         }
         if (4 == this.data.data.total && 3 == this.data.data.used && !this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 分享+1'});
-          this.showShare=true;
+          this.showShare = true;
           return;
         }
 
         if (2 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
-          this.$vux.toast.show({text: '机会已用完 关注+1'});
-          this.showQrcode=true;
+          this.showQrcode = true;
           return;
         }
 

@@ -8,7 +8,8 @@
         display: flex;"
            :style="{backgroundImage:'url('+(itemBg(item))+')'}">
         <div style="flex: 173; height: 100%;background-color: transparent;color: white;font-size: 20px;
-        display: flex;justify-content: center;align-items: center;padding-top: 10px;">{{item.desc}}</div>
+        display: flex;justify-content: center;align-items: center;padding-top: 10px;">{{item.desc}}
+        </div>
         <div
           style="flex: 393; height: 100%;background: transparent;display: flex;flex-direction: column;justify-content: center;">
           <p style="color:#333333;font-size: 15px;text-align: left;padding-left: 15px;">{{item.name}}</p>
@@ -69,16 +70,16 @@
     methods: {
       onClick(item) {
         if ('0' == item.isexchange) {
-          console.log(item)
+          this.$emit('onClick');
           this.$router.push({name: 'result', params: item})
         }
       },
       itemBg(item) {
         if (item.isexchange != '0') {
           return require('../../../assets/images/shuangdan/已使用@2x.png');
-        } else if (item.prize ==1 ){
+        } else if (item.prize == 1) {
           return require('../../../assets/images/shuangdan/未使用@2x.png');
-        }else {
+        } else {
           return require('../../../assets/images/shuangdan/未使用拷贝@2x.png');
         }
       }
