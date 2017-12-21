@@ -2,22 +2,27 @@
   <div class='container' ref="container"
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/双旦背景.jpg')+')'}">
 
-
-
-
-    <gift-winners-list style="z-index: 1;"></gift-winners-list>
-
-    <div class="box"
-         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
-      <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
-           :style="{marginLeft:index==1?'12px':'0' , marginRight:index==1?'12px':'0',
-           backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
-      </div>
+    <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
+         style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
+         background-repeat: no-repeat;position: fixed;right: 0;"
+         @click="showGiftList">
     </div>
+
+    <wheel style="margin-top: 330px;"></wheel>
+
+    <!--<div class="box"-->
+    <!--:style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">-->
+    <!--<div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"-->
+    <!--:style="{marginLeft:index==1?'12px':'0' , marginRight:index==1?'12px':'0',-->
+    <!--backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">-->
+    <!--</div>-->
+    <!--</div>-->
+    <gift-winners-list></gift-winners-list>
 
     <div class="listContainer" style="height: 121vw;"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
     </div>
+
 
     <div v-transfer-dom>
       <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
@@ -46,12 +51,6 @@
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
     </div>
-
-    <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
-         style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
-         background-repeat: no-repeat;position: fixed;right: 0;z-index: 9999;"
-         @click="showGiftList">
-    </div>
   </div>
 </template>
 
@@ -62,6 +61,7 @@
   import GiftGotDialog from './components/GiftGotDialog.vue'
   import GiftWarnDialog from './components/GiftWarnDialog.vue'
   import GiftWinnersList from './components/GiftWinnersList.vue'
+  import Wheel from './common/Wheel';
   import {cookie} from 'vux'
 
   export default {
@@ -78,7 +78,8 @@
       GiftGotDialog,
       GiftListDialog,
       GiftWarnDialog,
-      GiftWinnersList
+      GiftWinnersList,
+      Wheel
     },
     data() {
       return {
@@ -305,6 +306,7 @@
       background-position: 0 0;
     }
   }
+
   .shareImage {
     width: 100%;
     height: 100%;
@@ -313,6 +315,7 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
   }
+
   .qrcode {
     border: 4px solid #004624;
     width: 112px;

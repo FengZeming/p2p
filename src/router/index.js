@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ShuangDan from '../pages/activity/ShuangDan';
+import ShuangDanWheel from '../pages/activity/ShuangDanWheel';
 import ShuangDanResult from '../pages/activity/ShuangDanResult';
 
 Vue.use(Router);
@@ -16,6 +17,14 @@ export default new Router({
       path: '/shuangdan',
       name: 'shuangdan',
       component: ShuangDan,
+      meta: {
+        title: '双旦狂欢',
+        navHidden: true,
+      }
+    },{
+      path: '/shuangdanwheel',
+      name: 'shuangdanwheel',
+      component: ShuangDanWheel,
       meta: {
         title: '双旦狂欢',
         navHidden: true,

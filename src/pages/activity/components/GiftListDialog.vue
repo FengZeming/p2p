@@ -87,7 +87,7 @@
       this.$refs.box.parentNode.style.maxWidth = '90%';
       this.$refs.box.parentNode.style.width = '90%';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
-      fetch('http://tservice.prguanjia.com/xiaoying/myprize')
+      fetch('http://tservice.prguanjia.com/egg/myprize')
         .then(res => {
           this.list = res.data;
         }).catch(err => {

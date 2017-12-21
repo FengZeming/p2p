@@ -34,7 +34,7 @@
     methods: {},
     computed: {},
     mounted() {
-      fetch('http://tservice.prguanjia.com/xiaoying/luckyDogList')
+      fetch('http://tservice.prguanjia.com/egg/luckyDogList')
         .then(res => {
           this.list = res.data;
         }).catch(err => {
