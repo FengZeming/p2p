@@ -87,7 +87,7 @@ class Wheel {
           deg: deg,
           mode: mode
       };
-      console.log(this.page.wheel);
+      // console.log(this.page.wheel);
       // console.log(this.page.data.wheel);
 
       // console.log('deg : '+deg);

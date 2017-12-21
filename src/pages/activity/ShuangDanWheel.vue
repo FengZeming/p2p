@@ -61,7 +61,7 @@
   import GiftGotDialog from './components/GiftGotDialog.vue'
   import GiftWarnDialog from './components/GiftWarnDialog.vue'
   import GiftWinnersList from './components/GiftWinnersList.vue'
-  import Wheel from './common/Wheel';
+  import Wheel from './common/whell/Wheel.vue';
   import {cookie} from 'vux'
 
   export default {
@@ -199,7 +199,7 @@
       }
     },
     mounted() {
-      this.$refs.container.parentNode.style.paddingBottom = 0;
+      // this.$refs.container.parentNode.style.paddingBottom = 0;
       this.getList();
 
       let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';

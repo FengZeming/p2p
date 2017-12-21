@@ -1,29 +1,28 @@
 <template>
   <div class="wheel_wp">
     <div v-if="mode == 1">
-      <img src="../../../assets/images/common/dial_bg.png" style="max-width: 100%;max-height: 100%;"
+      <img src="../../../../assets/images/common/dial_bg.png" style="max-width: 100%;max-height: 100%;"
            :style="{transform:'rotate('+deg+'deg)'}"
       />
       <!--style="-webkit-transform:rotate({{deg}}deg) translateZ(0);transform:rotate({{deg}}deg) translateZ(0)"-->
       <div class="wheel_pointer"
            @click="start">
-        <img src="../../../assets/images/common/dial_pointer.png" style="max-height: 100%;max-width: 100%;"/>
+        <img src="../../../../assets/images/common/dial_pointer.png" style="max-height: 100%;max-width: 100%;"/>
       </div>
     </div>
     <div v-if="mode == 2">
       <!--style="-webkit-transform:rotate({{deg}}deg) translateZ(0);transform:rotate({{ deg}}deg) translateZ(0)"-->
-      <img src="../../../assets/images/common/dial_bg.png" style="max-width: 100%;max-height: 100%;"
+      <img src="../../../../assets/images/common/dial_bg.png" style="max-width: 100%;max-height: 100%;"
       />
       <div class="wheel_pointer" @click="start">
-        <img src="../../../assets/images/common/dial_pointer.png" :style="{transform:'rotate('+deg+'deg)'}"
+        <img src="../../../../assets/images/common/dial_pointer.png" :style="{transform:'rotate('+deg+'deg)'}"
              style="max-height: 100%;max-width: 100%;"/>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import wheelutil from "./whell/wheel"
-
+  import wheelutil from "./wheel"
   export default {
     data() {
       return {
@@ -45,8 +44,9 @@
       refresh(data) {
         this.wheel = data;
       }
-    }, mounted() {
-      let self = this
+    },
+    mounted() {
+      let self = this;
       this.wutil = new wheelutil(self, {
         areaNumber: 8,
         speed: 16,

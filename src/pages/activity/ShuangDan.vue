@@ -2,11 +2,11 @@
   <div class='container' ref="container"
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/双旦背景.jpg')+')'}">
 
-
-
-
-    <gift-winners-list style="z-index: 1;"></gift-winners-list>
-
+    <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
+         style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
+         background-repeat: no-repeat;position: fixed;right: 0;"
+         @click="showGiftList">
+    </div>
     <div class="box"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
       <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
@@ -14,6 +14,7 @@
            backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
+    <gift-winners-list></gift-winners-list>
 
     <div class="listContainer" style="height: 121vw;"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
@@ -45,12 +46,6 @@
     </div>
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
-    </div>
-
-    <div :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/我的金蛋@2x.png')+')'}"
-         style="width: 110px;height: 35px;margin-top: 270px;align-self: flex-end;background-size: 100%;
-         background-repeat: no-repeat;position: fixed;right: 0;z-index: 9999;"
-         @click="showGiftList">
     </div>
   </div>
 </template>
