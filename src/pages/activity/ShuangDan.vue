@@ -43,7 +43,7 @@
         </gift-warn-dialog>
       </x-dialog>
     </div>
-    <div class="music anim" @click="musicStart"
+    <div class="music rotateAnim" @click="musicStart"
          :style="{ backgroundImage:'url('+audioBgImage+')'}"
     >
       <audio autoplay="autoplay" loop="loop" ref="audio">
@@ -399,7 +399,7 @@
     right: 30px;
   }
 
-  .anim {
+  .rotateAnim {
     -webkit-animation: play 10s linear infinite;
     -moz-animation: play 10s linear infinite;
     animation: play 10s linear infinite;
