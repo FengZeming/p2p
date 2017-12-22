@@ -136,7 +136,6 @@
     },
     methods: {
       musicStart() {
-        console.log(this.$refs.audio.paused);
         if (!this.$refs.audio.paused) {
           this.$refs.audio.pause()
           this.audioPlaying = false;
@@ -204,6 +203,7 @@
         }
         if (3 == this.data.data.used && 3 == this.data.data.total && !this.hasShare) {
           this.showQrcode = true;
+          console.log('showqrcode')
           return;
         }
 
