@@ -11,7 +11,7 @@
   <!--</div>-->
   <!--</div>-->
 
-  <div style="height: 323px;width: 224px;background-size: 100%;background-repeat: no-repeat;" ref="box"
+  <div style="height: 284px;width: 224px;background-size: 100%;background-repeat: no-repeat;" ref="box"
        :style="{backgroundImage:'url('+giftImage+')'}"
        @click="onClick"
   ></div>
@@ -23,6 +23,7 @@
 
   import {XDialog, XButton, Group} from 'vux'
   import DividerOnepx from '../../../components/Divider1px'
+
   export default {
     props: ['message'],
     components: {
@@ -38,11 +39,14 @@
       onClick() {
         this.$emit('onClick', (!this.message || !this.message.prize));
         if ((this.message && this.message.prize)) {
-          this.$router.push({path:'/result', query: this.message})
+          this.$router.push({path: '/result', query: this.message})
         }
       }
     },
     computed: {
+      giftWidth() {
+        return (this.message && this.message.prize) ? '224px' : '130px'
+      },
       giftImage() {
         return require('../../../assets/images/shuangdan/' + ((this.message && this.message.prize) ? this.message.prize : '未中奖') + '@2x.png')
       }
@@ -52,7 +56,7 @@
       this.$refs.box.parentNode.style.width = '224px';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
     },
-    attached(){
+    attached() {
       console.log('teched')
     }
   }

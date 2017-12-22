@@ -4,7 +4,6 @@ import Vue from 'vue';
 import Qs from 'qs'
 
 export const dev = true;
-
 Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
 Vue.use(AlertPlugin);

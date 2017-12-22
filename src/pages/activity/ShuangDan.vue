@@ -408,6 +408,7 @@
   .over {
     height: 264px;
     width: 224px;
+
   }
 
   .rotateAnim {

@@ -190,6 +190,7 @@
     width: 112px;
     height: 112px;
     margin: 20px;
+
   }
 
   input {
