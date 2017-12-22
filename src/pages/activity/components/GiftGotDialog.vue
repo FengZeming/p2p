@@ -76,6 +76,7 @@
   }
 
   input {
+
     color: #2772ff;
     font-size: 18px;
     border-radius: 4px;
