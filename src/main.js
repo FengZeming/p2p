@@ -61,8 +61,7 @@ router.beforeEach((to, from, next) => {
 const http = axios;
 Vue.prototype.wxShare = function (wx, url,callback) {
   let originUrl = url;
-  console.log(originUrl);
-  url = 'http://service.wx.prguanjia.com/share/setShareData?url=' + url;
+  url = 'http://service.wx.prguanjia.com/share/setShareData?url=' + encodeURIComponent(url);
   // this.$wechat,title, desc, link, shareimg,
   http.get(url).then(res => {// 获得签名配置
     var Data = res.data.signPackage;
@@ -84,8 +83,6 @@ Vue.prototype.wxShare = function (wx, url,callback) {
 };
 
 function ready(wx, shareData, originUrl, calllback) {
-  console.log('==??? ');
-  console.log(originUrl);
   wx.ready(() => {
     // 所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，
     // 则可以直接调用，不需要放在ready函数中。

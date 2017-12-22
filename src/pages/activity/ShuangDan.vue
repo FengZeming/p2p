@@ -56,13 +56,13 @@
     <div class="shareImage" v-if="showQrcode" @click="onBgClick" style=" align-items: center;flex-direction: column;">
       <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
       <div style="margin-top: 20px;">
+        <p style="flex: 0;color: white;margin-top: 10px;text-align: start;">您的金蛋用光了</p>
         <p style="flex: 0;color: white;margin-top: 10px;">公众号内回复"再来一个"增加一枚金蛋</p>
       </div>
     </div>
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
     </div>
-
 
   </div>
 </template>
@@ -171,13 +171,6 @@
         return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
       start(item) {
-        if (true){
-          this.showQrcode = true;
-          console.log('showqrcode')
-          return;
-        }
-
-
         console.log(this.data.data);
         if (this.selectedIndex) {
           return;
@@ -205,12 +198,10 @@
 
         if (3 == this.data.data.used && 3 == this.data.data.total && this.hasShare) {
           this.showQrcode = true;
-          console.log('showqrcode')
           return;
         }
         if (3 == this.data.data.used && 3 == this.data.data.total && !this.hasShare) {
           this.showQrcode = true;
-          console.log('showqrcode')
           return;
         }
 

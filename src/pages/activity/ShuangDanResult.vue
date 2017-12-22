@@ -24,31 +24,27 @@
 
       <div class="item_contianer">
         <p style="font-size: 17px;color: #333;">手机号</p>
-        <input type="number" style="margin: 0 10px;padding: 0 5px;	width: 54%;	height: 30px; -webkit-appearance: none;
-         border-radius: 2px;border: solid 1px #dbdbdb;">
-        <div
-          style="height: 32px;width:64px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
+        <input type="number" :value="phone">
+        <div @click="register"
+             style="height: 32px;width:64px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
         font-size: 16px;text-align: center;line-height: 32px;">
           提交
         </div>
       </div>
-
-      <p style="font-size: 14px;color: #666;margin: 22px;line-height: 30px;">
+      <p style="font-size: 14px;color: #666;margin: 20px;line-height: 30px;">
         1.本活动仅限新用户通过本页面注册。<br>
         2.注册成功后，奖品将于3个工作日内发送至您的平台账户。<br>
         3.活动时间：2017年12月22日-2018年1月5日。<br>
-        <span style="font-weight: bold;"> 注：本活动奖品由提供。</span><br>
+        <span style="font-weight: bold;"> 注：本活动奖品由<span style="color: #b81a2c;">钱保姆</span>提供。</span><br>
         如有疑问，请添加客服微信号licaishi1124<br>
       </p>
 
-      <div
-        style="margin-top: 30px;	height: 32px;width: 115px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
+      <div @click="register"
+           style="margin-top: 30px;	height: 32px;width: 115px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
         font-size: 16px;text-align: center;line-height: 32px;margin-bottom: 30px;">
         立即注册
       </div>
-
     </div>
-
 
   </div>
 </template>
@@ -59,6 +55,7 @@
     components: {},
     data() {
       return {
+        phone: '',
         data: {
           type0: {
             step1: '第一步：扫码添加微信',
@@ -85,11 +82,23 @@
             , '188元双旦礼包（注册并投资20000元时使用）'
             , '518元双旦礼包（注册并投资50000元时使用）'
             , '1225元双旦礼包（注册并投资100000元时使用）'
-          ]
+          ];
           return arr[this.$route.query.prize]
         }
-      }
+      },
+      register() {
+        if (this.checkMobile(this.data.phone)) {
+          window.location = 'https://www.qbm360.com/apiurl/activity/2017/reg/reg1.html?fromType=wechat1';
+          window.location = 'https://pccb.com/wap/sem/soeRegister?registerSource=CBGJ001'
+        } else {
+          this.$vux.toast.show({type: 'text', text: '请输入有效的手机号'})
+        }
 
+      },
+      checkMobile(sMobile) {
+        return /^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile);
+
+      }
     },
     computed: {
       type() {
@@ -108,7 +117,7 @@
         }
       },
       giftSelf() {
-        return false;
+        return this.$route.query.type == 'platform';
       }
     },
 
@@ -127,6 +136,7 @@
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
+
     background-size: 100% 100%;
   }
 
@@ -151,5 +161,18 @@
     width: 112px;
     height: 112px;
     margin: 20px;
+  }
+
+  input {
+    text-shadow: none;
+    box-shadow: none;
+    outline: none;
+    margin: 0 10px;
+    padding: 0 5px;
+    width: 54%;
+    height: 30px;
+    -webkit-appearance: none;
+    border-radius: 2px;
+    border: solid 1px #dbdbdb;
   }
 </style>
