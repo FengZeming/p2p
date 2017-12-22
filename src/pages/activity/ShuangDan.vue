@@ -14,8 +14,8 @@
            backgroundImage:'url('+require( '../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
-    <gift-winners-list></gift-winners-list>
 
+    <gift-winners-list></gift-winners-list>
 
     <div class="listContainer" style="width:95%;height:auto;align-items: center;justify-content: flex-start;
     background-size: 100% 100%;   "
@@ -43,18 +43,6 @@
         </gift-warn-dialog>
       </x-dialog>
     </div>
-
-    <div class="shareImage" v-if="showQrcode" @click="onBgClick" style=" align-items: center;flex-direction: column;">
-      <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
-      <div style="margin-top: 20px;">
-        <!--<p style="flex: 0;color: white;">1. 长按关注公众号 互金每日早知道&nbsp;&nbsp;</p>-->
-        <p style="flex: 0;color: white;margin-top: 10px;">公众号内回复"再来一个"增加一枚金蛋</p>
-      </div>
-    </div>
-    <div class="shareImage" v-if="showShare" @click="onBgClick">
-      <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
-    </div>
-
     <div class="music anim" @click="musicStart"
          :style="{ backgroundImage:'url('+audioBgImage+')'}"
     >
@@ -63,6 +51,18 @@
         <embed height="0" width="0" src="../../assets/music/JingleBells.mp3">
       </audio>
     </div>
+
+    <!--<p style="flex: 0;color: white;">1. 长按关注公众号 互金每日早知道&nbsp;&nbsp;</p>-->
+    <div class="shareImage" v-if="showQrcode" @click="onBgClick" style=" align-items: center;flex-direction: column;">
+      <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" " @click.stop="onQrCodeClick">
+      <div style="margin-top: 20px;">
+        <p style="flex: 0;color: white;margin-top: 10px;">公众号内回复"再来一个"增加一枚金蛋</p>
+      </div>
+    </div>
+    <div class="shareImage" v-if="showShare" @click="onBgClick">
+      <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
+    </div>
+
 
   </div>
 </template>
@@ -171,6 +171,13 @@
         return this.selectedIndex == item ? 'egg anim' : 'egg';
       },
       start(item) {
+        if (true){
+          this.showQrcode = true;
+          console.log('showqrcode')
+          return;
+        }
+
+
         console.log(this.data.data);
         if (this.selectedIndex) {
           return;
@@ -372,6 +379,7 @@
     height: 100%;
     position: fixed;
     display: flex;
+    z-index: 1100;
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
   }
