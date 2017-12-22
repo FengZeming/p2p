@@ -18,7 +18,8 @@
 
       <div style="display: flex;margin-top: 100px;">
         <!--<p class="title" style="margin-top: 0;display: flex;">第二步：</p>-->
-        <p style="display: inline-block;float: left;font-size: 16px;color: #333;flex: 1;text-align: center;" v-html="buildDesc()">
+        <p style="display: inline-block;float: left;font-size: 16px;color: #333;flex: 1;text-align: center;"
+           v-html="buildDesc()">
         </p>
       </div>
       <img class="qrcode" :src="qrcode" alt="">
@@ -34,7 +35,7 @@
 
       <div class="item_contianer">
         <p style="font-size: 17px;color: #333;">手机号</p>
-        <input type="number" v-model="phone">
+        <input :disabled="inputStatus" type="number" v-model="phone">
         <div @click="register"
              style="height: 32px;width:64px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
         font-size: 16px;text-align: center;line-height: 32px;">
@@ -45,7 +46,7 @@
         1.本活动仅限互金每日早知道注册的<span style="color: #b81a2c;font-weight: bold;">新老用户</span>领取。<br>
         2.注册成功后，奖品将于3个工作日内发送至您的平台账户。<br>
         3.活动时间：2017年12月22日-2018年1月5日。<br>
-        <span style="font-weight: bold;"> 注：本活动奖品由<span style="color: #b81a2c;">{{platformName()}}</span>提供。</span><br>
+        <span style="font-weight: bold;"> 注：本奖品由<span style="color: #b81a2c;">{{platformName()}}</span>提供。</span><br>
         如有疑问，请添加客服微信号licaishi1124<br>
       </p>
 
@@ -69,6 +70,7 @@
     data() {
       return {
         phone: '',
+        inputStatus:false,
         data: {
           type0: {
             step1: '第一步：扫码添加微信',
@@ -143,7 +145,13 @@
         if (this.$route.query.prize == 1) {
           return require('../../assets/images/shuangdan/qrcode.jpg');
         } else {
-          return require('../../assets/images/shuangdan/wxqrcode.jpg')
+          if (parseInt(Math.random() * 10 / 3) == 1) {
+            return require('../../assets/images/shuangdan/yueke101.jpg')
+          } else if (parseInt(Math.random() * 10 / 3) == 2) {
+            return require('../../assets/images/shuangdan/小麦.jpg')
+          } else {
+            return require('../../assets/images/shuangdan/licaishi1124.jpg')
+          }
         }
       },
       giftSelf() {
@@ -154,6 +162,10 @@
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
       this.phone = cookie.get('phone');
+      if(this.checkMobile(this.phone)){
+        console.log(this.phone)
+        this.inputStatus=true;
+      }
     }
   }
 </script>
@@ -194,6 +206,7 @@
   }
 
   input {
+
     text-shadow: none;
     box-shadow: none;
     outline: none;

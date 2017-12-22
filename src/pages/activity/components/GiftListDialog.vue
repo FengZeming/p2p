@@ -77,10 +77,8 @@
         })
       },
       onClick(item) {
-        if ('0' == item.isexchange) {
-          this.$emit('onClick');
-          this.$router.push({path: '/result', query: item})
-        }
+        this.$emit('onClick');
+        this.$router.push({path: '/result', query: item})
       },
       itemBg(item) {
         if (item.isexchange != '0') {
