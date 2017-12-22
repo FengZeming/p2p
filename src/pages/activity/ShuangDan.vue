@@ -25,8 +25,8 @@
 
 
     <div v-transfer-dom>
-      <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
-        <gift-list-dialog ref="dialog" :message="data" @onClick="onGiftListDialogClick">
+      <x-dialog v-model="showListDialog"  class="dialog" hide-on-blur>
+        <gift-list-dialog ref="listDialog" :message="data" @onClick="onGiftListDialogClick">
         </gift-list-dialog>
       </x-dialog>
     </div>
@@ -239,6 +239,7 @@
           return;
         }
         this.showListDialog = true;
+        this.$refs.listDialog.fetchData();
       },
       exchangeScore() {
 

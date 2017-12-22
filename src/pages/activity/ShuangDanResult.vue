@@ -3,14 +3,13 @@
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
 
     <div
-        v-if="showLogo"
+      v-if="showLogo"
       style="width: 90px;height: 40px;background-size: 100%;background-repeat: no-repeat;position: absolute;top: 20px;right: 10px;"
-         :style="{backgroundImage:'url('+logoImage()+')'}">
+      :style="{backgroundImage:'url('+logoImage()+')'}">
     </div>
 
     <img :src="image" alt=" "
          style="width: 168px;height: 71px;margin-top: 60px;margin-left: -90px;">
-
 
 
     <div v-if="giftSelf" class="container" style="flex: 1;">
@@ -61,6 +60,7 @@
 
 <script>
   import fetch from '../../api/http';
+  import {cookie} from 'vux'
 
   export default {
     prop: ['message'],
@@ -83,8 +83,8 @@
       }
     },
     methods: {
-      platformName(){
-        return this.$route.query.prize ==9?'钱保姆':'普资金服'
+      platformName() {
+        return this.$route.query.prize == 9 ? '钱保姆' : '普资金服'
       },
       buildDesc() {
         if (this.$route.query && this.$route.query.prize == 1) {
@@ -103,6 +103,7 @@
       },
       register() {
         if (this.checkMobile(this.phone)) {
+          cookie.set('phone',this.phone);
           let url = 'http://tservice.prguanjia.com/egg/phoneSave';
           fetch(url, {type: 'post', params: {phone: this.phone, prizeid: this.$route.query.prizeid}})
             .then(res => {
@@ -112,23 +113,23 @@
             window.location = 'https://www.qbm360.com/apiurl/activity/2017/reg/reg1.html?fromType=wechat1';
             window.location = 'https://pccb.com/wap/sem/soeRegister?registerSource=CBGJ001'
           });
-
         } else {
           this.$vux.toast.show({type: 'text', text: '请输入有效的手机号'})
         }
 
       },
       checkMobile(sMobile) {
-        return /^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile);
+        let reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
+        return reg.test(sMobile); //true
 
       },
-      logoImage(){
-        return require('../../assets/images/'+ this.platformName()+'@2x.png');
+      logoImage() {
+        return require('../../assets/images/' + this.platformName() + '@2x.png');
       }
     },
     computed: {
-      showLogo(){
-          return this.$route.query.prize==8|| this.$route.query.prize==9;
+      showLogo() {
+        return this.$route.query.prize == 8 || this.$route.query.prize == 9;
       },
       type() {
         return 'type' + (this.$route.query && this.$route.query.prize == 1 ? '1' : '0')
@@ -150,6 +151,7 @@
 
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
+      this.phone =cookie.get('phone');
     }
   }
 </script>

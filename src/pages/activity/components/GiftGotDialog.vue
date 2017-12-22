@@ -23,7 +23,6 @@
 
   import {XDialog, XButton, Group} from 'vux'
   import DividerOnepx from '../../../components/Divider1px'
-
   export default {
     props: ['message'],
     components: {
@@ -52,8 +51,10 @@
       this.$refs.box.parentNode.style.maxWidth = '224px';
       this.$refs.box.parentNode.style.width = '224px';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
+    },
+    attached(){
+      console.log('teched')
     }
-
   }
 </script>
 

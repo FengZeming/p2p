@@ -68,6 +68,14 @@
       }
     },
     methods: {
+      fetchData() {
+        console.log('fetchData');
+        fetch('http://tservice.prguanjia.com/egg/myprize')
+          .then(res => {
+            this.list = res.data;
+          }).catch(err => {
+        })
+      },
       onClick(item) {
         if ('0' == item.isexchange) {
           this.$emit('onClick');
@@ -88,13 +96,7 @@
       this.$refs.box.parentNode.style.maxWidth = '90%';
       this.$refs.box.parentNode.style.width = '90%';
       this.$refs.box.parentNode.style.backgroundColor = 'transparent';
-      fetch('http://tservice.prguanjia.com/egg/myprize')
-        .then(res => {
-          this.list = res.data;
-        }).catch(err => {
-
-      })
-
+      this.fetchData();
     }
   }
 </script>
