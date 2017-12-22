@@ -158,7 +158,6 @@
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
-
     background-size: 100% 100%;
   }
 
