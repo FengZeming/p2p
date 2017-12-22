@@ -3,7 +3,7 @@ import {LoadingPlugin, ToastPlugin, AlertPlugin} from 'vux'
 import Vue from 'vue';
 import Qs from 'qs'
 
-export const dev = true;
+export const dev = false;
 Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
 Vue.use(AlertPlugin);

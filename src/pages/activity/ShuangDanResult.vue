@@ -210,7 +210,6 @@
   }
 
   input {
-
     text-shadow: none;
     box-shadow: none;
     outline: none;
