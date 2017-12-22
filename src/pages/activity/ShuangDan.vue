@@ -386,9 +386,9 @@
   }
 
   .qrcode {
-    border: 4px solid #004624;
-    width: 112px;
-    height: 112px;
+    border: 1px solid #004624;
+    width: 120px;
+    height: 120px;
   }
 
   .share {

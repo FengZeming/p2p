@@ -3,52 +3,18 @@
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
     <img :src="image" alt=" "
          style="width: 168px;height: 71px;margin-top: 60px;margin-left: -90px;">
-    <div v-if="giftSelf" class="container" style="flex: 1;">
-      <p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>
+    <p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>
 
-      <img class="qrcode" :src="qrcode" alt="">
+    <img class="qrcode" :src="qrcode" alt="">
 
-      <div style="display: flex;margin-right:22px;">
-        <p class="title" style="margin-top: 0;display: flex;">第二步：</p>
-        <p style="display: inline-block;float: left;font-size: 14px;color: #333;flex: 1;">
-          {{buildDesc()}}</p>
-      </div>
-      <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
-        *本活动奖品由互金每日早知道提供。最终解释权归互金每日早知道所有
-      </p>
+    <div style="display: flex;margin-right:22px;">
+      <p class="title" style="margin-top: 0;display: flex;">第二步：</p>
+      <p style="display: inline-block;float: left;font-size: 14px;color: #333;flex: 1;">
+        {{buildDesc()}}</p>
     </div>
-
-    <div class="container" style="flex: 1;" v-if="!giftSelf">
-
-      <p style="font-size: 12px;line-height: 30px;color: #999999;margin: 50px 0  20px 0;">请输入手机号，注册投资后可获得</p>
-
-      <div class="item_contianer">
-        <p style="font-size: 17px;color: #333;">手机号</p>
-        <input type="number" style="margin: 0 10px;padding: 0 5px;	width: 54%;	height: 30px; -webkit-appearance: none;
-         border-radius: 2px;border: solid 1px #dbdbdb;">
-        <div
-          style="height: 32px;width:64px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
-        font-size: 16px;text-align: center;line-height: 32px;">
-          提交
-        </div>
-      </div>
-
-      <p style="font-size: 14px;color: #666;margin: 22px;line-height: 30px;">
-        1.本活动仅限新用户通过本页面注册。<br>
-        2.注册成功后，奖品将于3个工作日内发送至您的平台账户。<br>
-        3.活动时间：2017年12月22日-2018年1月5日。<br>
-        <span style="font-weight: bold;"> 注：本活动奖品由提供。</span><br>
-        如有疑问，请添加客服微信号licaishi1124<br>
-      </p>
-
-      <div
-        style="margin-top: 30px;	height: 32px;width: 115px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
-        font-size: 16px;text-align: center;line-height: 32px;margin-bottom: 30px;">
-        立即注册
-      </div>
-
-    </div>
-
+    <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
+      *本活动奖品由互金每日早知道提供。最终解释权归互金每日早知道所有
+    </p>
 
   </div>
 </template>
@@ -75,10 +41,10 @@
     },
     methods: {
       buildDesc() {
-        if (this.$route.query && this.$route.query.prize == 1) {
+        if (this.$route.query && this.$route.query.prize==1) {
           return this.data[this.type].desc
         } else {
-          let arr = ['', ''
+          let arr = ['',''
             , '18元双旦礼包（注册并投资2000元时使用）'
             , '58元双旦礼包（注册并投资5000元时使用）'
             , '88元双旦礼包（注册并投资10000元时使用）'
@@ -86,7 +52,7 @@
             , '518元双旦礼包（注册并投资50000元时使用）'
             , '1225元双旦礼包（注册并投资100000元时使用）'
           ]
-          return arr[this.$route.query.prize]
+        return arr[this.$route.query.prize]
         }
       }
 
@@ -106,9 +72,6 @@
         } else {
           return require('../../assets/images/shuangdan/wxqrcode.jpg')
         }
-      },
-      giftSelf() {
-        return false;
       }
     },
 
@@ -122,12 +85,12 @@
 <style scoped>
   .container {
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     flex-direction: column;
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100%;
   }
 
   .title {
@@ -137,13 +100,6 @@
     color: #333333;
     align-self: flex-start;
     margin-left: 12px;
-  }
-
-  .item_contianer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .qrcode {
