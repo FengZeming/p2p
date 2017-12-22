@@ -60,7 +60,7 @@
     height: 69.3vw;
     justify-content: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
     flex-direction: column;
     margin-top: 50px;
   }

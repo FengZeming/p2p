@@ -18,7 +18,7 @@
     <gift-winners-list></gift-winners-list>
 
     <div class="listContainer" style="width:95%;height:auto;align-items: center;justify-content: flex-start;
-    background-size: 100% 100%;   "
+    background-size: 100% 100%; margin-bottom: 80px;"
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则2@2x.png')+')'}">
       <rule style="width: 85%;margin-top: 60px;padding-bottom: 20px;"></rule>
     </div>
@@ -277,12 +277,12 @@
 <style lang="less" scoped>
   .container {
     width: 100%;
-    height: 242%;
+    /*height: 220%;*/
     flex-direction: column;
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
 
   .box {
@@ -293,7 +293,7 @@
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
 
   .listContainer {
