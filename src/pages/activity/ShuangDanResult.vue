@@ -24,7 +24,7 @@
 
       <div class="item_contianer">
         <p style="font-size: 17px;color: #333;">手机号</p>
-        <input type="number" :value="phone">
+        <input type="number" v-model="phone">
         <div @click="register"
              style="height: 32px;width:64px;background-color: #b81a2c;border-radius: 4px;color: #FFFFFF;
         font-size: 16px;text-align: center;line-height: 32px;">
@@ -50,6 +50,8 @@
 </template>
 
 <script>
+  import fetch from '../../api/http';
+
   export default {
     prop: ['message'],
     components: {},
@@ -87,9 +89,18 @@
         }
       },
       register() {
-        if (this.checkMobile(this.data.phone)) {
-          window.location = 'https://www.qbm360.com/apiurl/activity/2017/reg/reg1.html?fromType=wechat1';
-          window.location = 'https://pccb.com/wap/sem/soeRegister?registerSource=CBGJ001'
+        console.log(this.phone);
+        if (this.checkMobile(this.phone)) {
+          let url = 'http://tservice.prguanjia.com/egg/phoneSave';
+          fetch(url, {type: 'post', params: {phone: this.phone, prizeid: this.$route.query.prizeid}})
+            .then(res => {
+              window.location = 'https://www.qbm360.com/apiurl/activity/2017/reg/reg1.html?fromType=wechat1';
+              window.location = 'https://pccb.com/wap/sem/soeRegister?registerSource=CBGJ001'
+            }).catch(err => {
+            window.location = 'https://www.qbm360.com/apiurl/activity/2017/reg/reg1.html?fromType=wechat1';
+            window.location = 'https://pccb.com/wap/sem/soeRegister?registerSource=CBGJ001'
+          });
+
         } else {
           this.$vux.toast.show({type: 'text', text: '请输入有效的手机号'})
         }
@@ -108,8 +119,6 @@
         return require('../../assets/images/shuangdan/' + (this.$route.query && this.$route.query.prize ? this.$route.query.prize : 2) + 'yuan.png')
       },
       qrcode() {
-        console.log(this.$route.query)
-        console.log(this.$route.query.prize == 1)
         if (this.$route.query.prize == 1) {
           return require('../../assets/images/shuangdan/qrcode.jpg');
         } else {
@@ -123,7 +132,6 @@
 
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
-      console.log('mounted')
     }
   }
 </script>
