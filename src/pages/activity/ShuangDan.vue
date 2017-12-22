@@ -25,7 +25,7 @@
 
 
     <div v-transfer-dom>
-      <x-dialog v-model="showListDialog"  class="dialog" hide-on-blur>
+      <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
         <gift-list-dialog ref="listDialog" :message="data" @onClick="onGiftListDialogClick">
         </gift-list-dialog>
       </x-dialog>
@@ -62,6 +62,10 @@
     </div>
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
+    </div>
+    <div class="shareImage" v-if="showOver" @click="onBgClick"
+         style="display: flex;justify-content: center;align-items: center;">
+      <img class="over" src="../../assets/images/shuangdan/没机会了.png" alt=" " @click.stop="onQrCodeClick">
     </div>
 
   </div>
@@ -105,6 +109,7 @@
         showQrcode: false,
         showShare: false,
         showWarn: false,
+        showOver: false,
         list: [],
         data: {
           hance: 0,
@@ -165,6 +170,7 @@
       onBgClick() {
         this.showQrcode = false;
         this.showShare = false;
+        this.showOver = false;
       },
 
       eggClass(item) {
@@ -180,19 +186,18 @@
           return;
         }
         if ((this.data.data.total >= 4 && this.data.data.total <= this.data.data.used) || this.data.data.used >= 4) {
-          this.$vux.toast.show({type: 'text', text: '今日机会已用完, 请明日再来'});
+          // this.$vux.toast.show({type: 'text', text: '今日机会已用完, 请明日再来'});
+          this.showOver = true;
           return;
         }
         console.log(this.hasShare)
         console.log(3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare)
         if (3 == this.data.data.total && 2 == this.data.data.used && !this.hasShare) {
           this.showWarn = true;
-          console.log('showshare')
           return;
         }
         if (4 == this.data.data.total && 3 == this.data.data.used && !this.hasShare) {
           this.showWarn = true;
-          console.log('showshare2')
           return;
         }
 
@@ -338,6 +343,7 @@
   }
 
   .egg {
+
     width: 84.5px;
     height: 112px;
     background-size: 400%;
@@ -390,7 +396,6 @@
   }
 
   .music {
-
     width: 30px;
     height: 30px;
     background-repeat: no-repeat;
@@ -398,6 +403,11 @@
     position: fixed;
     top: 30px;
     right: 30px;
+  }
+
+  .over {
+    height: 264px;
+    width: 224px;
   }
 
   .rotateAnim {

@@ -11,7 +11,7 @@
   <!--</div>-->
   <!--</div>-->
 
-  <div style="height: 244px;width: 224px;background-size: 100%;background-repeat: no-repeat;" ref="box"
+  <div style="height: 323px;width: 224px;background-size: 100%;background-repeat: no-repeat;" ref="box"
        :style="{backgroundImage:'url('+giftImage+')'}"
        @click="onClick"
   ></div>

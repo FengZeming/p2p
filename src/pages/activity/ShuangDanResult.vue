@@ -13,15 +13,16 @@
 
 
     <div v-if="giftSelf" class="container" style="flex: 1;">
-      <p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>
+      <!--<p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>-->
 
+
+      <div style="display: flex;margin-top: 100px;">
+        <!--<p class="title" style="margin-top: 0;display: flex;">第二步：</p>-->
+        <p style="display: inline-block;float: left;font-size: 16px;color: #333;flex: 1;text-align: center;" v-html="buildDesc()">
+        </p>
+      </div>
       <img class="qrcode" :src="qrcode" alt="">
 
-      <div style="display: flex;margin-right:22px;">
-        <p class="title" style="margin-top: 0;display: flex;">第二步：</p>
-        <p style="display: inline-block;float: left;font-size: 14px;color: #333;flex: 1;">
-          {{buildDesc()}}</p>
-      </div>
       <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
         *本活动奖品由互金每日早知道提供。最终解释权归互金每日早知道所有
       </p>
@@ -90,20 +91,21 @@
         if (this.$route.query && this.$route.query.prize == 1) {
           return this.data[this.type].desc
         } else {
+
           let arr = ['', ''
-            , '18元双旦礼包（注册并投资2000元时使用）'
-            , '58元双旦礼包（注册并投资5000元时使用）'
-            , '88元双旦礼包（注册并投资10000元时使用）'
-            , '188元双旦礼包（注册并投资20000元时使用）'
-            , '518元双旦礼包（注册并投资50000元时使用）'
-            , '1225元双旦礼包（注册并投资100000元时使用）'
+            , '<span style="font-size: 18px;">投资2000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
+            , '<span style="font-size: 18px;">投资5000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
+            , '<span style="font-size: 18px;">投资10000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
+            , '<span style="font-size: 18px;">投资20000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
+            , '<span style="font-size: 18px;">投资50000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
+            , '<span style="font-size: 18px;">投资100000元即可领取！<span><br><span style="font-size: 14px;">扫码添加理财师领取<span>'
           ];
           return arr[this.$route.query.prize]
         }
       },
       register() {
         if (this.checkMobile(this.phone)) {
-          cookie.set('phone',this.phone);
+          cookie.set('phone', this.phone);
           let url = 'http://tservice.prguanjia.com/egg/phoneSave';
           fetch(url, {type: 'post', params: {phone: this.phone, prizeid: this.$route.query.prizeid}})
             .then(res => {
@@ -151,7 +153,7 @@
 
     mounted() {
       this.$refs.container.parentNode.style.paddingBottom = 0;
-      this.phone =cookie.get('phone');
+      this.phone = cookie.get('phone');
     }
   }
 </script>
