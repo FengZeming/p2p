@@ -379,6 +379,7 @@
     height: 100%;
     position: fixed;
     display: flex;
+    top: 0;
     z-index: 1100;
     justify-content: center;
     background: rgba(0, 0, 0, 0.7);
