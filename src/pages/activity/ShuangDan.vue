@@ -383,7 +383,6 @@
   }
 
   .share {
-
     width: 195px;
     margin-top: 100px;
     height: 182px;
