@@ -66,7 +66,6 @@
   .listContainer {
     margin-top: 60px;
     overflow: hidden;
-
     flex: 1;
     margin-bottom: 20px;
   }
@@ -83,6 +82,7 @@
     outline: none;
     padding-right: 5px;
     padding-left: 5px;
+
   }
 
 </style>
