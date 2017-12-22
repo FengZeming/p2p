@@ -1,8 +1,16 @@
 <template>
   <div class='container' ref="container"
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
+
+    <div style="width: 90px;height: 24px;background-size: 100%;background-repeat: no-repeat;position: absolute;top: 20px;right: 10px;"
+         :style="{backgroundImage:'url('+logoImage()+')'}">
+    </div>
+
     <img :src="image" alt=" "
          style="width: 168px;height: 71px;margin-top: 60px;margin-left: -90px;">
+
+
+
     <div v-if="giftSelf" class="container" style="flex: 1;">
       <p class="title">{{data[type].step1}} <span style="font-weight: bold;">{{data[type].wxcode}}</span></p>
 
@@ -32,10 +40,10 @@
         </div>
       </div>
       <p style="font-size: 14px;color: #666;margin: 20px;line-height: 30px;">
-        1.本活动仅限新用户通过本页面注册。<br>
+        1.本活动仅限互金每日早知道注册的<span style="color: #b81a2c;font-weight: bold;">新老用户</span>领取。<br>
         2.注册成功后，奖品将于3个工作日内发送至您的平台账户。<br>
         3.活动时间：2017年12月22日-2018年1月5日。<br>
-        <span style="font-weight: bold;"> 注：本活动奖品由<span style="color: #b81a2c;">钱保姆</span>提供。</span><br>
+        <span style="font-weight: bold;"> 注：本活动奖品由<span style="color: #b81a2c;">{{platformName()}}</span>提供。</span><br>
         如有疑问，请添加客服微信号licaishi1124<br>
       </p>
 
@@ -73,6 +81,9 @@
       }
     },
     methods: {
+      platformName(){
+        return this.$route.query.prize ==9?'钱保姆':'普资金服'
+      },
       buildDesc() {
         if (this.$route.query && this.$route.query.prize == 1) {
           return this.data[this.type].desc
@@ -89,7 +100,6 @@
         }
       },
       register() {
-        console.log(this.phone);
         if (this.checkMobile(this.phone)) {
           let url = 'http://tservice.prguanjia.com/egg/phoneSave';
           fetch(url, {type: 'post', params: {phone: this.phone, prizeid: this.$route.query.prizeid}})
@@ -109,9 +119,13 @@
       checkMobile(sMobile) {
         return /^1[3|4|5|7|8][0-9]\d{4,8}$/.test(sMobile);
 
+      },
+      logoImage(){
+        return require('../../assets/images/'+ this.platformName()+'@2x.png');
       }
     },
     computed: {
+
       type() {
         return 'type' + (this.$route.query && this.$route.query.prize == 1 ? '1' : '0')
       },
@@ -126,7 +140,7 @@
         }
       },
       giftSelf() {
-        return this.$route.query.type == 'platform';
+        return this.$route.query.type != 'platform';
       }
     },
 
