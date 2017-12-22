@@ -16,9 +16,13 @@
     </div>
     <gift-winners-list></gift-winners-list>
 
-    <div class="listContainer" style="height: 121vw;"
-         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则3@2x.png')+')'}">
+
+    <div class="listContainer" style="width:95%;height:auto;align-items: center;justify-content: flex-start;
+    background-size: 100% 100%;   "
+         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则2@2x.png')+')'}">
+      <rule style="width: 85%;margin-top: 60px;padding-bottom: 20px;"></rule>
     </div>
+
 
     <div v-transfer-dom>
       <x-dialog v-model="showListDialog" class="dialog" hide-on-blur>
@@ -69,7 +73,10 @@
   import GiftListDialog from './components/GiftListDialog.vue'
   import GiftGotDialog from './components/GiftGotDialog.vue'
   import GiftWarnDialog from './components/GiftWarnDialog.vue'
+
   import GiftWinnersList from './components/GiftWinnersList.vue'
+  import Rule from './common/components/Rule'
+
   import {cookie} from 'vux'
 
   export default {
@@ -86,11 +93,12 @@
       GiftGotDialog,
       GiftListDialog,
       GiftWarnDialog,
+      Rule,
       GiftWinnersList
     },
     data() {
       return {
-        audioPlaying :true,
+        audioPlaying: true,
         showListDialog: false,
         showGiftDialog: false,
         selectedIndex: false,
@@ -122,8 +130,8 @@
       hasShare() {
         return (cookie.get(new Date().toLocaleDateString() + 'has_share', false));
       },
-      audioBgImage(){
-        return this.audioPlaying ?  require('../../assets/images/椭圆1@2x.png'):require('../../assets/images/关闭音乐.png')
+      audioBgImage() {
+        return this.audioPlaying ? require('../../assets/images/椭圆1@2x.png') : require('../../assets/images/关闭音乐.png')
       }
     },
     methods: {
@@ -131,10 +139,10 @@
         console.log(this.$refs.audio.paused);
         if (!this.$refs.audio.paused) {
           this.$refs.audio.pause()
-          this.audioPlaying=false;
+          this.audioPlaying = false;
         } else {
           this.$refs.audio.play()
-          this.audioPlaying=true;
+          this.audioPlaying = true;
         }
       },
       onGiftListDialogClick() {
@@ -282,7 +290,7 @@
   .box {
     width: 90%;
     display: flex;
-    margin-top: 330px;
+    margin-top: 320px;
     height: 47.5vw;
     justify-content: center;
     align-items: center;

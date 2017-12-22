@@ -10,7 +10,7 @@
     <div style="display: flex;margin-right:22px;">
       <p class="title" style="margin-top: 0;display: flex;">第二步：</p>
       <p style="display: inline-block;float: left;font-size: 14px;color: #333;flex: 1;">
-        {{data[type].desc}}</p>
+        {{buildDesc()}}</p>
     </div>
     <p style="font-size: 12px;	line-height: 20px;	color: #666666;margin: 30px 20px 0 12px ">
       *本活动奖品由互金每日早知道提供。最终解释权归互金每日早知道所有
@@ -34,15 +34,32 @@
           type1: {
             step1: '第一步：进入公众号',
             wxcode: '互金每日早知道',
-            desc: '在公众号“互金每日早知道”内回复“领奖”，即可兑奖。',
+            desc: '在公众号“互金每日早知道”内回复“兑奖”，即可兑奖。',
           }
         }
       }
     },
-    methods: {},
+    methods: {
+      buildDesc() {
+        if (this.$route.query && this.$route.query.prize==1) {
+          return this.data[this.type].desc
+        } else {
+          let arr = ['',''
+            , '18元双旦礼包（注册并投资2000元时使用）'
+            , '58元双旦礼包（注册并投资5000元时使用）'
+            , '88元双旦礼包（注册并投资10000元时使用）'
+            , '188元双旦礼包（注册并投资20000元时使用）'
+            , '518元双旦礼包（注册并投资50000元时使用）'
+            , '1225元双旦礼包（注册并投资100000元时使用）'
+          ]
+        return arr[this.$route.query.prize]
+        }
+      }
+
+    },
     computed: {
       type() {
-        return 'type' + (this.$route.query && this.$route.query.prize==1 ?'1':'0')
+        return 'type' + (this.$route.query && this.$route.query.prize == 1 ? '1' : '0')
       },
       image() {
         return require('../../assets/images/shuangdan/' + (this.$route.query && this.$route.query.prize ? this.$route.query.prize : 2) + 'yuan.png')
