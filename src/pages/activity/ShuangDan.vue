@@ -11,7 +11,7 @@
          :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/帽子@2x.png')+')'}">
       <div v-for=" item,index in 3" :class="eggClass(item)" @click="start(item)" :ref="'index'+index"
            :style="{marginLeft:index==1?'12px':'0' , marginRight:index==1?'12px':'0',
-           backgroundImage:'url('+require('../../assets/images/shuangdan/gif/egg.png')+')'}">
+           backgroundImage:'url('+require( '../../assets/images/shuangdan/gif/egg.png')+')'}">
       </div>
     </div>
     <gift-winners-list></gift-winners-list>
@@ -50,6 +50,16 @@
     <div class="shareImage" v-if="showShare" @click="onBgClick">
       <img class="share" src="../../assets/images/shuangdan/图层3@2x.png" alt=" " @click.stop="onQrCodeClick">
     </div>
+
+    <div class="music anim" @click="musicStart"
+         :style="{ backgroundImage:'url('+audioBgImage+')'}"
+    >
+      <audio autoplay="autoplay" loop="loop" ref="audio">
+        <source src="../../assets/music/JingleBells.mp3" type="audio/mpeg">
+        <embed height="0" width="0" src="../../assets/music/JingleBells.mp3">
+      </audio>
+    </div>
+
   </div>
 </template>
 
@@ -80,6 +90,7 @@
     },
     data() {
       return {
+        audioPlaying :true,
         showListDialog: false,
         showGiftDialog: false,
         selectedIndex: false,
@@ -111,8 +122,21 @@
       hasShare() {
         return (cookie.get(new Date().toLocaleDateString() + 'has_share', false));
       },
+      audioBgImage(){
+        return this.audioPlaying ?  require('../../assets/images/椭圆1@2x.png'):require('../../assets/images/关闭音乐.png')
+      }
     },
     methods: {
+      musicStart() {
+        console.log(this.$refs.audio.paused);
+        if (!this.$refs.audio.paused) {
+          this.$refs.audio.pause()
+          this.audioPlaying=false;
+        } else {
+          this.$refs.audio.play()
+          this.audioPlaying=true;
+        }
+      },
       onGiftListDialogClick() {
         this.showListDialog = false;
         this.showGiftDialog = false;
@@ -236,6 +260,10 @@
         }
         cookie.set(KEY_SHARE, true)
       });
+
+      document.addEventListener("WeixinJSBridgeReady", () => {
+        this.$refs.audio.play()
+      }, false)
     }
   }
 </script>
@@ -352,4 +380,51 @@
     margin-top: 100px;
     height: 182px;
   }
+
+  .music {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+
+  .anim {
+    -webkit-animation: play 10s linear infinite;
+    -moz-animation: play 10s linear infinite;
+    animation: play 10s linear infinite;
+  }
+
+  @-webkit-keyframes play {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-moz-keyframes play {
+    0% {
+      -moz-transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes play {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
 </style>
+
+
