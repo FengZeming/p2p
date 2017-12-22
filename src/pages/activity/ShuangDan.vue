@@ -389,6 +389,7 @@
   }
 
   .music {
+
     width: 30px;
     height: 30px;
     background-repeat: no-repeat;
