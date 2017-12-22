@@ -2,7 +2,9 @@
   <div class='container' ref="container"
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
 
-    <div style="width: 90px;height: 24px;background-size: 100%;background-repeat: no-repeat;position: absolute;top: 20px;right: 10px;"
+    <div
+        v-if="showLogo"
+      style="width: 90px;height: 40px;background-size: 100%;background-repeat: no-repeat;position: absolute;top: 20px;right: 10px;"
          :style="{backgroundImage:'url('+logoImage()+')'}">
     </div>
 
@@ -125,7 +127,9 @@
       }
     },
     computed: {
-
+      showLogo(){
+          return this.$route.query.prize==8|| this.$route.query.prize==9;
+      },
       type() {
         return 'type' + (this.$route.query && this.$route.query.prize == 1 ? '1' : '0')
       },
