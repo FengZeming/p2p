@@ -1,7 +1,6 @@
 <template>
   <div class='container' ref="container"
        :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/兑奖页面.jpg')+')'}">
-
     <div
       v-if="showLogo"
       style="width: 90px;height: 40px;background-size: 100%;background-repeat: no-repeat;position: absolute;top: 20px;right: 10px;"
@@ -45,7 +44,7 @@
       <p style="font-size: 14px;color: #666;margin: 20px;line-height: 30px;">
         1.本活动仅限互金每日早知道注册的<span style="color: #b81a2c;font-weight: bold;">新老用户</span>领取。<br>
         2.{{oldUser()}}<br>
-        3.老用户：通过互金每日早知道注册的老用户请提交手机号，<br>奖品将于3个工作日内发送至您的平台账户。<br>
+        3.老用户：通过互金每日早知道注册的老用户请提交手机号，奖品将于3个工作日内发送至您的平台账户。<br>
         4.活动时间：2017年12月22日-2018年1月5日。<br>
         <span style="font-weight: bold;"> 注：本奖品由<span style="color: #b81a2c;">{{platformName()}}</span>提供。</span><br>
         如有疑问，请添加客服微信号licaishi1124<br>
@@ -182,7 +181,7 @@
     display: flex;
     align-items: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
 
   .title {
