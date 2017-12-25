@@ -90,7 +90,7 @@
         return this.$route.query.prize == 9 ? '钱保姆' : '普资金服'
       },
       oldUser(){
-        return this.$route.query.prize == 9 ? '新用户：注册成功后，奖品将于3个工作日内发送至您的平台账户。':'新用户：注册并成功投资任意金额任意标的后，奖品将于3个工作日内发送至您的平台账户。'
+        return this.$route.query.prize == 9 ?'新用户：注册并成功投资任意金额任意标的后，奖品将于3个工作日内发送至您的平台账户。': '新用户：注册成功后，奖品将于3个工作日内发送至您的平台账户。'
       },
       buildDesc() {
         if (this.$route.query && this.$route.query.prize == 1) {
@@ -205,7 +205,6 @@
     width: 112px;
     height: 112px;
     margin: 20px;
-
   }
 
   input {

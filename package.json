@@ -22,6 +22,7 @@
     "velocity-animate": "^1.5.0",
     "verification-code": "^1.0.0",
     "vue": "^2.5.9",
+    "vue-ga": "^1.0.0",
     "vue-router": "^3.0.1",
     "vue-scroller": "^2.2.4",
     "vuet": "^1.0.1",

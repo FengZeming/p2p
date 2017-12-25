@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import ga from 'vue-ga'
+
+
+
 import ShuangDan from '../pages/activity/ShuangDan';
 import ShuangDanWheel from '../pages/activity/ShuangDanWheel';
 import ShuangDanResult from '../pages/activity/ShuangDanResult';
 
 Vue.use(Router);
-export default new Router({
+let router =  new Router({
   mode: 'history',
   base: '/activity',
   saveScrollPosition: true,
@@ -56,4 +60,8 @@ export default new Router({
 
     // }
   }
-})
+});
+
+ga(router,'UA-110807983-1')
+
+export default router;

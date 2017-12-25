@@ -39,7 +39,7 @@ gulp.task('upload-aliyun', function () {
 });
 
 gulp.task('tinypng', function(cb) {
-  gulp.src('src/assets/**')
+  gulp.src('src/assets/images/**')
     .pipe(tiny())
     .pipe(gulp.dest('dist'));
 });
