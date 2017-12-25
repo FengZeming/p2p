@@ -1,21 +1,27 @@
 <template>
-  <div class="itemContainer"
-       :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
-    <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
-      <p>幸运用户</p>
-      <p>所获奖品</p>
-    </div>
-    <div style="flex: 1;overflow: hidden;margin-bottom: 20px;" ref="list">
-      <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;" ref="child">
-        <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-          <p>{{item.nickname}}</p>
-          <p>{{item.prize}}</p>
-        </div>
+
+  <div class="container">
+    <p style="color: white;font-size: 15px;text-align: left;align-self: flex-start;margin-left: 8%;margin-top: 40px;">已有&nbsp;<span
+      style="font-size: 18px;">{{count}}</span>人获奖</p>
+
+    <div class="itemContainer"
+         :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
+      <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
+        <p>幸运用户</p>
+        <p>所获奖品</p>
       </div>
-      <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
-        <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
-          <p>{{item.nickname}}</p>
-          <p>{{item.prize}}</p>
+      <div style="flex: 1;overflow: hidden;margin-bottom: 20px;" ref="list">
+        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;" ref="child">
+          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
+            <p>{{item.nickname}}</p>
+            <p>{{item.prize}}</p>
+          </div>
+        </div>
+        <div style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+          <div v-for="item,index in list" class="listItemContainer" style="height: 25px;width: 100%;">
+            <p>{{item.nickname}}</p>
+            <p>{{item.prize}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -24,10 +30,12 @@
 
 <script>
   import fetch from '../../../api/http'
+
   export default {
     components: {},
     data() {
       return {
+        count: '',
         list: []
       }
     },
@@ -37,6 +45,7 @@
       fetch('http://tservice.prguanjia.com/egg/luckyDogList')
         .then(res => {
           this.list = res.data;
+          this.count = res.count;
         }).catch(err => {
       });
       let self = this;
@@ -54,6 +63,15 @@
 
 <style scoped>
 
+  .container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    flex-direction: column;
+  }
+
   .itemContainer {
     width: 90%;
     display: flex;
@@ -62,7 +80,6 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     flex-direction: column;
-    margin-top: 50px;
   }
 
   .listItemContainer {
