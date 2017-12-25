@@ -258,6 +258,14 @@
 
         })
 
+      },
+      addScore(){
+        fetch('http://tservice.prguanjia.com/account/shareCallBack',{type:'post',params:{type:'egg'}})
+          .then(res=>{
+              console.log(res)
+          }).catch(err=>{
+
+        })
       }
     },
     mounted() {
@@ -271,6 +279,7 @@
           this.showShare = false;
         }
         cookie.set(KEY_SHARE, true)
+        this.addScore();
       });
 
       document.addEventListener("WeixinJSBridgeReady", () => {
@@ -289,6 +298,7 @@
     align-items: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
   }
 
   .box {
