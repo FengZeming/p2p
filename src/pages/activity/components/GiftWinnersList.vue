@@ -1,9 +1,8 @@
 <template>
 
-  <div class="container">
+  <div class="rootContainer">
     <p style="color: white;font-size: 15px;text-align: left;align-self: flex-start;margin-left: 8%;margin-top: 40px;">已有&nbsp;<span
       style="font-size: 18px;">{{count}}</span>人获奖</p>
-
     <div class="itemContainer"
          :style="{backgroundImage:'url('+require('../../../assets/images/shuangdan/中奖榜单1@2x.png')+')'}">
       <div class="listItemContainer" style=" margin-top: 50px;width: 100%;">
@@ -46,6 +45,7 @@
         .then(res => {
           this.list = res.data;
           this.count = res.count;
+          console.log(this.list);
         }).catch(err => {
       });
       let self = this;
@@ -63,13 +63,14 @@
 
 <style scoped>
 
-  .container {
+  .rootContainer {
     width: 100%;
-    height: 100%;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     flex-direction: column;
+    align-items: center;
+    display: flex;
   }
 
   .itemContainer {
@@ -79,6 +80,7 @@
     justify-content: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    align-self: center;
     flex-direction: column;
   }
 

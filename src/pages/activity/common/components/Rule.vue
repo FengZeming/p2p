@@ -1,5 +1,5 @@
 <template>
-  <div class="contianer">
+  <div style="display: flex;flex-direction: column;">
     <p v-for="item in list">{{item}}</p>
 
     <div class="declare">
@@ -34,8 +34,6 @@
 </script>
 
 <style scoped>
-  .contianer {
-  }
   p {
     font-size: 14px;
     line-height: 30px;

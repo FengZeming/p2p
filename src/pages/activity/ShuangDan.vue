@@ -17,9 +17,9 @@
 
     <gift-winners-list></gift-winners-list>
 
-    <div class="listContainer" style="width:95%;height:auto;align-items: center;justify-content: flex-start;
-    background-size: 100% 100%; margin-bottom: 80px;"
-         :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则2@2x.png')+')'}">
+    <div
+      style="margin-top:50px;width:95%;align-items: center;justify-content: flex-start; background-size: 100% 100%; margin-bottom: 80px;  background-repeat: no-repeat;display: flex; flex-direction: column;"
+      :style="{backgroundImage:'url('+require('../../assets/images/shuangdan/活动规则2@2x.png')+')'}">
       <rule style="width: 85%;margin-top: 60px;padding-bottom: 20px;"></rule>
     </div>
 
@@ -259,11 +259,11 @@
         })
 
       },
-      addScore(){
-        fetch('http://tservice.prguanjia.com/account/shareCallBack',{type:'post',params:{type:'egg'}})
-          .then(res=>{
-              console.log(res)
-          }).catch(err=>{
+      addScore() {
+        fetch('http://tservice.prguanjia.com/account/shareCallBack', {type: 'post', params: {type: 'egg'}})
+          .then(res => {
+            console.log(res)
+          }).catch(err => {
 
         })
       }
