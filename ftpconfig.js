@@ -19,5 +19,5 @@ module.exports = {
     user: 'root',
     key: 'Qq277892183',
     remotePath: '/opt/www/'
-  },
-};
+  }
+}

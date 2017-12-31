@@ -14,6 +14,14 @@ import SignRanking from '../pages/signPages/signRanking/SignRanking.vue'
 import SignScore from '../pages/signPages/signScore/SignScore.vue'
 import Qrcode from '../pages/qrcode/Qrcode.vue'
 import Shake from '../pages/game/shake/Shake.vue'
+import Test from '../pages/test/Test.vue'
+import Profile from '../pages/profile/Profile.vue'
+import FillProfile from '../pages/profile/pages/FillProfile.vue'
+import Iframe from '../pages/iframe/Iframe.vue'
+import FillPhone from '../pages/profile/pages/FillPhone.vue'
+import IncomeDetail from '../pages/me/pages/IncomeDetail.vue'
+import Withdrawal from '../pages/me/pages/Withdrawal.vue'
+import ScoreDeclare from '../pages/me/pages/ScoreDeclare.vue'
 
 Vue.use(Router);
 export default new Router({
@@ -33,16 +41,28 @@ export default new Router({
       path: '/home',
       name: '前100排名',
       component: Home
+      ,
+      meta: {
+        keepAlive: true
+      }
     }, {
 
       path: '/deposit',
       name: '存管',
       component: Deposit
+      ,
+      meta: {
+        keepAlive: true
+      }
 
     }, {
       path: '/trade',
       name: '交易量',
       component: Trade
+      ,
+      meta: {
+        keepAlive: true
+      }
     }, {
       path: '/detail',
       name: '平台详情',
@@ -127,20 +147,81 @@ export default new Router({
       meta: {
         navHidden: true,
       }
-    },{
+    }, {
+      path: '/test',
+      name: '测试',
+      component: Test,
+      meta: {
+        navHidden: true,
+      }
+    }
+    , {
       path: '/shake',
       name: '摇一摇',
       component: Shake,
       meta: {
         navHidden: true,
       }
-    },
-    {
+    }, {
+      path: '/profile',
+      name: '个人资料',
+      component: Profile,
+      meta: {
+        navHidden: true,
+      }
+    }
+    , {
+      path: '/fillPhone',
+      name: '验证手机号',
+      component: FillPhone,
+      meta: {
+        navHidden: true,
+      }
+    }, {
+      path: '/incomeDetail',
+      name: '积分详情',
+      component: IncomeDetail,
+      meta: {
+        keepAlive: false,
+        navHidden: true
+      }
+    }
+
+    , {
+      path: '/iframe',
+      name: '内嵌',
+      component: Iframe,
+
+    }
+    , {
+      path: '/fillProfile',
+      name: '收货地址',
+      component: FillProfile,
+      meta: {
+        navHidden: true,
+      }
+    }, {
+      path: '/withdrawal',
+      name: '提现',
+      component: Withdrawal,
+      meta: {
+        navHidden: true,
+      }
+    }, {
+      path: '/scoreDeclare',
+      name: '积分规则',
+      component: ScoreDeclare,
+      meta: {
+        navHidden: true,
+      }
+    }
+    , {
       path: '/*',
       name: '首页',
       component: Home
     }
   ],
+
 
   scrollBehavior(to, from, savePostion) {
     return savePostion | {x: 0, y: 0}
@@ -151,7 +232,8 @@ export default new Router({
     //   if (from.meta.keepAlive) {
     //     from.meta.savedPosition = document.body.scrollTop;
     //   }
-    //   return { x: 0, y: to.meta.savedPosition ||0}
+    //   return { x: 0, y: to.meta.savedPosition ||0}ttemplate
+
     // }
   }
 })
