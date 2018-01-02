@@ -60,9 +60,9 @@ router.beforeEach((to, from, next) => {
 
 //设置微信分享全局函数
 const http = axios;
-Vue.prototype.wxShare = function (wx, url,callback) {
+Vue.prototype.wxShare = function (wx, url, callback) {
   let originUrl = url;
-  url = 'http://service.wx.prguanjia.com/share/setShareData?url=' + url;
+  url = 'http://service.wx.prguanjia.com/share/setShareData?url=' + encodeURIComponent(url);
   // this.$wechat,title, desc, link, shareimg,
   http.get(url).then(res => {// 获得签名配置
     var Data = res.data.signPackage;
@@ -77,7 +77,7 @@ Vue.prototype.wxShare = function (wx, url,callback) {
       signature: Data.signature, // 必填，签名，见附录1
       jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-    ready(wx, shareData, originUrl,callback)
+    ready(wx, shareData, originUrl, callback)
   }).catch(err => {
     console.log(err);
   });
