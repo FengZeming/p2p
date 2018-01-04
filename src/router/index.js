@@ -62,6 +62,6 @@ let router =  new Router({
   }
 });
 
-ga(router,'UA-110807983-1')
+ga(router,'UA-110807983-1');
 
 export default router;

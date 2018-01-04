@@ -3,12 +3,12 @@
     <view-box class="box-container">
       <!--exclude="detail"-->
       <keep-alive>
-        <router-view class="router-view" v-if="$route.meta.keepAlive"></router-view>
+        <router-view class="router-view" v-if="$route.meta.keepAlive"/>
       </keep-alive>
-      <router-view class="router-view" v-if="!$route.meta.keepAlive"></router-view>
+      <router-view class="router-view" v-if="!$route.meta.keepAlive"/>
 
     </view-box>
-    <navigator-bar slot="bottom" style="position: fixed;" v-show="navHidden"></navigator-bar>
+    <navigator-bar slot="bottom" style="position: fixed;" v-show="navHidden"/>
   </div>
 </template>
 
