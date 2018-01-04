@@ -7,6 +7,7 @@ import ga from 'vue-ga'
 import ShuangDan from '../pages/activity/ShuangDan';
 import ShuangDanWheel from '../pages/activity/ShuangDanWheel';
 import ShuangDanResult from '../pages/activity/ShuangDanResult';
+import DistributionMain from '../pages/distribution/DistributionMain';
 
 Vue.use(Router);
 let router =  new Router({
@@ -16,7 +17,7 @@ let router =  new Router({
   routes: [
     {
       path: '/',
-      redirect: '/shuangdan'
+      redirect: '/distribution'
     }, {
       path: '/shuangdan',
       name: 'shuangdan',
@@ -39,6 +40,14 @@ let router =  new Router({
       component: ShuangDanResult,
       meta: {
         title: '领奖',
+        navHidden: true,
+      }
+    },{
+      path: '/distribution',
+      name: 'distribution',
+      component: DistributionMain,
+      meta: {
+        title: '投资',
         navHidden: true,
       }
     }, {
