@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="root" ref="root">
       <div class="item-container" v-if="powerDatas && powerDatas.length">
         <span class="label" v-for="item in powerDatas"> {{item}} </span>
@@ -35,7 +34,7 @@
       <div class="divider"></div>
       <div class="title" style="margin-left: 12px;height: 40px;">早知道热门活动：</div>
 
-      <div class="item-container" style="margin-left: 4px;margin-top: 5px">
+      <div class="item-container" style="margin-left: 4px;margin-top: 5px;width: calc(100% - 4px)">
         <img src="../../assets/images/landing/任务(1)@2x.png" alt=" " @click="toDetail(0)"/>
         <img src="../../assets/images/landing/签到(1)@2x.png" alt=" " @click="toDetail(1)"/>
         <img src="../../assets/images/landing/优惠券券面@2x.png" alt=" " @click="toDetail(2)"/>
@@ -78,6 +77,7 @@
         fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.platid}})
           .then((response) => {
             this.detail = response.data;
+            this.modifyTitle(this.detail.platform);
             console.log(response)
           }).catch(function (err) {
         });
@@ -116,6 +116,20 @@
           }
         });
         return arr.length > 2 && arr.length < 7 ? arr : this.generateData();
+      },
+      modifyTitle(title) {
+        document.title = title;
+        // 如果是 iOS 设备，则使用如下 hack 的写法实现页面标题的更新
+        if (navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+          const hackIframe = document.createElement('iframe')
+          hackIframe.style.display = 'none';
+          hackIframe.src = '/robots.txt?r=' + Math.random()
+          document.body.appendChild(hackIframe)
+
+          setTimeout(_ => {
+            document.body.removeChild(hackIframe)
+          }, 300)
+        }
       }
     },
     computed: {
@@ -217,7 +231,7 @@
     margin: 6px 10px;
     border-radius: 4px;
     padding: 6px;
-    background-color: #fdf7fa;
+    background-color: rgba(255,253,231,0.3);
     border: solid 1px #ffd31b;
   }
 
@@ -244,8 +258,9 @@
     display: flex;
     margin-left: 12px;
     align-items: center;
+    margin-right: 10px;
     margin-bottom: 10px;
-    width: calc (100% - 12px );
+    width: calc (100% - 22px );
     span {
       font-size: 14px;
       line-height: 16.5px;

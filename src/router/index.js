@@ -17,7 +17,7 @@ let router =  new Router({
       name: 'landing',
       component: Landing,
       meta: {
-        title: '双旦狂欢',
+        title: '评测',
         navHidden: true,
       }
     },{
