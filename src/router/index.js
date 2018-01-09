@@ -1,49 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ga from 'vue-ga'
-
-
-
-import ShuangDan from '../pages/activity/ShuangDan';
-import ShuangDanWheel from '../pages/activity/ShuangDanWheel';
-import ShuangDanResult from '../pages/activity/ShuangDanResult';
+import Landing from '../pages/landing/Landing';
 
 Vue.use(Router);
 let router =  new Router({
   mode: 'history',
-  base: '/activity',
+  base: '/landing',
   saveScrollPosition: true,
   routes: [
     {
       path: '/',
-      redirect: '/shuangdan'
+      redirect: '/landing'
     }, {
-      path: '/shuangdan',
-      name: 'shuangdan',
-      component: ShuangDan,
+      path: '/landing',
+      name: 'landing',
+      component: Landing,
       meta: {
         title: '双旦狂欢',
         navHidden: true,
       }
     },{
-      path: '/shuangdanwheel',
-      name: 'shuangdanwheel',
-      component: ShuangDanWheel,
-      meta: {
-        title: '双旦狂欢',
-        navHidden: true,
-      }
-    },{
-      path: '/result',
-      name: 'result',
-      component: ShuangDanResult,
-      meta: {
-        title: '领奖',
-        navHidden: true,
-      }
-    }, {
       path: '/*',
-      redirect:'/shuangdan'
+      redirect:'/landing'
     }
   ],
 
