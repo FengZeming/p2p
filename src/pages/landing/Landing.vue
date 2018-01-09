@@ -15,7 +15,7 @@
         <img class="icon" src="../../assets/images/landing/添加@2x.png" alt=" "> 添加理财师咨询详情：
       </div>
 
-      <img class="qrcode" src="../../assets/images/shuangdan/qrcode.jpg" alt=" ">
+      <img class="qrcode" :src="qrcode" alt=" ">
       <div class="divider" style="margin-top:10px;"></div>
 
       <div class="title">
@@ -119,6 +119,15 @@
       }
     },
     computed: {
+      qrcode() {
+        if (parseInt(Math.random() * 10 / 3) == 1) {
+          return require('../../assets/images/shuangdan/yueke101.jpg')
+        } else if (parseInt(Math.random() * 10 / 3) == 2) {
+          return require('../../assets/images/shuangdan/小麦.jpg')
+        } else {
+          return require('../../assets/images/shuangdan/licaishi1124.jpg')
+        }
+      },
       powerDatas() {
         let platDepend = [];
         if (this.detail.background) {
