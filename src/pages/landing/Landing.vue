@@ -6,12 +6,12 @@
       </div>
       <div class="divider"></div>
       <div class="title">
-        <img class="icon" src="../../assets/images/landing/点评@2x.png" alt=" "> 理财师评语：
+        <img class="icon" src="../../assets/images/landing/点评@2x.png" alt=" "> 李财师评语：
       </div>
       <p class="comments">{{detail.advice}}</p>
       <div class="divider" style="margin-top:8px;"></div>
       <div class="title">
-        <img class="icon" src="../../assets/images/landing/添加@2x.png" alt=" "> 添加理财师咨询详情：
+        <img class="icon" src="../../assets/images/landing/添加@2x.png" alt=" "> 添加李财师咨询详情：
       </div>
 
       <img class="qrcode" :src="qrcode" alt=" ">
@@ -40,13 +40,14 @@
         <img src="../../assets/images/landing/优惠券券面@2x.png" alt=" " @click="toDetail(2)"/>
       </div>
 
-      <p class="recommend" v-for="item in recommendList" style="align-self: left;" @click="goDetail(item)">
-        <img style="height: 16.5px" :src="generateSrc()" alt="">
-        <span>
+      <div style="width: 100%;">
+        <p class="recommend" v-for="item in recommendList" style="align-self: left;" @click="goDetail(item)">
+          <img style="height: 16.5px" :src="generateSrc()" alt="">
+          <span>
          {{item.name}}：{{item.desc}}
         </span>
-      </p>
-
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -74,11 +75,10 @@
     },
     methods: {
       loadData() {
-        fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.platid}})
+        fetch('/table/platformDetail', {type: 'post', params: {'platid': this.$route.query.id}})
           .then((response) => {
             this.detail = response.data;
             this.modifyTitle(this.detail.platform);
-            console.log(response)
           }).catch(function (err) {
         });
       },
@@ -167,6 +167,7 @@
       this.$refs.root.parentNode.style.paddingBottom = 0;
       this.loadData();
       this.recommendList = this.generateData();
+      this.wxShare(this.$wechat, location.href)
     }
   }
 </script>
@@ -231,7 +232,7 @@
     margin: 6px 10px;
     border-radius: 4px;
     padding: 6px;
-    background-color: rgba(255,253,231,0.3);
+    background-color: rgba(255, 253, 231, 0.3);
     border: solid 1px #ffd31b;
   }
 
