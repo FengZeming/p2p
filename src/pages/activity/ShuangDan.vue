@@ -274,11 +274,12 @@
 
       let KEY_SHARE = new Date().toLocaleDateString() + 'has_share';
       this.wxShare(this.$wechat, location.href, () => {
+        this.$vux.toast.show('机会+1');
         if (!this.hasShare) {
           this.data.data.used--;
           this.showShare = false;
         }
-        cookie.set(KEY_SHARE, true)
+        cookie.set(KEY_SHARE, true);
         this.addScore();
       });
 

@@ -93,9 +93,9 @@ function ready(wx, shareData, originUrl, calllback) {
       imgUrl: shareData.image,// 分享图标
       // 用户确认分享后执行的回调函数
       success: function () {
-        if (calllback) {
-          calllback();
-        }
+        // if (calllback) {
+        //   calllback();
+        // }
         console.log('分享成功');
       },
       // 用户取消分享后执行的回调函数
